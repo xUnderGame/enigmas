@@ -3,7 +3,7 @@
     --primary-50: #34818450;
     --secondary: #0f1029; /* Accent */
     --tertiary: #ffffff; /* Text color */
-    --quaternary: #43acac;
+    --quaternary: #43acac; /* Alt background */
     --primaryFont: 'Open Sans', sans-serif;
     --secondaryFont: "JetBrains Mono", monospace;
 }
@@ -23,4 +23,13 @@ body {
     font-family: var(--primaryFont);
     color: black;
     overflow-x: hidden;
+}
+img {
+    width: 80px;
+	height: 80px;
+}
+
+button:hover,
+img:hover {
+    transform: scale(1.1);
 }

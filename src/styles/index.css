@@ -9,43 +9,65 @@ main {
 	text-align: center;
 	width: 85%;
 	height: inherit;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 header {
 	display: flex;
 	height: 100px;
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	background-color: var(--primary);
 }
 aside {
 	width: 14%;
 	background-color: var(--secondary);
+	border-right: var(--tertiary) 4px double;
+}
+footer {
+	width: inherit;
+	height: 200px;
+	background-color: var(--primary);
 }
 
 /* By ID's */
 #websiteTitle {
 	width: fit-content;
+	align-items: center;
 }
 #infoUsuario {
 	display: flex;
 	justify-content: end;
+	margin-right: 2.5%;
 }
+#infoUsuario:hover {
+	background-color: var(--tertiary);
+	color: var(--secondary);
+	border-radius: 5px;
+}
+#nombreUsuario{
+	align-items: center;
+	margin-top: 12%;
+}
+
 #separator {
 	display: flex;
 	flex-wrap: nowrap;
 	height: inherit;
+	width: 100%;
+	border: 4px solid black;
+	background-color: var(--secondary);
 }
 #juego {
 	height:  95%;
-	width:95%;
+	width: 95%;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-	gap: 5%;
 	background-color: var(--quaternary);
-	border: #000000 4px solid;
-
+	gap: 5%;
 }
 #botones {
 	display: flex;
@@ -70,4 +92,3 @@ aside {
 	height: 40px;
 	margin-left: 5px;
 }
-

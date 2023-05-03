@@ -1,5 +1,5 @@
-buttons = ["jugar", "stats", "ranking"]
-buttons.forEach(button => {document.getElementById(button).addEventListener("click", function () { test() }, false)});
+listeners = ["jugar", "stats", "ranking", "imagenUsuario", "menu"]
+listeners.forEach(listener => {document.getElementById(listener).addEventListener("click", function () { test() }, false)});
 
 function test() {
     console.log("clicked")
