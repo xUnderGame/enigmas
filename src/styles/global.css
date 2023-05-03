@@ -1,0 +1,25 @@
+:root {
+    --primary: #ffffff;
+    --primary-75: #ffffff75;
+    --secondary: #ffffff;
+    --tertiary: #9ca3af;
+    --primaryFont: 'Open Sans', sans-serif;
+    --secondaryFont: "JetBrains Mono", monospace;
+}
+.drop-solid-black {
+    filter: drop-shadow(2px 2px 0px black);
+}
+.drop-blurry-black {
+    filter: drop-shadow(2px 2px 5px black);
+}
+* {
+    margin: 0px;
+    padding: 0px;
+    /* border: 1px solid pink; /* Remove after! */
+}
+body {
+    background-color: var(--secondary);
+    font-family: var(--primaryFont);
+    color: black;
+    overflow-x: hidden;
+}

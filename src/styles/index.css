@@ -1,19 +1,13 @@
-/* Global funny things */
-* {
-    margin: 0px;
-    padding: 0px;
-    /* border: 1px solid black; */
-}
-
 /* Regular css selectors/tags */
 html, body {
     height: 100%;
 }
 main {
-    background-color: gray;   
+    background-color: gray;  
     text-align: center;
     width: 85%;
     height: inherit;
+
 }
 header {
     display: flex;
@@ -35,16 +29,16 @@ aside {
     flex-wrap: nowrap;
     height: inherit;
 }
-
 #juego{
+    border-color: aqua 10px solid;
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
-
+    align-items: center;
+    justify-content: center;
 }
-
 #jugar ,#stats,#ranking{
     width: 5%;
     padding-top:2%;
     padding-bottom:2%;
-    border-radius: 5%;
+    border-radius: 25%;
 }
