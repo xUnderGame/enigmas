@@ -2,20 +2,25 @@
 * {
     margin: 0px;
     padding: 0px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 /* Regular css selectors/tags */
+html, body {
+    height: 100%;
+}
 main {
-    background-color: gray;
-    justify-content: center;
-    gap: 900px;
-    display: flex;
-    
+    background-color: gray;   
+    text-align: center;
+    width: 85%;
+    height: inherit;
 }
 header {
     display: flex;
     justify-content: space-evenly;
+}
+aside {
+    width: 15%;
 }
 
 /* By ID's */
@@ -24,4 +29,22 @@ header {
 }
 #infoUsuario {
     display: flex;
+}
+#separator {
+    display: flex;
+    flex-wrap: nowrap;
+    height: inherit;
+}
+
+#juego{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+#jugar ,#stats,#ranking{
+    width: 5%;
+    padding-top:2%;
+    padding-bottom:2%;
+    border-radius: 5%;
 }
