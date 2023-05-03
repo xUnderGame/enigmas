@@ -1,0 +1,27 @@
+/* Global funny things */
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid black;
+}
+
+/* Regular css selectors/tags */
+main {
+    background-color: gray;
+    justify-content: center;
+    gap: 900px;
+    display: flex;
+    
+}
+header {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* By ID's */
+#websiteTitle {
+    width: fit-content;
+}
+#infoUsuario {
+    display: flex;
+}
