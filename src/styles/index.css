@@ -66,7 +66,7 @@ footer {
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-	background-color: var(--quaternary);
+	background-color: var(--tertiary);
 	gap: 5%;
 }
 #botones {

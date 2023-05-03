@@ -1,5 +1,5 @@
 :root {
-    --primary:  #348184; /* Background */
+    --primary: rgb(235, 126, 25); /* Background */
     --primary-50: #34818450;
     --secondary: #0f1029; /* Accent */
     --tertiary: #ffffff; /* Text color */
