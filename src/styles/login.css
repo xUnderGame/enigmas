@@ -4,7 +4,7 @@ body {
     padding-top: 150px;
 }
 section {
-    background-color: aliceblue;
+    background-color: var(--primarylogin);
     width: 25%;
     height: 300px;
     padding: 50px;

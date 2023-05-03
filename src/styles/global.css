@@ -4,6 +4,7 @@
     --secondary: #0f1029; /* Accent */
     --tertiary: #ffffff; /* Text color */
     --quaternary: #43acac; /* Alt background */
+    --primarylogin:rgb(245, 198, 110);
     --primaryFont: 'Open Sans', sans-serif;
     --secondaryFont: "JetBrains Mono", monospace;
 }
@@ -19,7 +20,7 @@
     /* border: 1px solid rgb(234, 217, 220); Remove after! */
 }
 body {
-    background-color: var(--primary);
+    background-color: var(--secondary);
     font-family: var(--primaryFont);
     color: black;
     overflow-x: hidden;
