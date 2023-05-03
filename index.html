@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,30 +10,39 @@
     <script defer src="src/scripts/main.js"></script>
     <title>Javant - Main</title>
 </head>
+
 <body>
     <header>
-        <div id="websiteTitle"><h1>[Introducir Titulo]</h1></div>
+        <div id="websiteTitle">
+            <h1>Javant</h1>
+        </div>
         <div id="infoUsuario">
-            <img id="imagenUsuario" src="./src/images/placeholder.png" alt="Imagen de usuario">
+            <img id="imagenUsuario" src="./src/img/placeholder.png" alt="Imagen de usuario">
             <p id="nombreUsuario">[Username]</p>
-            <img src="./src/images/placeholder.png" alt="Menu hamburgesa">
+            <img src="./src/img/icons/bars.png" alt="Menu hamburgesa">
         </div>
     </header>
-    
+
     <div id="separator">
-        <aside id="puntuacion">
+        <aside>
             <h3>Puntuacion</h3>
             <p>Jugador 1: 5000 - 5 niveles</p>
         </aside>
         <main>
             <article id="juego">
-                <button id="jugar">Jugar</button>
-                <div id="others">
+                <div id="botones">
+                    <div id="play">
+                        <button id="jugar">Jugar</button>
+                    </div>
                     <button id="stats">Stats</button>
                     <button id="ranking">Ranking</button>
                 </div>
             </article>
         </main>
     </div>
+    <footer>
+        <p>Hi</p>
+    </footer>
 </body>
+
 </html>

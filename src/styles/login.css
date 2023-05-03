@@ -3,36 +3,57 @@ body {
     display: flex;
     padding-top: 150px;
 }
+
 section {
+    background-color: aliceblue;
     width: 25%;
     height: 300px;
     padding: 50px;
     border: solid 1px black;
     border-radius: 10px;
     margin-left: auto;
-    margin-right: auto;
-    
+    margin-right: auto; 
 }
+
 input {
     width: 100%;
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
     font-size: 20px;
     font-family: Arial, FontAwesome;
 }
-#loginButton{
+
+#loginButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 150px;
     height: 50px;
     border-radius: 15px;
-    padding: 5px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
     font-size: 20px;
 }
-p{
-    margin-left: auto;
-    margin-right: auto;
+#loginButton:hover{
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: scale(1.1);
+}
+p {
+    text-align: center;
+}
+
+a.recuperarContrasenya{
+    text-align: right;
+    margin-left: 60px;
+}
+.opciones{
+    width: 100%;
+    display: inline;
+}
+.inputRemember{
+    width: auto;
 }
 /* By ID's */

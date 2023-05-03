@@ -1,8 +1,9 @@
 :root {
-    --primary: #ffffff;
-    --primary-75: #ffffff75;
-    --secondary: #ffffff;
-    --tertiary: #9ca3af;
+    --primary:  #348184; /* Background */
+    --primary-50: #34818450;
+    --secondary: #0f1029; /* Accent */
+    --tertiary: #ffffff; /* Text color */
+    --quaternary: #43acac;
     --primaryFont: 'Open Sans', sans-serif;
     --secondaryFont: "JetBrains Mono", monospace;
 }
@@ -15,10 +16,10 @@
 * {
     margin: 0px;
     padding: 0px;
-    /* border: 1px solid pink; /* Remove after! */
+    /* border: 1px solid rgb(234, 217, 220); Remove after! */
 }
 body {
-    background-color: var(--secondary);
+    background-color: var(--primary);
     font-family: var(--primaryFont);
     color: black;
     overflow-x: hidden;

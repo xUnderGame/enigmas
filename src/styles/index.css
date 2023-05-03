@@ -2,9 +2,10 @@
 html,
 body {
 	height: 100%;
+	color: var(--tertiary);
 }
 main {
-	background-color: gray;
+	background-color: var(--secondary);
 	text-align: center;
 	width: 85%;
 	height: inherit;
@@ -14,9 +15,11 @@ header {
 	height: 100px;
 	align-items: center;
 	justify-content: space-evenly;
+	background-color: var(--primary);
 }
 aside {
-	width: 15%;
+	width: 14%;
+	background-color: var(--secondary);
 }
 
 /* By ID's */
@@ -25,6 +28,7 @@ aside {
 }
 #infoUsuario {
 	display: flex;
+	justify-content: end;
 }
 #separator {
 	display: flex;
@@ -32,24 +36,38 @@ aside {
 	height: inherit;
 }
 #juego {
-	height: inherit;
+	height:  95%;
+	width:95%;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 	gap: 5%;
-}
+	background-color: var(--quaternary);
+	border: #000000 4px solid;
 
+}
+#botones {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
 #jugar {
-    padding: 10px;
-	border-radius: 15%;
+	padding: 10px;
+	border-radius: 20px;
+	width: 180px;
+	height: 60px;
+	margin-bottom: 5px;
+}
+#play {
+	width: 100%;
 }
 #stats,
 #ranking {
-    padding: 5px;
-	border-radius: 15%;
+	padding: 5px;
+	border-radius: 20px;
+	width: 125px;
+	height: 40px;
+	margin-left: 5px;
 }
-#others {
-    width: max-content;
-    width: 95%;
-}
+
