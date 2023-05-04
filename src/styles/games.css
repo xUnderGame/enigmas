@@ -1,6 +1,13 @@
-body {
+body, html {
     background-color: white; 
     color: black;
+    height: 100%;
+}
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    height: inherit;
 }
 img:hover {
     transform: none !important;

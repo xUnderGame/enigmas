@@ -9,7 +9,7 @@ main {
 	background-image: url("https://i.pinimg.com/originals/3a/7b/da/3a7bda163b42122cec8497e44ce3f9dd.gif");
 	background-size: contain;
 	text-align: center;
-	width: 86%;
+	width: 90%;
 	height: inherit;
 	display: flex;
 	justify-content: center;
@@ -113,16 +113,12 @@ ul, li {
 	height: 40px;
 	margin-left: 5px;
 }
-#menu{
-	margin
-}
 .sub-menu { 
 	display: none; /* hides sub-menu */
-
-	opacity: 0;
 	/*position: relative;*/
 	left: 0;
-	transform: translateY(-2em);
+	/*transform: translateY(-1em);
 	z-index: -1;
-	transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+	transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;*/
+
 }

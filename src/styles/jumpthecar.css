@@ -1,0 +1,11 @@
+img {
+    border: 1px solid black;
+}
+#player {
+    width: 200px;
+    height: 240px;
+}
+#car {
+    width: 380px;
+    height: 300px;
+}
