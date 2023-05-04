@@ -26,6 +26,7 @@ body {
     overflow-x: hidden;
 }
 img {
+    user-select: none;
     width: 40px;
 	height: 40px;
 }

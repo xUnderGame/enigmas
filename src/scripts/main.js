@@ -1,10 +1,27 @@
-listeners = ["jugar", "stats", "ranking", "imagenUsuario", "menu"];
-listeners.forEach(listener => {document.getElementById(listener).addEventListener("click", function () { changeWindow(this) }, false)});
+// On-click listeners
+listeners = ["jugar", "stats", "ranking", "imagenUsuario"];
+listeners.forEach(listener => {document.getElementById(listener).addEventListener("click", function () { changeWindow(this) })});
+document.getElementById("menu").addEventListener("click", function () {
+    if (document.getElementById("logoff").style.display == "none") document.getElementById("logoff").style.display = "flex";
+    else document.getElementById("logoff").style.display = "none";
+});
+document.getElementById("logoff").addEventListener("click", function () {
+    // Clears all cookies. (https://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript)
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
 
+    // Refreshes page.
+    location.reload()
+});
 
 // Changes the DOM window with new content.
 function changeWindow(ele) {
-    if (!listeners.includes(ele.id)) return
+    if (!listeners.includes(ele.id)) pass
     let gameArea = document.getElementById("juego");
 
     // Switch case for button presses.
