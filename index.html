@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/styles/global.css">
-    <link rel="stylesheet" href="src/styles/index.css">
-    <script defer src="src/scripts/main.js"></script>
+    <link rel="stylesheet" href="/src/styles/global.css">
+    <link rel="stylesheet" href="/src/styles/index.css">
+    <script defer src="/src/scripts/main.js"></script>
     <title>Javant - Main</title>
 </head>
-
 <body>
     <header>
         <div id="websiteTitle">
-            <h1>Javant</h1>
+            <h1 class="drop-solid-black">Java'nt</h1>
+            <!-- <img src="./src/img/icons/javant.png"> -->
         </div>
         <div id="infoUsuario">
-            <img id="imagenUsuario" src="./src/img/placeholder.png" alt="Imagen de usuario">
+            <img id="imagenUsuario" src="/src/img/placeholder.png" alt="Imagen de usuario">
             <p id="nombreUsuario">[Username]</p>
-            <img id="menu" src="./src/img/icons/bars.png" alt="Menu hamburgesa">
+            <img id="menu" src="/src/img/icons/bars.png" alt="Menu hamburgesa">
         </div>
     </header>
 
     <div id="separator">
         <aside>
-            <h3>Puntuacion</h3>
+            <h3>Puntuacion</h3><br>
             <p>Jugador 1: 5000 - 5 niveles</p>
         </aside>
         <main>
-            <article id="juego">
+            <article id="juego"> <!-- https://gist.github.com/cirocosta/9f730967347faf9efb0b -->
                 <div id="botones">
                     <div id="play">
                         <button id="jugar">Jugar</button>
@@ -40,8 +39,9 @@
             </article>
         </main>
     </div>
+
     <footer>
-        <p>Hi</p>
+        <p>@ Java'nt. Todos los derechos reservados.</p>
     </footer>
 </body>
 

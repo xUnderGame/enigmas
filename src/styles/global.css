@@ -12,7 +12,7 @@
     filter: drop-shadow(2px 2px 0px black);
 }
 .drop-blurry-black {
-    filter: drop-shadow(2px 2px 5px black);
+    filter: drop-shadow(2px 2px 3px black);
 }
 * {
     margin: 0px;
@@ -20,14 +20,14 @@
     /* border: 1px solid rgb(234, 217, 220); Remove after! */
 }
 body {
-    background-color: var(--secondary);
+    /*background-color: var(--secondary);*/
     font-family: var(--primaryFont);
     color: black;
     overflow-x: hidden;
 }
 img {
-    width: 80px;
-	height: 80px;
+    width: 40px;
+	height: 40px;
 }
 
 button:hover,
