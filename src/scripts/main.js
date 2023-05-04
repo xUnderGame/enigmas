@@ -25,7 +25,7 @@ function changeWindow(ele) {
             console.log(ele);
             let subMenu = document.getElementsByClassName('sub-menu');
             console.log(subMenu[0]);
-            subMenu[0].style.display = 'block';
+            subMenu[0].style.display = 'inherit';
             break;
     
         default:

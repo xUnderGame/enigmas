@@ -7,6 +7,7 @@ body {
 main {
 	/* background-color: var(--secondary); */
 	background-image: url("https://i.pinimg.com/originals/3a/7b/da/3a7bda163b42122cec8497e44ce3f9dd.gif");
+	background-size: contain;
 	text-align: center;
 	width: 86%;
 	height: inherit;
@@ -78,7 +79,7 @@ ul, li {
 	background-color: var(--secondary);
 }
 #juego {
-	height:  95%;
+	height: 75%;
 	width: 95%;
 	display: flex;
 	flex-wrap: wrap;
@@ -112,7 +113,9 @@ ul, li {
 	height: 40px;
 	margin-left: 5px;
 }
-
+#menu{
+	margin
+}
 .sub-menu { 
 	display: none; /* hides sub-menu */
 
