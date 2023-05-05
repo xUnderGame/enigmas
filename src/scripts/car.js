@@ -1,29 +1,18 @@
+import * as handler from "/src/scripts/games.js";
 var car = document.getElementById("car");
 var player = document.getElementById("player");
 var cd = document.getElementById("countdown");
 var hasJumped = false;
-var time = 2000;
 car.style.left = "100%";
 
-import * as main from "/src/scripts/games.js";
-
 // Removes the ability to move the website when jumping.
-window.addEventListener("keydown", function(e) {
-    if(["Space","ArrowUp"].indexOf(e.code) > -1) {
+window.addEventListener("keydown", function (e) {
+    if (["Space", "ArrowUp"].indexOf(e.code) > -1) {
         e.preventDefault();
     }
 }, false);
 
 document.body.addEventListener("keydown", function (e) { jump(e) });
-
-// Game loop.
-async function game() {
-    for (const iterator of Array(3).keys()) {
-        cd.textContent = 3 - iterator;
-        await sleep(time / 2);
-    }
-    setInterval(function () { moveCar(this) }, 50);
-}
 
 // Moves the car to the left.
 function moveCar(intervalTimer) {
@@ -47,11 +36,5 @@ function jump(e) {
     hasJumped = true;
 }
 
-// Sleeps for x seconds.
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 // Start the game
-main.test();
-game();
+handler.runGame(moveCar);
