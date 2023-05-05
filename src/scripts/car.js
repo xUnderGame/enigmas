@@ -5,6 +5,13 @@ var hasJumped = false;
 var time = 2000;
 car.style.left = "100%";
 
+// Removes the ability to move the website when jumping.
+window.addEventListener("keydown", function(e) {
+    if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+        e.preventDefault();
+    }
+}, false);
+
 document.body.addEventListener("keydown", function () { jump(event) });
 
 // Game loop.

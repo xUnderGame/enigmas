@@ -3,7 +3,7 @@ var ground = document.getElementById('ground');
 var player = document.getElementById('player');
 var cd = document.getElementById('countdown');
 var time = 2000;
-player.style.top += 100;
+player.style.top += '10%';
 
 // Game running.
 async function game() {
@@ -17,10 +17,9 @@ async function game() {
 
 // Moves the Pleyer to the left.
 function movePleyer(intervalTimer) {
-    let topd = player.style.top.replace("%", "");
-    player.style.top = (topd + 1.25) + "%";
+    let top = player.style.top.replace("%", "");
     console.log(player.style.top);
-   // (top < window.innerWidth) ? player.style.top = (top + 1.25) + "%" : clearInterval(intervalTimer);
+    (top < 100) ? player.style.top = (parseFloat(top) + 1.25) + "%" : clearInterval(intervalTimer);
 }
 function test(){
 }
