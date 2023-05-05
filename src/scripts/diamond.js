@@ -20,11 +20,11 @@ function movePlayer(e) {
 
 function movePlayerLeft() {
     let left = player.style.left.replace("%", "");
-    player.style.left = (parseFloat(left) - 1) + "%";
+    player.style.left = (parseFloat(left) - 1.5) + "%";
 }
 function movePlayerRight() {
     let left = player.style.left.replace("%", "");
-    player.style.left = (parseFloat(left) + 1) + "%";
+    player.style.left = (parseFloat(left) + 1.5) + "%";
 }
 
 // Game running.
@@ -33,22 +33,25 @@ handler.runGame(movePlayerDown);
 // Moves the Pleyer to the left.
 function movePlayerDown(intervalTimer) {
     let top = player.style.top.replace("%", "");
-    (top < 100) ? player.style.top = (parseFloat(top) + 5) + "%" : clearInterval(intervalTimer);
+    (top < 100) ? player.style.top = (parseFloat(top) + 2.5) + "%" : clearInterval(intervalTimer);
     if (checkCollision()) cd.textContent = "You lost (the game)!";
 }
 // 
-function checkCollision() {
+function checkCollision() {   
     let dirt = document.getElementsByClassName('Dirt');
     let playerHitBox = player.getBoundingClientRect();
     let flag = false;
     for(let i = 0; i < dirt.length; i++){
         let dirtHitBox = dirt[i].getBoundingClientRect();
-        if (dirtHitBox.top ==  playerHitBox.top){
-            flag = ture;
+        console.log(dirtHitBox.left);
+        console.log(playerHitBox.left);
+        console.log(playerHitBox.top >=  dirtHitBox.top);
+        if (playerHitBox.top >=  dirtHitBox.top && dirtHitBox.left <= playerHitBox.left &&  dirtHitBox.left- 40 >= playerHitBox.left){
+            flag = true;
             return flag;
         }
     }
-    return flag
+    return flag;
 }
 // Make the ground
 function setGround() {

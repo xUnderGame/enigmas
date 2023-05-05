@@ -1,9 +1,15 @@
-// On-click listeners
+// On-click listeners for the buttons.
 listeners = ["jugar", "stats", "ranking", "imagenUsuario"];
 listeners.forEach(listener => {document.getElementById(listener).addEventListener("click", function () { changeWindow(this) })});
 document.getElementById("menu").addEventListener("click", function () {
-    if (document.getElementById("logoff").style.display == "none") document.getElementById("logoff").style.display = "flex";
-    else document.getElementById("logoff").style.display = "none";
+    if (document.getElementById("logoff").style.display == "none") {
+        document.getElementById("logoff").style.display = "flex";
+        document.getElementById("stats").style.display = "flex";
+    }
+    else {
+        document.getElementById("logoff").style.display = "none";
+        document.getElementById("stats").style.display = "none";
+    };
 });
 document.getElementById("logoff").addEventListener("click", function () {
     // Clears all cookies. (https://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript)
@@ -15,8 +21,8 @@ document.getElementById("logoff").addEventListener("click", function () {
         document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
 
-    // Refreshes page.
-    window.open("../login.html","_self");
+    // "Refreshes" page.
+    window.open("/login.html", "_self");
 });
 
 // Changes the DOM window with new content.
@@ -46,6 +52,7 @@ function changeWindow(ele) {
             subMenu[0].style.display = 'inherit';
             break;
     
+        // I call.
         default:
             break;
     }

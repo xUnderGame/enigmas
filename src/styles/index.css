@@ -5,12 +5,11 @@ body {
 	color: var(--tertiary);
 }
 main {
-	/* background-color: var(--secondary); */
+	background-color: var(--secondary); /* Fallback background. */
 	background-image: url("https://i.pinimg.com/originals/3a/7b/da/3a7bda163b42122cec8497e44ce3f9dd.gif");
 	background-size: contain;
 	text-align: center;
 	width: 90%;
-	height: inherit;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -37,7 +36,6 @@ footer {
 	display: flex;
 	justify-content: center;
 	padding-top: 20px;
-	width: inherit;
 	height: 40px;
 	background-color: var(--primary);
 }
@@ -51,14 +49,11 @@ ul, li {
 
 /* By ID's */
 #websiteTitle {
-	width: fit-content;
-	align-items: center;
 	margin-left: 20px;
 }
 #infoUsuario {
 	display: flex;
-	justify-content: end;
-	margin-right: 2.5%;
+	margin-right: 20px;
 }
 #infoUsuario:hover {
 	background-color: var(--tertiary);
@@ -66,15 +61,12 @@ ul, li {
 	border-radius: 5px;
 }
 #nombreUsuario{
-	align-items: center;
-	margin-top: auto;
+	margin-top: 15px;
 }
 
 #separator {
 	display: flex;
-	flex-wrap: nowrap;
 	height: inherit;
-	width: 100%;
 	border: 4px solid black;
 	background-color: var(--secondary);
 }
@@ -82,34 +74,28 @@ ul, li {
 	height: 75%;
 	width: 95%;
 	display: flex;
-	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 	background-color: var(--tertiary);
-	gap: 5%;
 	border: 4px solid black;
 	border-radius: 8px;
 }
 #botones {
 	display: flex;
-	flex-wrap: wrap;
+	align-items: center;
 	justify-content: center;
+	flex-direction: column;
 }
 #jugar {
-	padding: 10px;
+	margin-bottom: 10px;
 	border-radius: 20px;
+	padding: 10px;
 	width: 180px;
 	height: 60px;
-	margin-bottom: 5px;
 }
-#play {
-	width: 100%;
-}
-#stats,
 #ranking {
-	padding: 5px;
 	border-radius: 20px;
+	padding: 5px;
 	width: 125px;
 	height: 40px;
-	margin-left: 5px;
 }

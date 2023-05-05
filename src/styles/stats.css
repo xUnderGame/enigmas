@@ -1,0 +1,63 @@
+/* Regular css selectors/tags */
+html,
+body {
+	height: 100%;
+	color: var(--tertiary);
+}
+main {
+	/* background-color: var(--secondary); */
+	background-image: url("https://i.pinimg.com/originals/3a/7b/da/3a7bda163b42122cec8497e44ce3f9dd.gif");
+    background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;
+	height: inherit;
+	display: flex;
+}
+header {
+	display: flex;
+	height: 100px;
+	align-items: center;
+	justify-content: space-between;
+	background-color: var(--primary);
+}
+footer {
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+	height: 40px;
+	background-color: var(--primary);
+}
+ul, li {
+	list-style: none;
+}
+.fullscreen {
+	width: 100%;
+	height: 100%;
+}
+
+/* By ID's */
+#websiteTitle {
+	margin-left: 20px;
+}
+#desplegableUsuario {
+	display: flex;
+	justify-content: end;
+	margin-right: 2.5%;
+}
+#desplegableUsuario:hover {
+	background-color: var(--tertiary);
+	color: var(--secondary);
+	border-radius: 5px;
+}
+#nombreUsuario{
+	margin-top: 15px;
+}
+#botones {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+#infoUsuario{
+heig
+}
