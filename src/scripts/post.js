@@ -43,7 +43,7 @@ async function submitForm() {
     console.log(player);
 
     // Método POST para enviar informacion
-    let url="https://localhost:5283/api/Jugadores";
+    let url="https://localhost:7261/api/Jugadores";
     let post = {
         method: 'POST',
         body: JSON.stringify(player),

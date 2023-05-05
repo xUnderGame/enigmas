@@ -3,7 +3,7 @@ export function test() {
 }
 
 export async function runGame(funct) {
-    var time = 2000;
+    var time = 500;
     let cd = document.getElementById("countdown")
     for (const iterator of Array(3).keys()) {
         cd.textContent = 3 - iterator;
