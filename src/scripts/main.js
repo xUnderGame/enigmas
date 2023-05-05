@@ -36,6 +36,7 @@ function changeWindow(ele) {
             // Edit DOM.
             document.getElementById("botones").style.display = "none";
             gameArea.appendChild(game);
+            game.focus();
             break;
 
         case "menu":

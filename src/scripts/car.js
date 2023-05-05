@@ -1,21 +1,44 @@
 var car = document.getElementById("car");
 var player = document.getElementById("player");
 var cd = document.getElementById("countdown");
-cd.style.top -= -100
-car.style.left = "100%";
+var hasJumped = false;
 var time = 2000;
+car.style.left = "100%";
 
+document.body.addEventListener("keydown", function () { jump() });
+
+// Game loop.
 async function game() {
     for (const iterator of Array(3).keys()) {
         cd.textContent = 3 - iterator;
         await sleep(time / 2);
     }
-    var intervalTimer = setInterval(function () { moveCar() }, 50);
+    setInterval(function () { moveCar(this) }, 50);
 }
-function moveCar() {
+
+// Moves the car to the left.
+function moveCar(intervalTimer) {
     let left = car.style.left.replace("%", "");
-    (left > -40) ? car.style.left = (left - 8.25) + "%" : clearInterval(intervalTimer); // errors, intervalTimer is not defined
+    (left > -100) ? car.style.left = (left - 8.25) + "%" : clearInterval(intervalTimer);
+    if (checkCollision()) cd.textContent = "You lost!";
 }
+
+// Checks for a collsion.
+function checkCollision() {
+    let c = car.getBoundingClientRect();
+    let p = player.getBoundingClientRect();
+    return p.top >= c.top && p.left >= c.left && p.right <= c.right;
+}
+
+// Makes the player jump, only once.
+function jump() {
+    if (hasJumped) return;
+    player.style.top = 40 + "px";
+    setTimeout(() => { player.style.top = null; }, 500);
+    hasJumped = true;
+}
+
+// Sleeps for x seconds.
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }

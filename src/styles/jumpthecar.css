@@ -1,5 +1,5 @@
-img {
-    border: 1px solid black;
+body {
+    height: 90%;
 }
 #player {
     width: 200px;
