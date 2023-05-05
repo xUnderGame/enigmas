@@ -34,29 +34,39 @@ handler.runGame(movePlayerDown);
 function movePlayerDown(intervalTimer) {
     let top = player.style.top.replace("%", "");
     (top < 100) ? player.style.top = (parseFloat(top) + 2.5) + "%" : clearInterval(intervalTimer);
-    if (checkCollision()) cd.textContent = "You lost (the game)!";
+    if (checkCollision()){
+        cd.textContent = "You win (the game)!";
+        clearInterval(intervalTimer);
+    } 
 }
 // 
 function checkCollision() {   
-    let dirt = document.getElementsByClassName('Dirt');
+    let diamond = document.getElementsByClassName('Diamond');
     let playerHitBox = player.getBoundingClientRect();
     let flag = false;
-    for(let i = 0; i < dirt.length; i++){
+    /*for(let i = 0; i < dirt.length; i++){
         let dirtHitBox = dirt[i].getBoundingClientRect();
         console.log(dirtHitBox.left);
         console.log(playerHitBox.left);
         console.log(playerHitBox.top >=  dirtHitBox.top);
-        if (playerHitBox.top >=  dirtHitBox.top && dirtHitBox.left <= playerHitBox.left &&  dirtHitBox.left- 40 >= playerHitBox.left){
+        if (playerHitBox.top >=  dirtHitBox.top && dirtHitBox.left <= playerHitBox.left &&  dirtHitBox.left + 40 >= playerHitBox.left){
             flag = true;
             return flag;
         }
+    }*/   
+    let diamondHitBox =  diamond[0].getBoundingClientRect();
+    console.log(diamondHitBox);
+    console.log(playerHitBox)
+    if (diamondHitBox.top <= playerHitBox.bottom && diamondHitBox.left <= playerHitBox.left && diamondHitBox.right + 40 >= playerHitBox.right){
+        flag = true;
+        return flag;
     }
-    return flag;
 }
 // Make the ground
 function setGround() {
+    ground.style.top = '80%';
     let max = (maxLeft - 40) / 40;
-    let diamond = Math.floor(Math.random() * max);
+    let diamond = Math.floor((Math.random() )* (max - 10) + 5);
     for (let i = 0; i < max; i++) {
         let img = document.createElement('img');
         if (diamond == i) {
