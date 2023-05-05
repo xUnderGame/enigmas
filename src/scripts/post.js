@@ -12,3 +12,14 @@ function getData(form) {
         console.log(pair[0] + ": " + pair[1]);
     }
 }
+async function getJugadores() {
+    let url = 'localhost:5283/api/Jugadores';
+    try {
+        let res = await fetch(url);
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// ^^

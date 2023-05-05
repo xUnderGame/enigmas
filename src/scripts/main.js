@@ -16,7 +16,7 @@ document.getElementById("logoff").addEventListener("click", function () {
     }
 
     // Refreshes page.
-    location.reload()
+    window.open("../login.html","_self");
 });
 
 // Changes the DOM window with new content.

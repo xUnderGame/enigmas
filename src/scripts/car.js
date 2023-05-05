@@ -5,6 +5,8 @@ var hasJumped = false;
 var time = 2000;
 car.style.left = "100%";
 
+import * as main from "/src/scripts/games.js";
+
 // Removes the ability to move the website when jumping.
 window.addEventListener("keydown", function(e) {
     if(["Space","ArrowUp"].indexOf(e.code) > -1) {
@@ -12,7 +14,7 @@ window.addEventListener("keydown", function(e) {
     }
 }, false);
 
-document.body.addEventListener("keydown", function () { jump(event) });
+document.body.addEventListener("keydown", function (e) { jump(e) });
 
 // Game loop.
 async function game() {
@@ -41,7 +43,7 @@ function checkCollision() {
 function jump(e) {
     if (hasJumped || !["Space", "ArrowUp", "Enter"].includes(e.code)) return;
     player.style.top = 40 + "px";
-    setTimeout(() => { player.style.top = null; }, 500);
+    setTimeout(() => { player.style.top = null; }, 325);
     hasJumped = true;
 }
 
@@ -51,4 +53,5 @@ function sleep(ms) {
 }
 
 // Start the game
+main.test();
 game();

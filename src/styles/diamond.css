@@ -3,7 +3,6 @@
 }
 #ground{
     position: absolute;
+    display: block;
 }
-#ground{
-    position: absolute;
-}
+
