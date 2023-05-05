@@ -7,7 +7,7 @@ car.style.left = "100%";
 
 // Removes the ability to move the website when jumping.
 window.addEventListener("keydown", function(e) {
-    if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+    if(["Space","ArrowUp"].indexOf(e.code) > -1) {
         e.preventDefault();
     }
 }, false);
