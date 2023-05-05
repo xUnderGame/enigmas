@@ -5,7 +5,7 @@ var hasJumped = false;
 var time = 2000;
 car.style.left = "100%";
 
-document.body.addEventListener("keydown", function () { jump() });
+document.body.addEventListener("keydown", function () { jump(event) });
 
 // Game loop.
 async function game() {
@@ -31,8 +31,8 @@ function checkCollision() {
 }
 
 // Makes the player jump, only once.
-function jump() {
-    if (hasJumped) return;
+function jump(e) {
+    if (hasJumped || !["Space", "ArrowUp", "Enter"].includes(e.code)) return;
     player.style.top = 40 + "px";
     setTimeout(() => { player.style.top = null; }, 500);
     hasJumped = true;

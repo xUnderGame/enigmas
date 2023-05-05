@@ -17,7 +17,9 @@ async function game() {
 
 // Moves the Pleyer to the left.
 function movePleyer(intervalTimer) {
-    let top = player.style.top.replace("%", "");
+    let topd = player.style.top.replace("%", "");
+    player.style.top = (topd + 1.25) + "%";
+    console.log(player.style.top);
    // (top < window.innerWidth) ? player.style.top = (top + 1.25) + "%" : clearInterval(intervalTimer);
 }
 function test(){
