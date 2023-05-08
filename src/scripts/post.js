@@ -2,6 +2,22 @@
 document.getElementById("loginForm").addEventListener("submit", async function (e) {
     e.preventDefault();
     getData(e.target);
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let url="https://localhost:7261/api/Jugadores/"+username;
+    fetch(url)
+     .then((response) => PutUsuario(response.json()))
+     .then((json) => {
+        let jugador = JSON.parse(json);
+        if(jugador.password == password){
+            console.log("contrasenya correcta");
+        }
+        else{
+            alert("Nombre de Usuario o contraseña incorrectos")
+        }
+        console.log(jugador);
+     })
+     .catch((error) => alert("ERROR"));
 });
 
 // Gets the data from the sent form.
