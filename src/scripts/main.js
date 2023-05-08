@@ -1,6 +1,6 @@
 // On-click listeners for the buttons.
 listeners = ["jugar", "stats", "ranking", "imagenUsuario"];
-listeners.forEach(listener => {document.getElementById(listener).addEventListener("click", function () { changeWindow(this) })});
+listeners.forEach(listener => { document.getElementById(listener).addEventListener("click", function () { changeWindow(this) }) });
 
 // Changes the DOM window with new content.
 function changeWindow(ele) {
@@ -29,11 +29,11 @@ function changeWindow(ele) {
             console.log(subMenu[0]);
             subMenu[0].style.display = 'inherit';
             break;
-    
+
         case "imagenUsuario":
             updateGame("diamondDig"); // testing!!
             break;
-        
+
         // I call.
         default:
             break;
@@ -45,4 +45,13 @@ function updateGame(src) {
     let game = document.getElementById("game");
     game.src = `/games/${src}.html`;
     game.focus();
+}
+
+// Function to end game.
+function endGame() {
+    let game = document.getElementById("game");
+    var nextButton = document.createElement("button");
+    nextButton.innerText = "Siguiente juego";
+    nextButton.onclick = updateGame("diamondDig");
+    gameArea.appendChild(nextButton);
 }

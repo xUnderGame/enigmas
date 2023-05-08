@@ -14,7 +14,7 @@ document.addEventListener("load", () => {
 })
 
 function PutUsuario(response) {
-    let jugador = new Jugador(JSON.parse(response));
+    let jugador = JSON.parse(response);
     console.log(jugador)
     divUsername.innerHtml = jugador.nick;
     divUsername.innerHtml = jugador.nick;

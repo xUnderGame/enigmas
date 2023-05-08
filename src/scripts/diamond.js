@@ -3,14 +3,14 @@ import * as handler from "/src/scripts/games.js";
 var ground = document.getElementById("ground");
 var player = document.getElementById("player");
 var cd = document.getElementById("countdown");
+var maxLeft = window.innerWidth;
+var maxTop = window.innerHeight;
 player.style.top = "10%";
 player.style.left = "50%";
 
-var maxLeft = window.innerWidth;
-var maxTop = window.innerHeight;
-
 window.addEventListener("keydown", movePlayer);
 
+// Player movement
 function movePlayer(e) {
     if (e.code == "ArrowLeft" && player.style.left >= "0%") {
         movePlayerLeft();
@@ -19,7 +19,6 @@ function movePlayer(e) {
         movePlayerRight();
     }
 }
-
 function movePlayerLeft() {
     let left = player.style.left.replace("%", "");
     player.style.left = (parseFloat(left) - 1.5) + "%";
@@ -29,10 +28,10 @@ function movePlayerRight() {
     player.style.left = (parseFloat(left) + 1.5) + "%";
 }
 
-// Game running.
+// Runs the game.
 handler.runGame(movePlayerDown);
 
-// Moves the Player to the left.
+// Moves the player to the left.
 function movePlayerDown(intervalTimer) {
     let top = player.style.top.replace("%", "");
     (top < 100) ? player.style.top = (parseFloat(top) + 2.5) + "%" : clearInterval(intervalTimer);
@@ -41,7 +40,8 @@ function movePlayerDown(intervalTimer) {
         clearInterval(intervalTimer);
     } 
 }
-// 
+
+// Checks for the player colliding with the diamond. 
 function checkCollision() {   
     let diamond = document.getElementById("diamond");
     let playerHitBox = player.getBoundingClientRect();
@@ -50,13 +50,15 @@ function checkCollision() {
     if (diamondHitBox.top <= playerHitBox.bottom && diamondHitBox.left - 10 <= playerHitBox.left && diamondHitBox.right + 10 >= playerHitBox.right && diamondHitBox.bottom >= playerHitBox.top){
         return true;
     }
-
 }
+
 // Make the ground
 function setGround() {
-    ground.style.top = "80%";
     let max = (maxLeft - 40) / 40;
-    let diamond = Math.floor((Math.random() )* (max - 10) + 5);
+    let diamond = Math.floor((Math.random()) * (max - 10) + 5);
+    ground.style.top = "80%";
+    
+    // Ground tiles.
     for (let i = 0; i < max; i++) {
         let img = document.createElement("img");
         if (diamond == i) {

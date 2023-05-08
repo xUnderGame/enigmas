@@ -18,12 +18,14 @@
             <!-- <img src="./src/img/icons/javant.png"> -->
         </div>
         <div id="desplegableUsuario">
-            <img id="imagenUsuario" class="drop-blurry-black" src="/src/img/placeholder.png" alt="Imagen de usuario">
-            <p id="nombreUsuario">[Username]</p>
-            <img id="menu" class="drop-blurry-black" src="/src/img/icons/bars.png" alt="Menu hamburgesa">
-            <ul>
-                <li><button style="display: none;" id="logoff">Logoff</button></li>
-                <li><button style="display: none;" id="stats">Stats Personales</button></li>
+            <div id="menu">            
+                <img id="imagenUsuario" class="drop-blurry-black" src="/src/img/placeholder.png" alt="Imagen de usuario">
+                <p id="nombreUsuario">[Username]</p>
+                <img id="menu" class="drop-blurry-black" src="/src/img/icons/bars.png" alt="Menu hamburgesa">
+            </div>
+                <li><button class="submenu" style="display: none;" id="home">Home</button></li>
+                <li><button class="submenu" style="display: none;" id="logoff">Logoff</button></li>
+                <li><button class="submenu" style="display: none;" id="stats">Stats Personales</button></li>
             </ul>
         </div>
     </header>
@@ -49,7 +51,7 @@
         </section>
     </main>
     <footer>
-        <p>@ Java'nt. Todos los derechos reservados.</p>
+        <p>@ Javant. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>

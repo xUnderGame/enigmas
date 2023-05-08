@@ -1,11 +1,13 @@
 document.getElementById("menu").addEventListener("click", function () {
     if (document.getElementById("logoff").style.display == "none") {
-        document.getElementById("logoff").style.display = "flex";
-        document.getElementById("stats").style.display = "flex";
+        document.getElementById("logoff").style.display = "inline";
+        document.getElementById("stats").style.display = "inline";
+        document.getElementById("home").style.display = "inline";
     }
     else {
         document.getElementById("logoff").style.display = "none";
         document.getElementById("stats").style.display = "none";
+        document.getElementById("home").style.display = "none";
     };
 });
 document.getElementById("logoff").addEventListener("click", function () {
@@ -21,3 +23,5 @@ document.getElementById("logoff").addEventListener("click", function () {
     // "Refreshes" page.
     window.open("/login.html", "_self");
 });
+document.getElementById("stats").addEventListener("click", function () {window.open("/stats.html","_self")});
+document.getElementById("home").addEventListener("click", function () {window.open("/index.html","_self")});
