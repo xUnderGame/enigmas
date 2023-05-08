@@ -4,6 +4,7 @@ function createPulse(){
     let pulse = document.createElement('div');
     pulse.classList.add('pulseRed');
     pulse.style.left = '100%';
-    red.appendChild(pulse);
+    console.log(red)
+    //red.appendChild(pulse);
 }
 createPulse();
