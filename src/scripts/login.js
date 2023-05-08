@@ -10,6 +10,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         .then((jugador) => {
             if (jugador.password == password) {
                 console.log("contrasenya correcta");
+                window.open("/index.html","_self");
             }
             else {
                 alert("Nombre de Usuario o contraseña incorrectos")

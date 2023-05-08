@@ -13,10 +13,10 @@
 <body>
     <section>
         <form id="signupForm" method="post" target="_self">
-            <input type="text" id="nombre" name="nombre" value="" placeholder="Nombre" required><br>
-            <input type="text" id="apellido" name="apellido" value="" placeholder="Apellidos" required><br>
+            <input autocomplete="username" type="text" id="nombre" name="nombre" value="" placeholder="Nombre" required><br>
+            <input autocomplete="" type="text" id="apellido" name="apellido" value="" placeholder="Apellidos" required><br>
             <input type="text" id="nick" name="nick" value="" placeholder="Username" required><br>
-            <input type="password" id="password" name="password" value="" placeholder="Contrasenya" required><br>
+            <input autocomplete="current-password" type="password" id="password" name="password" value="" placeholder="Contrasenya" required><br>
             <button type="submit" id="loginButton">Registrarte</button><br><br>
             <p>Tienes una cuenta? <a class="link" href="./login.html"> Inicia sesion</a></p>
         </form>

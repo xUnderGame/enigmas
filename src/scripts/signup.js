@@ -17,8 +17,7 @@ async function submitForm() {
     var password = document.getElementById("password").value;
     //var localizacion = document.getElementById("localizacion").value;
 
-    var player = new Jugador(nombre, apellido, nick, password); //, localizacion
-    console.log(player);
+    var player = new Jugador(33, nombre, apellido, nick, password, "TEST", 0, 0, "test"); //, localizacion
 
     // Método POST para enviar informacion
     let url = "https://localhost:7261/api/Jugadores";
@@ -27,7 +26,8 @@ async function submitForm() {
         body: JSON.stringify(player),
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
+            'Access-Control-Allow-Origin': '*',
+            'accept': '*/*'
         }
     }
     await fetch(url, post)

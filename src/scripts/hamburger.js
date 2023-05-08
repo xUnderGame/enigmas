@@ -1,4 +1,4 @@
-document.getElementById("menu").addEventListener("click", function () {
+document.getElementById("ham").addEventListener("click", function () {
     if (document.getElementById("logoff").style.display == "none") {
         document.getElementById("logoff").style.display = "inline";
         document.getElementById("stats").style.display = "inline";
@@ -24,4 +24,4 @@ document.getElementById("logoff").addEventListener("click", function () {
     window.open("/login.html", "_self");
 });
 document.getElementById("stats").addEventListener("click", function () {window.open("/stats.html","_self")});
-document.getElementById("home").addEventListener("click", function () {window.open("/index.html","_self")});
+document.getElementById("home").addEventListener("click", function () {window.open("/index.html","_self")}); // que es esto

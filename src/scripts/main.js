@@ -1,6 +1,18 @@
+if (document.cookie.split("; ").find((row) => row.startsWith("nick="))?.split("=")[1] == undefined) {
+    //window.open("/login.html", "_self");
+}
+
 // On-click listeners for the buttons.
 listeners = ["jugar", "stats", "ranking", "imagenUsuario"];
 listeners.forEach(listener => { document.getElementById(listener).addEventListener("click", function () { changeWindow(this) }) });
+
+
+window.addEventListener("load", function (){
+    const nombre = document.cookie.split("; ")
+    .find((row) => row.startsWith("nick="))
+    ?.split("=")[1];
+    document.getElementById("nombreUsuario").innerHTML= nombre;
+});
 
 // Changes the DOM window with new content.
 function changeWindow(ele) {
