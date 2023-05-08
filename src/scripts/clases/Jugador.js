@@ -1,11 +1,9 @@
 export default class Jugador {
-    idJugador;
     nombre;
     apellido;
     nick;
     password;
-    constructor(idJugador, nombre, apellido, nick, password) {
-        this.idJugador = idJugador;
+    constructor(nombre, apellido, nick, password) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.nick = nick;

@@ -1,0 +1,77 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#maze {
+	width: 600px;
+	height: 400px;
+	margin: 50px auto;
+	position: relative;
+	background-color: #fff;
+	border: 2px solid #000;
+	overflow: hidden;
+}
+
+#walls {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.wall {
+	position: absolute;
+	background-color: #000;
+	width: 25%;
+	height: 10%;
+}
+
+#player {
+	position: absolute;
+	top: 25%;
+	left: 0%;
+	background-color: #ff0;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+}
+
+#goal {
+	position: absolute;
+	top: 75%;
+	left: 75%;
+	background-color: #f00;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+}
+
+#timer {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 24px;
+	padding: 10px;
+}
+
+#score {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	font-size: 24px;
+	padding: 10px;
+}
+
+#score span, #timer span {
+	font-weight: bold;
+}
+
+.win {
+	background-color: #0f0;
+}
+
+.lose {
+	background-color: #f00;
+}

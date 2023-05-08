@@ -1,9 +1,11 @@
 import * as actions from "/src/scripts/post.js";
-import Jugador from "/src/scripts/clases/Jugador.js"; // maybe
+import Jugador from "/src/scripts/clases/Jugador.js";
+
 // Adds an event that fires when the form is submitted.
 var signupForm = document.getElementById("signupForm");
 signupForm.addEventListener("submit", async function (e) {
     e.preventDefault();
+    actions.getData(e.target);
     await submitForm();
 });
 
@@ -24,10 +26,11 @@ async function submitForm() {
         method: 'POST',
         body: JSON.stringify(player),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
         }
     }
-    fetch(url, post)
+    await fetch(url, post)
         .then((response) => response.json())
-        .catch((error) => alert("Este nombre de usuario ya esta en uso"));
+        .catch((error) => console.log(error)); //alert("Este nombre de usuario ya esta en uso")
 }
