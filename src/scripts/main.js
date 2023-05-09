@@ -27,7 +27,7 @@ function changeWindow(ele) {
             game.classList += "fullscreen";
             game.style.border = "none";
             game.id = "game";
-            game.src = "/games/jitterclick.html"; // game will need to be set via api requests later on.
+            game.src = "https://playclassic.games/games/first-person-shooter-dos-games-online/play-doom-online/play/"; // game will need to be set via api requests later on.
 
             // Edit DOM.
             document.getElementById("botones").style.display = "none";

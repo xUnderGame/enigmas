@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +12,9 @@
     <script defer src="/src/scripts/main.js"></script>
     <title>Javant - Main</title>
 </head>
+
 <body>
-    <header>
+    <header class="drop-strong-blurry-black">
         <div id="websiteTitle">
             <!-- <img src="./src/img/icons/javant.png"> -->
             <h1 class="drop-solid-black">Javant</h1>
@@ -32,11 +34,37 @@
 
     <div id="separator">
         <aside>
-            <h3>Puntuacion</h3><br>
-            <p>Jugador 1: 5000 - 5 niveles</p>
+            <br><br>
+            <h3>Controles</h3><br>
+            <h4>Jump the Car</h4>
+            <div id="instructions">
+                <img src="https://cdn-icons-png.flaticon.com/512/892/892550.png" />
+                <p>Saltar</p>
+            </div>
+            <h4>Maze</h4>
+            <div id="instructions">
+                <img src="https://cdn-icons-png.flaticon.com/512/2491/2491500.png" />
+                <p>Moverse</p>
+            </div>
+            <h4>Diamond Dig</h4>
+            <div id="instructions">
+                <img src="https://emojigraph.org/media/facebook/left-right-arrow_2194-fe0f.png" />
+                <p>Moverse a los lados</p>
+            </div>
+            <h4>Jitter</h4>
+            <div id="instructions">
+                <img src="https://cdn-icons-png.flaticon.com/512/2491/2491484.png" />
+                <p>LClick</p>
+            </div>
+            <h4>Taiko</h4>
+            <div id="instructions">
+                <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/512x512/keyboard_key_k.png" />
+                <p>Pulsa "K"</p>
+            </div>
+
         </aside>
         <main>
-            <article id="juego"> <!-- https://gist.github.com/cirocosta/9f730967347faf9efb0b -->
+            <article id="juego" class="glow-black">
                 <div id="botones">
                     <button id="jugar">Jugar</button>
                     <button id="ranking">Ranking</button>
