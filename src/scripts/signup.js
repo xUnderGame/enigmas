@@ -30,6 +30,6 @@ async function submitForm() {
         }
     }
     await fetch(url, post)
-        .then((response) => response.json())
+        .then((response) => response.json(), window.open("/login.html","_self"))
         .catch((error) => console.log(error)); //alert("Este nombre de usuario ya esta en uso")
 }

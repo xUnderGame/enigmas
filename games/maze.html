@@ -2,9 +2,13 @@
 <html>
 <head>
 	<title>The Maze that Pays</title>
-	<link rel="stylesheet" type="text/css" href="/src/styles/maze.css">
+    <script defer type="module" src="/src/scripts/games/maze.js"></script>
+	<link rel="stylesheet" type="text/css" href="/src/styles/games/maze.css">
 </head>
 <body>
+    <div style="text-align: center;">
+        <h1 id="countdown">Preparado?</h1>
+    </div>
 	<div id="maze">
 		<div id="player"></div>
 		<div id="goal"></div>
@@ -37,9 +41,8 @@
             <div class="wall" style="left: 0%; top: 90%;"></div>
 
 		</div>
-		<div id="timer">Time: <span id="time">0</span></div>
-		<div id="score">Score: <span id="points">0</span></div>
+		<div id="timer" style="color:blue">Time: <span id="time">0</span></div>
+		<div id="score" style="color:blue">Score: <span id="points">0</span></div>
 	</div>
-    <script src="/src/scripts/maze.js"></script>
 </body>
 </html>

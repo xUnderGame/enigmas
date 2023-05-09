@@ -5,13 +5,6 @@ var cd = document.getElementById("countdown");
 var hasJumped = false;
 car.style.left = "100%";
 
-// Removes the ability to move the website when jumping.
-window.addEventListener("keydown", function (e) {
-    if (["Space", "ArrowUp"].indexOf(e.code) > -1) {
-        e.preventDefault();
-    }
-}, false);
-
 document.body.addEventListener("keydown", function (e) { jump(e) });
 
 // Moves the car to the left.
@@ -37,4 +30,5 @@ function jump(e) {
 }
 
 // Start the game
+handler.noMove();
 handler.runGame(moveCar);

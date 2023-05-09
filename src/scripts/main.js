@@ -7,11 +7,11 @@ listeners = ["jugar", "stats", "ranking", "imagenUsuario"];
 listeners.forEach(listener => { document.getElementById(listener).addEventListener("click", function () { changeWindow(this) }) });
 
 
-window.addEventListener("load", function (){
+window.addEventListener("load", function () {
     const nombre = document.cookie.split("; ")
-    .find((row) => row.startsWith("nick="))
-    ?.split("=")[1];
-    document.getElementById("nombreUsuario").innerHTML= nombre;
+        .find((row) => row.startsWith("nick="))
+        ?.split("=")[1];
+    document.getElementById("nombreUsuario").innerHTML = nombre;
 });
 
 // Changes the DOM window with new content.
@@ -27,12 +27,26 @@ function changeWindow(ele) {
             game.classList += "fullscreen";
             game.style.border = "none";
             game.id = "game";
-            game.src = "/games/jumpTheCar.html"; // game will need to be set via api request later on.
+            game.src = "/games/jitterclick.html"; // game will need to be set via api requests later on.
 
             // Edit DOM.
             document.getElementById("botones").style.display = "none";
             gameArea.appendChild(game);
             game.focus();
+            break;
+
+        case "ranking":
+            // Setup the new iframe for the game.
+            var ranking = document.createElement("iframe");
+            ranking.classList += "fullscreen";
+            ranking.style.border = "none";
+            ranking.id = "ranking";
+            ranking.src = "/ranking.html";
+
+            // Edit DOM.
+            document.getElementById("botones").style.display = "none";
+            gameArea.appendChild(ranking);
+            ranking.focus();
             break;
 
         case "menu":

@@ -1,7 +1,4 @@
 /* Regular css selectors/tags */
-*{
-    /*border: 2px solid black;*/
-}
 html,
 body {
 	height: 100vh;
@@ -38,16 +35,26 @@ section > h1{
     color: var(--secondary);
 }
 table{
-    width: 80%;
+    width: 100%;
     border: solid 1px black;
     margin: 20px;
     border-collapse: collapse;
+	background-color: var(--quaternary);
 }
 tbody, thead, th, td{
     border: solid 1px black;
 }
-thead > th{
-    width: 50%;
+.colAPI{
+	background-color: var(--quaternary);
+}
+.colJuego{
+	width: 50%;
+}
+.colVeces{
+	width: 25%;
+}
+.colPuntuacion{
+	width: 25%;
 }
 footer {
 	display: flex;
