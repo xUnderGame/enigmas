@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="/src/scripts/main.js"></script>
+    <link rel="stylesheet" href="/src/styles/ranking.css">
+    <script src="/src/scripts/ranking.js"></script>
     <title>Javant - Ranking</title>
 </head>
 <body>
     <table>
-        <tr><th>Usuario</th><th>Juego</th><th>Puntuacion</th></tr>
+        <thead>
+            <tr><th>Usuario</th><th>Juego</th><th>Puntuacion</th></tr>
+        </thead>
+        <tbody id="tabla">
+        </tbody>
     </table>
     <button id="jugar">Jugar</button>
 </body>

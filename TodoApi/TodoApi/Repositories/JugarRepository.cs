@@ -27,7 +27,8 @@ namespace TodoApi.Data.Repositories
         {
             var db = dbConnection();
             var sql = @"SELECT *
-                        FROM public.jugar";
+                        FROM public.jugar
+                        ORDER BY ranking ASC";
 
             return await db.QueryAsync<Jugar>(sql, new { });
         }
