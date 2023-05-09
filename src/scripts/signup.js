@@ -18,7 +18,6 @@ async function submitForm() {
     //var localizacion = document.getElementById("localizacion").value;
 
     var player = new Jugador(33, nombre, apellido, nick, password, "TEST", 0, 0, "test"); //, localizacion
-
     // Método POST para enviar informacion
     let url = "https://localhost:7261/api/Jugadores";
     let post = {

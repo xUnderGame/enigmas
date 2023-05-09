@@ -26,7 +26,7 @@ namespace TodoApi.Data.Repositories
         public async Task<IEnumerable<Jugadores>> GetAllJugadores()
         {
             var db = dbConnection();
-            var sql = @"SELECT idjugador, nombre, apellido, nick, juegoscompletados, racha,ciudad
+            var sql = @"SELECT idjugador, nombre, apellido,password,nick, juegoscompletados, racha,ciudad
                         FROM public.jugadores";
 
             return await db.QueryAsync<Jugadores>(sql, new { });
@@ -36,7 +36,7 @@ namespace TodoApi.Data.Repositories
         public async Task<Jugadores> GetJugadorDetails(string nick)
         {
             var db = dbConnection();
-            var sql = @"SELECT idjugador, nombre, apellido, nick, juegoscompletados, racha,ciudad
+            var sql = @"SELECT idjugador, nombre, apellido,password, nick, juegoscompletados, racha,ciudad
                         FROM public.jugadores
                         WHERE nick = @nick";
 
