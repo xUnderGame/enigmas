@@ -1,7 +1,6 @@
 import * as handler from "/src/scripts/games.js";
 
 // Set up variables
-var maze = document.getElementById("maze");
 var player = document.getElementById("player");
 var goal = document.getElementById("goal");
 var walls = document.querySelectorAll(".wall");
@@ -16,41 +15,46 @@ document.addEventListener("keydown", function (event) {
 	var x = parseInt(player.style.left);
 	var y = parseInt(player.style.top);
 
+	// Game input.
 	switch (event.key) {
 		case "ArrowUp":
-			if (y > 0 && checkMovement(y, "sub", "top")) player.style.top = (y - 5) + "%";
+			checkMovement(y, "sub", "top", x, y)
 			break;
 		case "ArrowDown":
-			if (y < 95 && checkMovement(y, "add", "top")) player.style.top = (y + 5) + "%";
+			checkMovement(y, "add", "top", x, y)
 			break;
 		case "ArrowLeft":
-			if (x > 0 && checkMovement(x, "sub", "left")) player.style.left = (x - 5) + "%";
+			checkMovement(x, "sub", "left", x, y)
 			break;
 		case "ArrowRight":
-			if (x < 95 && checkMovement(x, "add", "left")) player.style.left = (x + 5) + "%";
+			checkMovement(x, "add", "left", x, y)
 			break;
 	}
 	checkWin();
 });
 
-// ausd
-function checkMovement(value, operation, property) {
+// Checks if the player can move.
+function checkMovement(value, operation, property, x, y) {
+	// Moves player to the desired direction.
 	if (operation == "add") player["style"][property] = (value + 5) + "%";
-	else if (operation == "sub") player["style"][property] = (value - 5) + "%";
+	else player["style"][property] = (value - 5) + "%";
+
 	let p = player.getBoundingClientRect();
-	let w = []
 	let isValid = true;
+	let w = []
 	walls.forEach(wall => { w.push(wall.getBoundingClientRect()) });
 
+	// Checks collissions with every wall.
 	w.forEach(wall => {
 		if (p.top >= wall.top && p.left >= wall.left && p.right <= wall.right && p.bottom <= wall.bottom) {
 			isValid = false;
 			return;
 		}
 	});
+
+	// Resets position if invalid.
 	if (!isValid) {
-		if (operation == "add") player["style"][property] = (value - 5) + "%";
-		else if (operation == "sub") player["style"][property] = (value + 5) + "%";
+		player["style"][property] = value + "%";
 		return false;
 	}
 	return true;
@@ -101,7 +105,7 @@ function startTimer() {
 	// Time's up!
 	if (secondsLeft <= 0) {
 		setTimeout(function () {
-			console.log("you lost!")
+			document.getElementById("countdown").innerText = "You lost!"
 		}, 1000);
 	}
 }

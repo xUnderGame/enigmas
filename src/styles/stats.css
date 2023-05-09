@@ -44,6 +44,9 @@ table{
 tbody, thead, th, td{
     border: solid 1px black;
 }
+.colAPI{
+	background-color: var(--quaternary);
+}
 .colJuego{
 	width: 50%;
 }

@@ -31,9 +31,9 @@ namespace TodoApi.Controllers
         }
 
         [HttpGet("{idJuego}")]
-        public async Task<IActionResult> GetJuegoDetails(int id)
+        public async Task<IActionResult> GetJuegoDetails(int idJuego)
         {
-            return Ok(await juegosRepository.GetJuegoDetails(id));
+            return Ok(await juegosRepository.GetJuegoDetails(idJuego));
         }
 
         [HttpPost]

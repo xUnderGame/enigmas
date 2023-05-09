@@ -15,7 +15,7 @@ export function sleep(ms) {
 }
 
 // Removes the ability to move the website when playing.
-export function noMove() { 
+export function noMove() {
     window.addEventListener("keydown", function (e) {
         if (["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
             e.preventDefault();

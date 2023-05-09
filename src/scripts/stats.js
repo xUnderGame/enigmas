@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
     const nick = document.cookie.split("; ")
         .find((row) => row.startsWith("nick="))
         ?.split("=")[1];
-    
+
     divUsername.innerHTML = nick;
     divNombreApellido.innerHTML = document.cookie.split("; ")
         .find((row) => row.startsWith("nombre="))
@@ -27,7 +27,6 @@ window.addEventListener("load", () => {
 
     // TABLA
     let tabla = document.getElementsByTagName("tbody")[0];
-    console.log(tabla);
     const idUsuario = document.cookie.split("; ")
         .find((row) => row.startsWith("idUsuario="))
         ?.split("=")[1];
@@ -36,26 +35,37 @@ window.addEventListener("load", () => {
         .then((response) => response.json())
         .then((usuarios) => {
             for (const usuario of usuarios) {
-                if (usuario.idUsuario === idUsuario) {
+                if (parseInt(usuario.idjugador) === parseInt(idUsuario)) {
                     let linea = document.createElement("tr");
-                    let tagJuego = document.createElement("td");
-                    let contenidoJuego = document.createTextNode(usuario.idjuego);
-                    tagJuego.appendChild(contenidoJuego);
+                    linea.classList.add("colAPI");
+                    var tagJuego = document.createElement("td");
+                    tagJuego.classList.add("linea"+usuario.idjuego);
 
+                    var contenidoJuego = document.createTextNode("");
+                    tagJuego.appendChild(contenidoJuego);
                     let tagVeces = document.createElement("td");
                     let contenidoVeces = document.createTextNode(usuario.vecescompletado);
                     tagVeces.appendChild(contenidoVeces);
 
                     let tagRanking = document.createElement("td");
                     let contenidoRanking = document.createTextNode(usuario.ranking);
-                    
+
                     tagRanking.appendChild(contenidoRanking);
                     linea.appendChild(tagJuego);
                     linea.appendChild(tagVeces);
                     linea.appendChild(tagRanking);
                     tabla.appendChild(linea);
+
+                    fetch("https://localhost:7261/api/Juegos/" + usuario.idjuego)
+                    .then((response) => response.json())
+                    .then((juego) => {
+                        let tagJuego = document.getElementsByClassName("linea" + usuario.idjuego)[0];
+                        tagJuego.innerHTML=juego.titulo;
+                    })
                 }
             }
 
         })
+
+    
 })
