@@ -10,11 +10,14 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         .then((jugador) => {
             if (jugador.password == password) {
                 console.log("contrasenya correcta");
+                document.cookie = `idUsuario=${jugador.idjugador}`;
+                document.cookie = `nombre=${jugador.nombre}`;
+                document.cookie = `apellido=${jugador.apellido}`;
+                document.cookie = `nick=${jugador.nick}`;
+                document.cookie = `password=${jugador.password}`;
                 window.open("/index.html","_self");
             }
-            else {
-                alert("Nombre de Usuario o contraseña incorrectos")
-            }
+            else alert("Nombre de Usuario o contraseña incorrectos")
             console.log(jugador);
         })
 });

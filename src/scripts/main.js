@@ -27,14 +27,26 @@ function changeWindow(ele) {
             game.classList += "fullscreen";
             game.style.border = "none";
             game.id = "game";
-            game.src = "/games/jumpTheCar.html"; // game will need to be set via api request later on.
+            game.src = "/games/maze.html"; // game will need to be set via api request later on.
 
             // Edit DOM.
             document.getElementById("botones").style.display = "none";
             gameArea.appendChild(game);
             game.focus();
             break;
-
+        case "ranking":
+                // Setup the new iframe for the game.
+                var ranking = document.createElement("iframe");
+                ranking.classList += "fullscreen";
+                ranking.style.border = "none";
+                ranking.id = "ranking";
+                ranking.src = "/ranking.html";
+    
+                // Edit DOM.
+                document.getElementById("botones").style.display = "none";
+                gameArea.appendChild(ranking);
+                ranking.focus();
+                break;
         case "menu":
             console.log(ele);
             let subMenu = document.getElementsByClassName('sub-menu');

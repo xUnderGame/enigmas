@@ -72,8 +72,8 @@ namespace TodoApi.Data.Repositories
         public async Task<bool> DeleteJuego(Juegos juego)
         {
             var db = dbConnection();
-            var sql = @"DELETE FROM public.juegos
-                        WHERE idJuego = @idJuego";
+            var sql = @"DELETE FROM public.juegos 
+                        WHERE idJuego = @idJuego;";
 
             var result = await db.ExecuteAsync(sql, new { idJuego = juego.idJuego });
             return result > 0;
