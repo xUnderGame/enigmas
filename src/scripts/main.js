@@ -27,7 +27,7 @@ function changeWindow(ele) {
             game.classList += "fullscreen";
             game.style.border = "none";
             game.id = "game";
-            game.src = "/games/maze.html"; // game will need to be set via api request later on.
+            game.src = "/games/jumpTheCar.html"; // game will need to be set via api request later on.
 
             // Edit DOM.
             document.getElementById("botones").style.display = "none";

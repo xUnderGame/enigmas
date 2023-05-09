@@ -15,36 +15,45 @@ var secondsLeft = 10;
 document.addEventListener("keydown", function (event) {
 	var x = parseInt(player.style.left);
 	var y = parseInt(player.style.top);
-	console.log(checkMovement(player));
 
 	switch (event.key) {
 		case "ArrowUp":
-			if (y > 0) player.style.top = (y - 5) + "%";
+			if (y > 0 && checkMovement(y, "sub", "top")) player.style.top = (y - 5) + "%";
 			break;
 		case "ArrowDown":
-			if (y < 95) player.style.top = (y + 5) + "%";
+			if (y < 95 && checkMovement(y, "add", "top")) player.style.top = (y + 5) + "%";
 			break;
 		case "ArrowLeft":
-			if (x > 0) player.style.left = (x - 5) + "%";
+			if (x > 0 && checkMovement(x, "sub", "left")) player.style.left = (x - 5) + "%";
 			break;
 		case "ArrowRight":
-			if (x < 95) player.style.left = (x + 5) + "%";
+			if (x < 95 && checkMovement(x, "add", "left")) player.style.left = (x + 5) + "%";
 			break;
 	}
 	checkWin();
 });
 
 // ausd
-function checkMovement(newPos) {
+function checkMovement(value, operation, property) {
+	if (operation == "add") player["style"][property] = (value + 5) + "%";
+	else if (operation == "sub") player["style"][property] = (value - 5) + "%";
 	let p = player.getBoundingClientRect();
 	let w = []
+	let isValid = true;
 	walls.forEach(wall => { w.push(wall.getBoundingClientRect()) });
 
 	w.forEach(wall => {
-		if (p.left +(x - 5) + "%") {
-			console.log("tru")
+		if (p.top >= wall.top && p.left >= wall.left && p.right <= wall.right && p.bottom <= wall.bottom) {
+			isValid = false;
+			return;
 		}
 	});
+	if (!isValid) {
+		if (operation == "add") player["style"][property] = (value - 5) + "%";
+		else if (operation == "sub") player["style"][property] = (value + 5) + "%";
+		return false;
+	}
+	return true;
 }
 
 // Check if the player has reached the goal or hit a wall
