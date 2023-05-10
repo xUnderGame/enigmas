@@ -1,4 +1,5 @@
 import * as handler from "/src/scripts/games.js";
+import Juegos from "/src/scripts/games.js";
 import Jugador from "/src/scripts/clases/Jugador.js";
 import Juego from "/src/scripts/clases/Juego.js";
 import Ciudad from "/src/scripts/clases/Ciudad.js";
@@ -42,7 +43,7 @@ function changeWindow(ele) {
             game.src = "/games/jumpTheCar.html"; // game will need to be set via api requests later on.
 
             // Edit DOM.
-            var gameInst = new Juegos(new Jugador(1, "test", "test", "test", "test", "test", 0, 0, new Ciudad("bcn", -15.420, 122.88, "")), [new Juego(1, "test", "jumpTheCar", 50)])
+            var gameInst = new Juegos(new Jugador(1, "test", "test", "test", "test", "test", 0, 0, new Ciudad("bcn", -15.420, 122.88)), [new Juego(1, "test", "jumpTheCar", 50)])
             console.log(gameInst)
             document.getElementById("botones").style.display = "none";
             gameArea.appendChild(game);

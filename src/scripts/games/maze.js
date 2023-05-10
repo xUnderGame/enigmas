@@ -89,10 +89,10 @@ function resetGame() {
 	}
 
 	// Randomize goal position
-	//do{
+	do{
 		goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 		goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
-	//}while()
+	}while(checkSpawn(goal));
 }
 
 //Check the spawn of the goal
@@ -103,6 +103,8 @@ function checkSpawn(goal){
 		let w = walls[i].getBoundingClientRect();
 		if(w.left >= g.left){
 			flag = true;
+			console.log(w)
+			console.log(g);
 		}	
 	}
 	return flag;
