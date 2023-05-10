@@ -34,14 +34,13 @@ function changeWindow(ele) {
         case "jugar":
             // Fetch the games and make a session.
             var gameInst = new Session(new Jugador(1, "test", "test", "test", "test", "test", 0, 0, new Ciudad("bcn", -15.420, 122.88)), [new Juego(1, "test", "jumpTheCar", 50), new Juego(2, "test2", "jitterclick", 50)])
-            console.log(gameInst)
             
             // Setup the new iframe for the game.
             var game = document.createElement("iframe");
             game.classList += "fullscreen";
             game.style.border = "none";
             game.id = "game";
-            game.src = "/games/jumpTheCar.html"; // game will need to be set via api requests later on.
+            game.src = "/map.html";
 
             // Edit DOM.
             document.getElementById("botones").style.display = "none";

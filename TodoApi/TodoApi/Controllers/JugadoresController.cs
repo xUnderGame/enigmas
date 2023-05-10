@@ -35,6 +35,13 @@ namespace TodoApi.Controllers
             return Ok(await jugadoresRepository.GetJugadorDetails(nick));
         }
 
+        [HttpGet("{idjugador}")]
+        public async Task<IActionResult> GetJugadorDetailsId(int idjugador)
+        {
+            return Ok(await jugadoresRepository.GetJugadorDetailsId(idjugador));
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> CreateJugador( [FromBody] Jugadores jugadores)
         {

@@ -42,6 +42,16 @@ namespace TodoApi.Data.Repositories
 
             return await db.QueryFirstOrDefaultAsync<Jugadores>(sql, new {nick = nick});
         }
+        // Returns a specific entry from the table.
+        public async Task<Jugadores> GetJugadorDetailsId(int idjugador)
+        {
+            var db = dbConnection();
+            var sql = @"SELECT idjugador, nombre, apellido,password, nick, juegoscompletados, racha,ciudad
+                        FROM public.jugadores
+                        WHERE idjugador = @idjugador";
+
+            return await db.QueryFirstOrDefaultAsync<Jugadores>(sql, new { idjugador = idjugador });
+        }
 
         // Inserts a new record into the table.
         public async Task<bool> InsertJugador(Jugadores jugadores)

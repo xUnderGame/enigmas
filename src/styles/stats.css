@@ -114,14 +114,6 @@ li{
 .infoUsuario > h3,p{
     height: 20px;
 }
-#menu{
-	display: flex;
-}
-.submenu{
-	padding: 0;
-	border: none;
-	background: none;
-}
 .foto > img{
     display: inline-block;
     width: 150px;

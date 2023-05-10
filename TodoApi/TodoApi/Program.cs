@@ -16,6 +16,7 @@ builder.Services.AddCors(options =>
     });
 });
 //--------------------------------------------
+
 //builder.Services.AddDbContext<PostgreSQLConfig>(opt =>
 //    opt.UseSqlServer(builder.Configuration.GetConnectionString("WebApiDatabase")));
 builder.Services.AddEndpointsApiExplorer();
