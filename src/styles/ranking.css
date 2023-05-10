@@ -10,3 +10,18 @@ table{
 tbody, thead, th, td{
     border: solid 1px black;
 }
+#jugar {
+	margin-bottom: 10px;
+	border-radius: 20px;
+	padding: 10px;
+	width: 180px;
+	height: 60px;
+}
+
+#ranking{
+    width: 35%;
+    border: solid 1px black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

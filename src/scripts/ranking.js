@@ -1,6 +1,8 @@
 // TABLA
-let tabla = document.getElementById("tabla");
+let tabla = document.getElementsByTagName("tbody")[0];
+let tabla2 = document.getElementById("tablaRanking");
 console.log(tabla);
+console.log(tabla2);
 let url = "https://localhost:7261/api/Jugar/";
 fetch(url)
     .then((response) => response.json())
