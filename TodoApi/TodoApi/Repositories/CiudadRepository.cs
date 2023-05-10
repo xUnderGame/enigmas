@@ -33,23 +33,23 @@ namespace TodoApi.Data.Repositories
         }
 
         // Returns a specific entry from the table.
-        public async Task<Ciudad> GetCiudadDetails(int idciudad)
+        public async Task<Ciudad> GetCiudadDetails(string ciudad)
         {
             var db = dbConnection();
-            var sql = @"SELECT idciudad, ciudad, coordsx, coordsy,n_poblacion
+            var sql = @"SELECT ciudad, coordsx, coordsy
                         FROM public.ciudad
-                        WHERE idciudad = @idciudad";
+                        WHERE ciudad = @ciudad";
 
-            return await db.QueryFirstOrDefaultAsync<Ciudad>(sql, new { idciudad = idciudad });
+            return await db.QueryFirstOrDefaultAsync<Ciudad>(sql, new { ciudad = ciudad });
         }
 
         // Inserts a new record into the table.
         public async Task<bool> InsertCiudad(Ciudad ciudad)
         {
             var db = dbConnection();
-            var sql = @"INSERT INTO public.ciudad (ciudad, coordsx, coordsy,n_poblacion)
-                        VALUES (@ciudad, @coordsy, @coordsy, @n_poblacion)";
-            var result = await db.ExecuteAsync(sql, new { ciudad.ciudad, ciudad.coordsx, ciudad.coordsy, ciudad.n_poblacion });
+            var sql = @"INSERT INTO public.ciudad (ciudad, coordsx, coordsy)
+                        VALUES (@ciudad, @coordsy, @coordsy)";
+            var result = await db.ExecuteAsync(sql, new { ciudad.ciudad, ciudad.coordsx, ciudad.coordsy });
             return result > 0;
         }
 
@@ -58,13 +58,11 @@ namespace TodoApi.Data.Repositories
         {
             var db = dbConnection();
             var sql = @"UPDATE public.ciudad
-                        SET ciudad = @ciudad,
-                        coordsx = @coordsx,
-                        coordsy = @coordsy,
-                        n_poblacion = @n_poblacion,
-                        WHERE idciudad = @idciudad;";
+                        SET coordsx = @coordsx,
+                        coordsy = @coordsy
+                        WHERE ciudad = @ciudad;";
 
-            var result = await db.ExecuteAsync(sql, new { ciudad.ciudad, ciudad.coordsx, ciudad.coordsy, ciudad.n_poblacion, ciudad.idciudad });
+            var result = await db.ExecuteAsync(sql, new { ciudad.coordsx, ciudad.coordsy });
 
             return result > 0;
         }
@@ -74,9 +72,9 @@ namespace TodoApi.Data.Repositories
         {
             var db = dbConnection();
             var sql = @"DELETE FROM public.ciudad
-                        WHERE idciudad = @idciudad";
+                        WHERE ciudad = @ciudad";
 
-            var result = await db.ExecuteAsync(sql, new { idciudad = ciudad.idciudad });
+            var result = await db.ExecuteAsync(sql, new { ciudad = ciudad.ciudad });
             return result > 0;
         }
     }

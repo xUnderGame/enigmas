@@ -33,10 +33,10 @@ namespace TodoApi.Controllers
         }
 
 
-        [HttpGet("{idciudad}")]
-        public async Task<IActionResult> GetCiudadDetails(int idciudad)
+        [HttpGet("{ciudad}")]
+        public async Task<IActionResult> GetCiudadDetails(string ciudad)
         {
-            return Ok(await ciudadRepository.GetCiudadDetails(idciudad));
+            return Ok(await ciudadRepository.GetCiudadDetails(ciudad));
         }
 
         [HttpPost]
@@ -76,10 +76,10 @@ namespace TodoApi.Controllers
         }
 
 
-        [HttpDelete("{idciudad}")]
-        public async Task<IActionResult> DeleteCiudad(int idciudad)
+        [HttpDelete("{ciudad}")]
+        public async Task<IActionResult> DeleteCiudad(string ciudad)
         {
-            var deleted = await ciudadRepository.DeleteCiudad(new Ciudad { idciudad = idciudad});
+            var deleted = await ciudadRepository.DeleteCiudad(new Ciudad { ciudad = ciudad });
             return Created("Eliminado!", deleted);
         }
     }

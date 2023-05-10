@@ -17,6 +17,7 @@ body {
 Ranking
 --------------------*/
 .leaderboard {
+	margin-top: 10px;
     position: absolute;
 
     top: 50%;
@@ -47,9 +48,9 @@ h1 {
 
 
 ol {
-width: 103%;
+width: 102.5%;
 position: absolute;
-left: -3%;
+left: -2.5%;
     counter-reset: leaderboard;
 }
 
@@ -251,4 +252,7 @@ img{
     position: absolute;
     left: 40%;
     top: 10%;
+}
+.ico-cup{
+	margin-left: 10px;
 }

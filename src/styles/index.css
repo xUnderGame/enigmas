@@ -74,6 +74,9 @@ li {
 #menu {
 	display: flex;
 }
+#infoUsuario {
+	margin-right: 2.5%;
+}
 #infoUsuario:hover {
 	background-color: var(--tertiary);
 	color: var(--secondary);

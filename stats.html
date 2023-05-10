@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/styles/global.css">
+    <link rel="stylesheet" href="/src/styles/index.css">
     <link rel="stylesheet" href="/src/styles/stats.css">
     <script src="https://kit.fontawesome.com/f1a916ae0a.js" crossorigin="anonymous"></script>
     <script defer src="src/scripts/hamburger.js"></script>
@@ -18,12 +19,13 @@
             <h1 class="drop-solid-black" id="tituloPagina">Javant</h1>
             <!-- <img src="./src/img/icons/javant.png"> -->
         </div>
-        <div id="desplegableUsuario">
+        <div id="infoUsuario">
             <div id="menu">
-                <i class="fa-solid fa-user fa-xl drop-blurry-black"></i>
+                <i id="imagenUsuario" class="fa-solid fa-user fa-xl drop-blurry-black"></i>
                 <p id="nombreUsuario">[Username]</p>
                 <img id="ham" class="drop-blurry-black" src="/src/img/icons/bars.png" alt="Menu hamburgesa">
             </div>
+            <ul id="submenu">
                 <li><button class="submenu" style="display: none;" id="home">Home</button></li>
                 <li><button class="submenu" style="display: none;" id="logoff">Logoff</button></li>
                 <li><button class="submenu" style="display: none;" id="stats">Stats Personales</button></li>
