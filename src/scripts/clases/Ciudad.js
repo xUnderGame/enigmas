@@ -1,14 +1,12 @@
-export default class Ciudad{
-    id_ciudad;
+export default class Ciudad {
     ciudad;
     coordsx;
     coordsy;
     n_poblacion;
-    constructor(id_ciudad, ciudad,coordsx,coords, n_poblacion){
-        this.id_ciudad=id_ciudad;
-        this.ciudad=ciudad;
-        this.coordsx=coordsx;
-        this.coordsy=coordsy;
-        this.n_poblacion=n_poblacion;
+    constructor(ciudad, x, y, poblacion) {
+        this.ciudad = ciudad;
+        this.coordsx = x;
+        this.coordsy = y;
+        this.n_poblacion = poblacion;
     }
 }

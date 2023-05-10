@@ -60,10 +60,10 @@ namespace TodoApi.Data.Repositories
         {
             var db = dbConnection();
             var sql = @"UPDATE public.jugar
-                        SET vecescompletado = @vecescompletado, ranking = @ranking
+                        SET vecescompletado += 1, ranking += @ranking
                         WHERE idjugador = @idjugador AND idjuego = @idjuego;";
 
-            var result = await db.ExecuteAsync(sql, new { jugar.vecescompletado,jugar.idjugador, jugar.idjuego,jugar.ranking });
+            var result = await db.ExecuteAsync(sql, new { jugar.idjugador, jugar.idjuego,jugar.ranking });
             return result > 0;
         }
 

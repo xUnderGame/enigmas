@@ -1,4 +1,6 @@
 import * as handler from "/src/scripts/games.js";
+
+
 var car = document.getElementById("car");
 var player = document.getElementById("player");
 var cd = document.getElementById("countdown");

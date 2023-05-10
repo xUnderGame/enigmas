@@ -81,15 +81,31 @@ function resetGame() {
 	player.style.top = "0%";
 	player.style.left = "5%";
 
-	// Randomize goal position
-	goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
-	goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 
 	// Randomize wall positions
 	for (var i = 0; i < walls.length; i++) {
 		walls[i].style.top = (Math.floor(Math.random() * 9)) * 10 + "%";
 		walls[i].style.left = (Math.floor(Math.random() * 9)) * 10 + "%";
 	}
+
+	// Randomize goal position
+	//do{
+		goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
+		goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
+	//}while()
+}
+
+//Check the spawn of the goal
+function checkSpawn(goal){
+	let flag = false;
+	let g = goal.getBoundingClientRect();
+	for (var i = 0; i < walls.length; i++) {
+		let w = walls[i].getBoundingClientRect();
+		if(w.left >= g.left){
+			flag = true;
+		}	
+	}
+	return flag;
 }
 
 // Start the game

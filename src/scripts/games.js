@@ -1,3 +1,7 @@
+import Jugador from "/src/scripts/clases/Jugador.js";
+import Juego from "/src/scripts/clases/Juego.js";
+import Ciudad from "/src/scripts/clases/Ciudad.js";
+
 // Game loop.
 export async function runGame(funct, delay = 50) {
     var time = 500;
@@ -21,4 +25,37 @@ export function noMove() {
             e.preventDefault();
         }
     }, false);
-} 
+}
+
+export default class Juegos {
+    jugador;
+    juegos;
+    puntuacion;
+    multiplicador;
+    constructor(jugador, juegos) {
+        this.jugador = jugador; // Jugador object.
+        this.juegos = juegos; // List/Array of "Juego".
+        this.puntuacion = 0;
+        this.multiplicador = 1.0;
+    }
+
+    // Trigger a game win.
+    gameWon() {
+        console.log("win");
+    }
+
+    // Trigger a game loss.
+    gameLost() {
+        onsole.log("lost");
+    }
+
+    // Loads the next game.
+    next() {
+        onsole.log("next");
+    }
+
+    // Ends the game.
+    end() {
+        onsole.log("end");
+    }
+}

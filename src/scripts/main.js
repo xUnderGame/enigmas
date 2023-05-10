@@ -1,18 +1,30 @@
+import * as handler from "/src/scripts/games.js";
+import Jugador from "/src/scripts/clases/Jugador.js";
+import Juego from "/src/scripts/clases/Juego.js";
+import Ciudad from "/src/scripts/clases/Ciudad.js";
+
+// Cookies
 if (document.cookie.split("; ").find((row) => row.startsWith("nick="))?.split("=")[1] == undefined) {
     //window.open("/login.html", "_self");
+} else {
+    var nick = document.cookie.split("; ").find((row) => row.startsWith("nick="))?.split("=")[1];
+    var idJugador = document.cookie.split("; ").find((row) => row.startsWith("idjugador="))?.split("=")[1]
 }
-
-// On-click listeners for the buttons.
-listeners = ["jugar", "stats", "ranking", "imagenUsuario"];
-listeners.forEach(listener => { document.getElementById(listener).addEventListener("click", function () { changeWindow(this) }) });
-
-
+if (nick == "Admin"){
+    var submenu = document.getElementById("submenu");
+    submenu.innerHTML = "<li><button class='submenu' style='display: none;' id='gestionar'>Gestionar</button></li>";
+}
+// Load cookies on load.
 window.addEventListener("load", function () {
     const nombre = document.cookie.split("; ")
         .find((row) => row.startsWith("nick="))
         ?.split("=")[1];
     document.getElementById("nombreUsuario").innerHTML = nombre;
 });
+
+// On-click listeners for the buttons.
+var listeners = ["jugar", "stats", "ranking", "imagenUsuario"];
+listeners.forEach(listener => { document.getElementById(listener).addEventListener("click", function () { changeWindow(this) }) });
 
 // Changes the DOM window with new content.
 function changeWindow(ele) {
@@ -27,9 +39,11 @@ function changeWindow(ele) {
             game.classList += "fullscreen";
             game.style.border = "none";
             game.id = "game";
-            game.src = "https://playclassic.games/games/first-person-shooter-dos-games-online/play-doom-online/play/"; // game will need to be set via api requests later on.
+            game.src = "/games/jumpTheCar.html"; // game will need to be set via api requests later on.
 
             // Edit DOM.
+            var gameInst = new Juegos(new Jugador(1, "test", "test", "test", "test", "test", 0, 0, new Ciudad("bcn", -15.420, 122.88, "")), [new Juego(1, "test", "jumpTheCar", 50)])
+            console.log(gameInst)
             document.getElementById("botones").style.display = "none";
             gameArea.appendChild(game);
             game.focus();

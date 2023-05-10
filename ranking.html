@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,17 +9,30 @@
     <script src="/src/scripts/ranking.js"></script>
     <title>Javant - Ranking</title>
 </head>
+
 <body>
-    <div  id="ranking">
-        <table>
-            <thead>
-                <tr><th>Usuario</th><th>Juego</th><th>Puntuacion</th></tr>
-            </thead>
-            <tbody id="tablaRanking">
-            </tbody>
-        </table>
-        <button id="jugar">Jugar</button>
+    <div class="ranking">
+        <h1>
+            <svg class="ico-cup">
+                <use xlink:href="#cup"></use>
+            </svg>Ranking Jugadores
+        </h1>
+        <ol>
+            <li>
+              <mark>Angel Navaojete </mark>
+              <small>1000</small>
+            </li>
+            <li>
+              <mark>Juanito El navajas</mark>
+              <small>890</small>
+            </li>
+            <li>
+              <mark> Paco Sanz</mark>
+              <small>679</small>
+            </li>
+          </ol>
     </div>
-    
+    <button id="jugar">Jugar</button>
 </body>
+
 </html>

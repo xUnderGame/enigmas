@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/src/styles/index.css">
     <script src="https://kit.fontawesome.com/f1a916ae0a.js" crossorigin="anonymous"></script>
     <script defer src="src/scripts/hamburger.js"></script>
-    <script defer src="/src/scripts/main.js"></script>
+    <script defer type="module" src="/src/scripts/main.js"></script>
     <title>Javant - Main</title>
 </head>
 
@@ -25,7 +25,7 @@
                 <p id="nombreUsuario">[Username]</p>
                 <img id="ham" class="drop-blurry-black" src="/src/img/icons/bars.png" alt="Menu hamburgesa">
             </div>
-            <ul>
+            <ul id="submenu">
                 <li><button class="submenu" style="display: none;" id="logoff">Logoff</button></li>
                 <li><button class="submenu" style="display: none;" id="stats">Stats Personales</button></li>
             </ul>
@@ -37,28 +37,28 @@
             <br><br>
             <h3>Controles</h3><br>
             <h4>Jump the Car</h4>
-            <div id="instructions">
+            <div class="instructions">
                 <img src="https://cdn-icons-png.flaticon.com/512/892/892550.png" />
                 <p>Saltar</p>
             </div>
             <h4>Maze</h4>
-            <div id="instructions">
+            <div class="instructions">
                 <img src="https://cdn-icons-png.flaticon.com/512/2491/2491500.png" />
                 <p>Moverse</p>
             </div>
             <h4>Diamond Dig</h4>
-            <div id="instructions">
+            <div class="instructions">
                 <img src="https://emojigraph.org/media/facebook/left-right-arrow_2194-fe0f.png" />
                 <p>Moverse a los lados</p>
             </div>
             <h4>Jitter</h4>
-            <div id="instructions">
+            <div class="instructions">
                 <img src="https://cdn-icons-png.flaticon.com/512/2491/2491484.png" />
                 <p>LClick</p>
             </div>
             <h4>Taiko</h4>
-            <div id="instructions">
-                <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/512x512/keyboard_key_k.png" />
+            <div class="instructions">
+                <img style="filter: invert(100%);" src="https://cdn-icons-png.flaticon.com/512/32/32030.png" />
                 <p>Pulsa "K"</p>
             </div>
 

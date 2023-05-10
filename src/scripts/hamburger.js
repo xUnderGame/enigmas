@@ -1,8 +1,14 @@
+var nick = document.cookie.split("; ").find((row) => row.startsWith("nick="))?.split("=")[1];
+
 document.getElementById("ham").addEventListener("click", function () {
     if (document.getElementById("logoff").style.display == "none") {
         document.getElementById("logoff").style.display = "inline";
         document.getElementById("stats").style.display = "inline";
         document.getElementById("home").style.display = "inline";
+        if (nick = "Admin") {
+            document.getElementById("gestionar").style.display = "inline";
+        }
+        
     }
     else {
         document.getElementById("logoff").style.display = "none";
