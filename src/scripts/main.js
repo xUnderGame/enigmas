@@ -1,5 +1,5 @@
 import * as handler from "/src/scripts/games.js";
-import Juegos from "/src/scripts/games.js";
+import Session from "/src/scripts/games.js";
 import Jugador from "/src/scripts/clases/Jugador.js";
 import Juego from "/src/scripts/clases/Juego.js";
 import Ciudad from "/src/scripts/clases/Ciudad.js";
@@ -11,10 +11,7 @@ if (document.cookie.split("; ").find((row) => row.startsWith("nick="))?.split("=
     var nick = document.cookie.split("; ").find((row) => row.startsWith("nick="))?.split("=")[1];
     var idJugador = document.cookie.split("; ").find((row) => row.startsWith("idjugador="))?.split("=")[1]
 }
-if (nick == "Admin"){
-    var submenu = document.getElementById("submenu");
-    submenu.innerHTML = "<li><button class='submenu' style='display: none;' id='gestionar'>Gestionar</button></li>";
-}
+
 // Load cookies on load.
 window.addEventListener("load", function () {
     const nombre = document.cookie.split("; ")
@@ -35,6 +32,10 @@ function changeWindow(ele) {
     // Switch case for button presses.
     switch (ele.id) {
         case "jugar":
+            // Fetch the games and make a session.
+            var gameInst = new Session(new Jugador(1, "test", "test", "test", "test", "test", 0, 0, new Ciudad("bcn", -15.420, 122.88)), [new Juego(1, "test", "jumpTheCar", 50), new Juego(2, "test2", "jitterclick", 50)])
+            console.log(gameInst)
+            
             // Setup the new iframe for the game.
             var game = document.createElement("iframe");
             game.classList += "fullscreen";
@@ -43,8 +44,6 @@ function changeWindow(ele) {
             game.src = "/games/jumpTheCar.html"; // game will need to be set via api requests later on.
 
             // Edit DOM.
-            var gameInst = new Juegos(new Jugador(1, "test", "test", "test", "test", "test", 0, 0, new Ciudad("bcn", -15.420, 122.88)), [new Juego(1, "test", "jumpTheCar", 50)])
-            console.log(gameInst)
             document.getElementById("botones").style.display = "none";
             gameArea.appendChild(game);
             game.focus();

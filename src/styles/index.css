@@ -99,6 +99,7 @@ li {
 	justify-content: center;
 	background-color: var(--tertiary);
 	border-radius: 8px;
+	padding: 0%;
 }
 #botones {
 	display: flex;

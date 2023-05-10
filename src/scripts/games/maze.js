@@ -83,10 +83,12 @@ function resetGame() {
 
 
 	// Randomize wall positions
-	for (var i = 0; i < walls.length; i++) {
-		walls[i].style.top = (Math.floor(Math.random() * 9)) * 10 + "%";
-		walls[i].style.left = (Math.floor(Math.random() * 9)) * 10 + "%";
-	}
+	do{
+		for (var i = 0; i < walls.length; i++) {
+			walls[i].style.top = (Math.floor(Math.random() * 9)) * 10 + "%";
+			walls[i].style.left = (Math.floor(Math.random() * 9)) * 10 + "%";
+		}
+	}while(checkSpawn(player));
 
 	// Randomize goal position
 	do{
@@ -97,17 +99,14 @@ function resetGame() {
 
 //Check the spawn of the goal
 function checkSpawn(goal){
-	let flag = false;
 	let g = goal.getBoundingClientRect();
 	for (var i = 0; i < walls.length; i++) {
 		let w = walls[i].getBoundingClientRect();
-		if(w.left >= g.left){
-			flag = true;
-			console.log(w)
-			console.log(g);
+		if(w.left <= g.left && w.right >= g.right && w.top <= g.top && w.bottom >= g.bottom){
+			return true;	
 		}	
 	}
-	return flag;
+	return false;
 }
 
 // Start the game

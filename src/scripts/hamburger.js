@@ -4,8 +4,11 @@ document.getElementById("ham").addEventListener("click", function () {
     if (document.getElementById("logoff").style.display == "none") {
         document.getElementById("logoff").style.display = "inline";
         document.getElementById("stats").style.display = "inline";
-        document.getElementById("home").style.display = "inline";
-        if (nick = "Admin") {
+        if (window.location.pathname == "/stats.html") {
+            document.getElementById("home").style.display = "inline"; 
+        }
+        
+        if (nick.toUpperCase() == "ADMIN") {
             document.getElementById("gestionar").style.display = "inline";
         }
         
@@ -13,7 +16,12 @@ document.getElementById("ham").addEventListener("click", function () {
     else {
         document.getElementById("logoff").style.display = "none";
         document.getElementById("stats").style.display = "none";
-        document.getElementById("home").style.display = "none";
+        if (window.location.pathname == "/stats.html") {
+            document.getElementById("home").style.display = "none"; 
+        }
+        if (nick.toUpperCase() == "ADMIN") {
+            document.getElementById("gestionar").style.display = "none";
+        }
     };
 });
 document.getElementById("logoff").addEventListener("click", function () {
@@ -30,4 +38,7 @@ document.getElementById("logoff").addEventListener("click", function () {
     window.open("/login.html", "_self");
 });
 document.getElementById("stats").addEventListener("click", function () {window.open("/stats.html","_self")});
-document.getElementById("home").addEventListener("click", function () {window.open("/index.html","_self")}); // que es esto
+
+if (window.location.pathname == "/stats.html") {
+    document.getElementById("home").addEventListener("click", function () {window.open("/index.html","_self")}); 
+}
