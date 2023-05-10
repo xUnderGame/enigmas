@@ -7,7 +7,7 @@ document.getElementById("ham").addEventListener("click", function () {
         if (window.location.pathname == "/stats.html") {
             document.getElementById("home").style.display = "inline"; 
         }
-        
+
         if (nick.toUpperCase() == "ADMIN") {
             document.getElementById("gestionar").style.display = "inline";
         }

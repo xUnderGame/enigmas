@@ -12,14 +12,12 @@ fetch(url)
             tagUsuario.classList.add("user" + usuario.idjugador);
             var contenidoUsuario = document.createTextNode(usuario.idjugador);
             tagUsuario.appendChild(contenidoUsuario);
-
 /*
             var tagJuego = document.createElement("td");
             tagJuego.classList.add("linea" + usuario.idjuego);
             var contenidoJuego = document.createTextNode("");
             tagJuego.appendChild(contenidoJuego);
 */
-
             let tagRanking = document.createElement("small");
             let contenidoRanking = document.createTextNode(usuario.ranking);
             tagRanking.appendChild(contenidoRanking);
@@ -35,7 +33,7 @@ fetch(url)
                     let tagJuego = document.getElementsByClassName("linea" + usuario.idjuego)[0];
                     tagJuego.innerHTML = juego.titulo;
                 })*/
-            fetch("https://localhost:7261/api/Jugadores/" + usuario.idjugador)
+            fetch("https://localhost:7261/api/Jugadores/ById/" + usuario.idjugador)
             .then((response) => response.json())
             .then((jugador) => {
                 let tagJuego = document.getElementsByClassName("user" + usuario.idjugador)[0];

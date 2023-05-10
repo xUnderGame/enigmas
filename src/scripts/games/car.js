@@ -12,7 +12,13 @@ document.body.addEventListener("keydown", function (e) { jump(e) });
 // Moves the car to the left.
 function moveCar(intervalTimer) {
     let left = car.style.left.replace("%", "");
-    (left > -100) ? car.style.left = (left - 8.25) + "%" : clearInterval(intervalTimer);
+    if (left > -100) {
+        car.style.left = (left - 8.25) + "%"
+    }
+    else if (cd.textContent != "You lost!") { 
+        handler.gameWin();
+        clearInterval(intervalTimer);
+    } 
     if (checkCollision()) cd.textContent = "You lost!";
 }
 

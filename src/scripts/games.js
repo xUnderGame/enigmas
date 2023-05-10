@@ -27,6 +27,18 @@ export function noMove() {
     }, false);
 }
 
+// Function that obtains a cookie's value.
+export function getCookie(name) {
+	let value = "; " + document.cookie;
+	let parts = value.split("; " + name + "=");
+	if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
+// Checks for all cookies being present
+export function loginCheck() {
+    return ["nick", "nombre", "apellido", "password", "idUsuario"].every(cookie => getCookie(cookie))
+}
+
 export default class Juegos {
     jugador;
     juegos;
@@ -38,24 +50,24 @@ export default class Juegos {
         this.puntuacion = 0;
         this.multiplicador = 1.0;
     }
+}
 
-    // Trigger a game win.
-    gameWon() {
-        console.log("win");
-    }
+// Trigger a game win.
+export function gameWin() {
+    document.getElementById("countdown").textContent = "Youre win!"
+}
 
-    // Trigger a game loss.
-    gameLost() {
-        onsole.log("lost");
-    }
+// Trigger a game loss.
+export function gameLost() {
+    onsole.log("lost");
+}
 
-    // Loads the next game.
-    next() {
-        onsole.log("next");
-    }
+// Loads the next game.
+export function next() {
+    onsole.log("next");
+}
 
-    // Ends the game.
-    end() {
-        onsole.log("end");
-    }
+// Ends the game.
+export function end() {
+    onsole.log("end");
 }

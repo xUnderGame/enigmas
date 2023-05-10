@@ -21,7 +21,6 @@ namespace TodoApi.Controllers
         private readonly JugarRepository jugarRepository;
         public JugarController(JugarRepository jugarRepository)
         {
-
             this.jugarRepository = jugarRepository;
         }
         [HttpGet]
@@ -42,8 +41,6 @@ namespace TodoApi.Controllers
             if (jugar == null)
             {
                 return BadRequest();
-
-
             }
 
             if (!ModelState.IsValid)
@@ -62,8 +59,6 @@ namespace TodoApi.Controllers
             if (jugar == null)
             {
                 return BadRequest();
-
-
             }
 
             if (!ModelState.IsValid)

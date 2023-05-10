@@ -1,8 +1,9 @@
 body {
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
-div{
+div {
     border: 5px;
     border-radius: 50%;
     width: 50px;
@@ -10,15 +11,15 @@ div{
     border-style:solid ;
     border-color: transparent;
 }
-#row{
+#row {
     width: 100%;
     display: block;
 }
-#red{
+#red {
     border-color:red;
     position: absolute;
 }
-.pulseRed{
+.pulseRed {
     background-color: red;
     position: absolute;
 }

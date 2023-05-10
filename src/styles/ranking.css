@@ -240,12 +240,18 @@ li:hover {
     /* border: 1px solid black;} */
 }
 
+#boton {
+	position: absolute;
+  left: 43%;
+    top: 80%;
+}
+
 #jugar {
-    margin-bottom: 10px;
-    border-radius: 20px;
-    padding: 10px;
-    width: 180px;
-    height: 60px;
+	margin-bottom: 10px;
+	border-radius: 20px;
+	padding: 10px;
+	width: 180px;
+	height: 60px;
 }
 img{
 	align-items: center;

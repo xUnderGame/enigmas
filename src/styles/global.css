@@ -27,7 +27,7 @@
 body {
     font-family: var(--primaryFont);
     color: black;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 img {
     user-select: none;

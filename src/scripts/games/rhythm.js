@@ -22,12 +22,12 @@ function killPulse() {
     let pulseHitBox = pulses[0].getBoundingClientRect();
     let redHitBox = red.getBoundingClientRect();
     let rank = pulseHitBox.left - redHitBox.left;
-    if (rank <= 5 && rank >= -5) {
+    if (rank <= 7 && rank >= -7) {
         cd.textContent = "Perfect";
         row.removeChild(pulses[0]);
         perfect++;
     }
-    else if ((rank <= 30 && rank >= -30) && !(rank < 5 && rank > -5)) {
+    else if ((rank <= 35 && rank >= -35) && !(rank < 7 && rank > -7)) {
         cd.textContent = "Good";
         row.removeChild(pulses[0]);
         good++;
@@ -57,7 +57,7 @@ function movePulse() {
     for (let index = 0; index < pulses.length; index++) {
         let left = pulses[index].style.left.replace("%", "");
         pulses[index].style.left = (parseFloat(left - 1.5)) + "%";
-        if (pulses[index].style.left.replace("%", "") <= -1.5) {
+        if (pulses[index].style.left.replace("%", "") <= -2) {
             cd.textContent = "Miss";
             row.removeChild(pulses[0]);
             miss++;
@@ -91,6 +91,7 @@ function checkEnd(){
     let pulses = document.getElementsByClassName('pulseRed');
     if(pulses.length == 0){
         cd.textContent = `Miss: ${miss}, Good: ${good}, Perfect: ${perfect}`;
+        // Acabar partida no se como ira la puntuacion pero podemos hacer que cada un de una cantidad diferente por ejemplo miss = 0; good = 50; perfect = 100;
     }
 }
 

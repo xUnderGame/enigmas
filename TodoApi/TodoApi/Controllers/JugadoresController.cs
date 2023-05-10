@@ -20,7 +20,6 @@ namespace TodoApi.Controllers
     {
        private readonly JugadoresRepository  jugadoresRepository;
         public JugadoresController(JugadoresRepository jugadoresRepository) {
-
             this.jugadoresRepository = jugadoresRepository;
         }
         [HttpGet]
@@ -35,7 +34,7 @@ namespace TodoApi.Controllers
             return Ok(await jugadoresRepository.GetJugadorDetails(nick));
         }
 
-        [HttpGet("{idjugador}")]
+        [HttpGet("ById/{idjugador}")]
         public async Task<IActionResult> GetJugadorDetailsId(int idjugador)
         {
             return Ok(await jugadoresRepository.GetJugadorDetailsId(idjugador));
@@ -48,8 +47,6 @@ namespace TodoApi.Controllers
             if (jugadores == null)
             {
                 return BadRequest();
-
-
             }
 
             if (!ModelState.IsValid)
@@ -68,8 +65,6 @@ namespace TodoApi.Controllers
             if (jugadores == null)
             {
                 return BadRequest();
-
-
             }
 
             if (!ModelState.IsValid)
@@ -85,8 +80,6 @@ namespace TodoApi.Controllers
         [HttpDelete("{idjugador}")]
         public async Task<IActionResult> DeleteJugador(int id)
         {
-           
-
             var deleted = await jugadoresRepository.DeleteJugador(new Jugadores { idjugador = id});
             return Created("Eliminado!", deleted);
         }

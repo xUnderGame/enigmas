@@ -21,7 +21,6 @@ namespace TodoApi.Controllers
         private readonly JuegosRepository juegosRepository;
         public JuegosController(JuegosRepository juegosRepository)
         {
-
             this.juegosRepository = juegosRepository;
         }
         [HttpGet]
@@ -42,8 +41,6 @@ namespace TodoApi.Controllers
             if (juego == null)
             {
                 return BadRequest();
-
-
             }
 
             if (!ModelState.IsValid)
@@ -62,8 +59,6 @@ namespace TodoApi.Controllers
             if (juego == null)
             {
                 return BadRequest();
-
-
             }
 
             if (!ModelState.IsValid)
@@ -79,8 +74,6 @@ namespace TodoApi.Controllers
         [HttpDelete("{idJuego}")]
         public async Task<IActionResult> DeleteJuego(int idJuego)
         {
-
-
             var deleted = await juegosRepository.DeleteJuego(new Juegos { idJuego = idJuego });
             return Created("Eliminado!", deleted);
         }

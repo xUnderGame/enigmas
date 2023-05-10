@@ -21,3 +21,4 @@ document.getElementById("loginForm").addEventListener("submit", async function (
             console.log(jugador);
         })
 });
+

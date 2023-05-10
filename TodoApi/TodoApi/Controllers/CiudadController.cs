@@ -21,7 +21,6 @@ namespace TodoApi.Controllers
         private readonly CiudadRepository ciudadRepository;
         public CiudadController(CiudadRepository ciudadRepository)
         {
-
             this.ciudadRepository = ciudadRepository;
         }
 
@@ -62,8 +61,6 @@ namespace TodoApi.Controllers
             if (ciudad == null)
             {
                 return BadRequest();
-
-
             }
 
             if (!ModelState.IsValid)
