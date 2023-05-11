@@ -36,8 +36,9 @@ namespace TodoApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateJugar([FromBody] Jugar jugar)
+        public async Task<IActionResult> CreateJugar([FromBody] Jugar[] jugar)
         {
+            var created = false;
             if (jugar == null)
             {
                 return BadRequest();
@@ -48,7 +49,12 @@ namespace TodoApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var created = await jugarRepository.InsertJugar(jugar);
+            foreach (var juego in jugar)
+            {
+                await jugarRepository.InsertJugar(juego);
+                created = true;
+            }
+
             return Created("Creado!", created);
         }
 
