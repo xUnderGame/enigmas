@@ -1,5 +1,4 @@
 export default class Jugador {
-    idJugador;
     nombre;
     apellido;
     nick;
@@ -7,8 +6,7 @@ export default class Jugador {
     juegoscompletados;
     racha;
     ciudad;
-    constructor(id, nombre, apellido, nick, password, completados, racha, ciudad) {
-        this.idJugador = id;
+    constructor( nombre, apellido, nick, password, completados, racha, ciudad) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.nick = nick;

@@ -4,14 +4,17 @@
 <head>
 	<title>Mapa interactivo</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
-	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+		integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+		integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 	<style>
 		body {
 			height: 100%;
 			width: 100%;
 			overflow: hidden;
 		}
+
 		#map {
 			height: 140px;
 		}
@@ -21,7 +24,7 @@
 <body>
 	<div id="map"></div>
 	<script>
-		var mymap = L.map('map').setView([41.45359896116054,2.186311483383179], 20);
+		var mymap = L.map('map').setView([41.45359896116054, 2.186311483383179], 20);
 
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
@@ -29,10 +32,8 @@
 		}).addTo(mymap);
 
 		const showLocation = async (lat, long) => {
-			console.log(lat);
-			console.log(long);
 			let response = await fetch(
-				"https://nominatim.openstreetmap.org/reverse?lat="+lat+"&lon="+long+"&format=json"
+				"https://nominatim.openstreetmap.org/reverse?lat=" + lat + "&lon=" + long + "&format=json"
 			);
 			let data = await response.json();
 			window.parent.postMessage(data.address.city, '*');
@@ -40,14 +41,16 @@
 		};
 		var marker = L.marker([0, 0]).addTo(mymap);
 		mymap.on('click', function (e) {
-			document.cookie = "Longitud=" + e.latlng.lat;
-			document.cookie = "Latitud=" + e.latlng.lng;
-			
+			//document.cookie = "longitud=" + e.latlng.lat;
+			//document.cookie = "latitud=" + e.latlng.lng;
+			window.parent.postMessage(e.latlng.lat, '*');
+			window.parent.postMessage(e.latlng.lng, '*');
+
 			// Actualizar la ubicación del marcador
 			marker.setLatLng(e.latlng);
-			showLocation(e.latlng.lat,e.latlng.lng)
-			alert('Latitud: ' + e.latlng.lat + '\nLongitud: ' + e.latlng.lng);
+			showLocation(e.latlng.lat, e.latlng.lng)
 		});
 	</script>
 </body>
+
 </html>

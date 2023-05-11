@@ -85,7 +85,6 @@ function checkWin() {
 
 // Reset the game
 function resetGame() {
-	//do{
 	// Reset player position
 	player.style.top = "0%";
 	player.style.left = "5%";
@@ -103,10 +102,9 @@ function resetGame() {
 		goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 		goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 	} while (checkSpawn(goal));
-//}while(!checkIsPossible());
 }
 
-//Check the spawn of the goal
+// Check the spawn of the goal
 function checkSpawn(goal) {
 	let g = goal.getBoundingClientRect();
 	for (var i = 0; i < walls.length; i++) {
@@ -145,8 +143,8 @@ function checkIsPossible() {
 	clone.style.top = '0%';
 	clone.style.left = '0%';
 	border.appendChild(clone);
-	for(let i = 0; i < 2; i++){
-		flag = cloneTheClone();
+	for (let i = 0; i < 20; i++) {
+		flag = cloneTheClone(i);
 		if (flag) break;
 	}
 	let clones = document.getElementsByClassName('clone');
@@ -155,62 +153,51 @@ function checkIsPossible() {
 	}*/
 	console.log(flag);
 }
+
 checkIsPossible();
 // No lo mires que duele
-function cloneTheClone() {
+function cloneTheClone(int) {
 	// clone the clone to every direction.
-	let g = goal.getBoundingClientRect()
-	let w = [];
-	let borderHitBox = border.getBoundingClientRect();
 	let clones = document.getElementsByClassName('clone');
-	walls.forEach(wall => { w.push(wall.getBoundingClientRect()) });
-	for(let i = 0; i < clones.length; i++){
-		console.log(clones[i]);
-		let isValid = true;
-		let cloneYP = document.createElement('div');
-		let cloneYN = document.createElement('div');
-		let cloneXP = document.createElement('div');
-		let cloneXN = document.createElement('div');
-		cloneYP.style.top = (parseFloat(clones[i].style.top.replace('%', '')) + 5) + '%';;
-		cloneYN.style.top = (parseFloat(clones[i].style.top.replace('%', '')) - 5) + '%';
-		cloneXP.style.left = (parseFloat(clones[i].style.left.replace('%', '')) + 5) + '%';
-		cloneXN.style.left = (parseFloat(clones[i].style.left.replace('%', '')) - 5) + '%';
-		let newClon = [cloneYP,cloneYN,cloneXP,cloneXN];
-		for(let j = 0; j < newClon.length; j++){
-			let newClonHit = newClon[j].getBoundingClientRect();
-			console.log(newClon[j].style.top);
-			// Checks collissions with every wall.
-			w.forEach(wall => {
-				if (newClonHit.top >= wall.top && newClonHit.left >= wall.left && newClonHit.right <= wall.right && newClonHit.bottom <= wall.bottom) {
-					console.log('p')
-					isValid = false;
-					return;
-				}
-			});
+	const length = clones.length;
+	for (let i = 0; i < length; i++) {
+		console.log(clones);
+		console.log(clones[i].style.top.replace('%', '') <= (5*int))
+		if(clones[i].style.top.replace('%', '') <= (5*int)){
+			// Creas 4 div
+			let cloneYP = document.createElement('div');
+			let cloneYN = document.createElement('div');
+			let cloneXP = document.createElement('div');
+			let cloneXN = document.createElement('div');
+			console.log(clones[i].style.top);
+			console.log(clones[i].style.left);
 
-			// Checks collissions with the map.
-			if (newClonHit.top >= borderHitBox.top || newClonHit.left >= borderHitBox.left || newClonHit.right <= borderHitBox.right || newClonHit.bottom <= borderHitBox.bottom) {
-				console.log(borderHitBox);
-				isValid = false;
-			}
+			// Cada div le asignas una direcion
 
-			//Checks clones
-			for(let t = 0; i < clones.length; i++){
-				let hitBox = clones[t].getBoundingClientRect();
-				console.log(hitBox);
-				if (newClonHit.top <= hitBox.top && newClonHit.left <= hitBox.left && newClonHit.right >= hitBox.right && newClonHit.bottom >= hitBox.bottom ){
-					isValid = true;
-				}
-			}
-			// Resets position if invalid.
-			if (!isValid) {
+			console.log((parseFloat(clones[i].style.top.replace('%', '')) + 5) + '%');
+			cloneYP.style.top = (parseFloat(clones[i].style.top.replace('%', '')) + 5) + '%';
+			cloneYN.style.top = (parseFloat(clones[i].style.top.replace('%', '')) - 5) + '%';
+			cloneXP.style.left = (parseFloat(clones[i].style.left.replace('%', '')) + 5) + '%';
+			cloneXN.style.left = (parseFloat(clones[i].style.left.replace('%', '')) - 5) + '%';
+			let newClon = [cloneYP, cloneYN, cloneXP, cloneXN];
+
+			for (let j = 0; j < newClon.length; j++) {
+				// los insertas
 				newClon[j].classList.add('clone')
 				border.appendChild(newClon[j]);
-				if (newClonHit.left == g.left && newClonHit.top == g.top){
-					return true;
+				console.log(newClon[j].style.top);
+				console.log(newClon[j].style.left);
+				// Matar a los repetidos
+				console.log(i);
+				console.log(j);
+				console.log(  newClon[j].style.top.replace('%', '') < 0);
+				console.log(  newClon[j].style.left.replace('%', '') < 0);
+				if (newClon[j].style.left.replace('%', '') < 0 || newClon[j].style.top.replace('%', '') < 0){
+					border.removeChild(newClon[j]);
 				}
 			}
-		}	
+		}
+		else break;
 	}
 	return false;
 }
