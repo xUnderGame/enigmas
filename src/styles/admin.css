@@ -1,50 +1,49 @@
-
 .admin {
-        background: linear-gradient(rgb(187, 187, 187), rgb(74, 74, 74));
-         background-size: cover;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    padding: 10px;
-    text-align: center;
+	background: linear-gradient(rgb(187, 187, 187), rgb(74, 74, 74));
+	background-size: cover;
+	margin: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	padding: 10px;
+	text-align: center;
 }
 
 .admin img {
-    width: 80%;
-    height: 30%;
+	width: 80%;
+	height: 30%;
 }
 .adm {
 	margin-bottom: 10px;
 	border-radius: 20px;
 	padding: 10px;
 	width: 180px;
-    margin-top: 5%;
-    background-color: #FFC1C1;
+	margin-top: 5%;
+	background-color: #ffc1c1;
 	height: 60px;
 }
 .adm:hover,
 img:hover {
-    transform: scale(1);
+	transform: scale(1);
 }
 
 .administrar {
-    /* border: 1px solid black; */
-    display: flex;
-    height: 500px;
-    width: 100%;
-    justify-content: space-around;
-    flex-direction: row;
+	/* border: 1px solid black; */
+	display: flex;
+	height: 500px;
+	width: 100%;
+	justify-content: space-around;
+	flex-direction: row;
 }
 #holder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 #selected {
-    background-color: #c3ffc1 !important;
+	background-color: #c3ffc1 !important;
 }
 #selected:hover {
-    transform: scale(1.1);
+	transform: scale(1.1);
 }

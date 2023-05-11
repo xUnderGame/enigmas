@@ -4,13 +4,13 @@ Body
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-    background-color: #43acac;
-    color: #fff;
-    font-family: 'Open Sans', sans-serif;
+	background-color: #43acac;
+	color: #fff;
+	font-family: "Open Sans", sans-serif;
 }
 
 /*--------------------
@@ -18,232 +18,226 @@ Ranking
 --------------------*/
 .leaderboard {
 	margin-top: 10px;
-    position: absolute;
+	position: absolute;
 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 85%;
-    height: 50%;
-    background: linear-gradient(to bottom, #285c5c, #15d5d5);
-    border-radius: 10px;
-    box-shadow: 0 7px 30px rgba(69, 9, 11, .3);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 85%;
+	height: 50%;
+	background: linear-gradient(to bottom, #285c5c, #15d5d5);
+	border-radius: 10px;
+	box-shadow: 0 7px 30px rgba(69, 9, 11, 0.3);
 }
 
 h1 {
-    font-size: 18px;
-    color: rgb(253, 252, 159);
+	font-size: 18px;
+	color: rgb(253, 252, 159);
 
-    & svg {
-        width: 25px;
-        height: 26px;
-        position: relative;
-        top: 3px;
-        margin-right: 6px;
-        vertical-align: baseline;
-    }
-
+	& svg {
+		width: 25px;
+		height: 26px;
+		position: relative;
+		top: 3px;
+		margin-right: 6px;
+		vertical-align: baseline;
+	}
 }
-
-
 
 ol {
-width: 102.5%;
-position: absolute;
-left: -2.5%;
-    counter-reset: leaderboard;
+	width: 102.5%;
+	position: absolute;
+	left: -2.5%;
+	counter-reset: leaderboard;
 }
 
-    li {
-      position: relative;
-      z-index: 1;
-      list-style: none;
-      font-size: 14px;
-      counter-increment: leaderboard;
-      padding: 18px 10px 18px 50px;
-      cursor: pointer;
-      backface-visibility: hidden;
-      transform: translateZ(0) scale(1, 1);
+li {
+	position: relative;
+	z-index: 1;
+	list-style: none;
+	font-size: 14px;
+	counter-increment: leaderboard;
+	padding: 18px 10px 18px 50px;
+	cursor: pointer;
+	backface-visibility: hidden;
+	transform: translateZ(0) scale(1, 1);
 
-      &::before {
-        content: counter(leaderboard);
-        position: absolute;
-        z-index: 2;
-        top: 15px;
-        left: 15px;
-        width: 20px;
-        height: 20px;
-        line-height: 20px;
-        color: #c24448;
-        background: #fff;
-        border-radius: 20px;
-        text-align: center;
-      }
+	&::before {
+		content: counter(leaderboard);
+		position: absolute;
+		z-index: 2;
+		top: 15px;
+		left: 15px;
+		width: 20px;
+		height: 20px;
+		line-height: 20px;
+		color: #c24448;
+		background: #fff;
+		border-radius: 20px;
+		text-align: center;
+	}
 
+	&::after {
+		content: "";
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgb(24, 89, 92);
+		box-shadow: 0 3px 0 rgba(0, 0, 0, 0.08);
+		transition: all 0.3s ease-in-out;
+		opacity: 0;
+	}
+	&:nth-child(1) {
+		background: #003785;
+		&::after {
+			background: #003785;
+		}
+	}
 
-    &::after {
-        content: '';
-        position: absolute;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgb(24, 89, 92);
-        box-shadow: 0 3px 0 rgba(0, 0, 0, .08);
-        transition: all .3s ease-in-out;
-        opacity: 0;
-    }
-    &:nth-child(1) {
-        background: #003785;
-        &::after {
-          background: #003785;
-        }
-      }
+	&:nth-child(2) {
+		background: #1465bb;
+		&::after {
+			background: #1465bb;
+			box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
+		}
 
-      &:nth-child(2) {
-        background: #1465bb;
-        &::after {
-          background: #1465bb;
-          box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
-        }
+		& mark {
+			&::before,
+			&::after {
+				border-top: 6px solid #ba4741;
+				bottom: -7px;
+			}
+		}
+	}
 
-        & mark {
-          &::before,
-          &::after {
-            border-top: 6px solid #ba4741;
-            bottom: -7px;
-          }
-        }
-      }
+	&:nth-child(3) {
+		background: #2196f3;
+		&::after {
+			background: #2196f3;
+			box-shadow: 0 1px 0 rgba(0, 0, 0, 0.11);
+		}
 
-      &:nth-child(3) {
-        background: #2196f3;
-        &::after {
-          background: #2196f3;
-          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.11);
-        }
+		& mark {
+			&::before,
+			&::after {
+				border-top: 2px solid #b0433f;
+				bottom: -3px;
+			}
+		}
+	}
 
-        & mark {
-          &::before,
-          &::after {
-            border-top: 2px solid #b0433f;
-            bottom: -3px;
-          }
-        }
-      }
+	&:nth-child(4) {
+		background: #81c9fa;
+		&::after {
+			background: #81c9fa;
+			box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
+		}
 
-      &:nth-child(4) {
-        background: #81c9fa;
-        &::after {
-          background: #81c9fa;
-          box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
-        }
+		& mark {
+			&::before,
+			&::after {
+				top: -7px;
+				bottom: auto;
+				border-top: none;
+				border-bottom: 6px solid #a63d3d;
+			}
+		}
+	}
 
-        & mark {
-          &::before,
-          &::after {
-            top: -7px;
-            bottom: auto;
-            border-top: none;
-            border-bottom: 6px solid #a63d3d;
-          }
-        }
-      }
+	&:nth-child(5) {
+		background: #b9ffff;
+		border-radius: 0 0 10px 10px;
+		&::after {
+			background: #b9ffff;
+			box-shadow: 0 -2.5px 0 rgba(0, 0, 0, 0.12);
+			border-radius: 0 0 10px 10px;
+		}
 
-      &:nth-child(5) {
-        background: #b9ffff;
-        border-radius: 0 0 10px 10px;
-        &::after {
-          background: #b9ffff;
-          box-shadow: 0 -2.5px 0 rgba(0, 0, 0, 0.12);
-          border-radius: 0 0 10px 10px;
-        }
-
-        & mark {
-          &::before,
-          &::after {
-            top: -9px;
-            bottom: auto;
-            border-top: none;
-            border-bottom: 8px solid #993639;
-          }
-        }
-      }
-
+		& mark {
+			&::before,
+			&::after {
+				top: -9px;
+				bottom: auto;
+				border-top: none;
+				border-bottom: 8px solid #993639;
+			}
+		}
+	}
 }
 
 li mark {
-    position: absolute;
-    list-style: none;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 18px 10px 18px 50px;
-    margin: 0;
-    background: none;
-    color: rgb(255, 255, 255);
+	position: absolute;
+	list-style: none;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 18px 10px 18px 50px;
+	margin: 0;
+	background: none;
+	color: rgb(255, 255, 255);
 
-    &::before,
-    &::after {
-        content: '';
-        position: absolute;
-        z-index: 1;
-        bottom: -11px;
-        left: -9px;
-        border-top: 10px solid #c24448;
-        border-left: 10px solid transparent;
-        transition: all .1s ease-in-out;
-        opacity: 0;
-        /*Sigue trabajando angel xd*/
-    }
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		z-index: 1;
+		bottom: -11px;
+		left: -9px;
+		border-top: 10px solid #c24448;
+		border-left: 10px solid transparent;
+		transition: all 0.1s ease-in-out;
+		opacity: 0;
+		/*Sigue trabajando angel xd*/
+	}
 
-    &::after {
-        left: auto;
-        right: -9px;
-        border-left: none;
-        border-right: 10px solid transparent;
-    }
+	&::after {
+		left: auto;
+		right: -9px;
+		border-left: none;
+		border-right: 10px solid transparent;
+	}
 }
 
 li small {
-    position: relative;
-    z-index: 2;
-    display: block;
-    text-align: right;
+	position: relative;
+	z-index: 2;
+	display: block;
+	text-align: right;
 }
 
 /*hover por que quiero*/
 li:hover {
-    z-index: 2;
-    overflow: visible;
+	z-index: 2;
+	overflow: visible;
 
-    &::after {
-        opacity: 1;
-        transform: scaleX(1.06) scaleY(1.03);
-    }
+	&::after {
+		opacity: 1;
+		transform: scaleX(1.06) scaleY(1.03);
+	}
 
-    & mark {
-
-        &::before,
-        &::after {
-            opacity: 1;
-            transition: all .35s ease-in-out;
-        }
-    }
+	& mark {
+		&::before,
+		&::after {
+			opacity: 1;
+			transition: all 0.35s ease-in-out;
+		}
+	}
 }
 
 * {
-    /*display: none;*/
-    /* border: 1px solid black;} */
+	/*display: none;*/
+	/* border: 1px solid black;} */
 }
 
 #boton {
 	position: absolute;
-  left: 43%;
-    top: 80%;
+	left: 43%;
+	top: 80%;
 }
 
 #jugar {
@@ -253,12 +247,12 @@ li:hover {
 	width: 180px;
 	height: 60px;
 }
-img{
+img {
 	align-items: center;
-    position: absolute;
-    left: 40%;
-    top: 10%;
+	position: absolute;
+	left: 40%;
+	top: 10%;
 }
-.ico-cup{
+.ico-cup {
 	margin-left: 10px;
 }

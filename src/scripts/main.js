@@ -70,17 +70,11 @@ function changeWindow(ele) {
             break;
 
         case "extra1":
-            var game = document.getElementById('myframe')
-            game.classList += "fullscreen";
-            game.style.border = "none";
-            game.id = "game";
+            var game = document.getElementById('game');
             game.src = "/games/Coche/coche.html";
 
         case "extra2":
-            var game = document.getElementById('myframe')
-            game.classList += "fullscreen";
-            game.style.border = "none";
-            game.id = "game";
+            var game = document.getElementById('game');
             game.src = "/games/flappy/flappy.html";
 
         // I call.

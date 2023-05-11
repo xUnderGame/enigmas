@@ -31,14 +31,13 @@ body {
 
 #player {
 	position: absolute;
-	top:3%;
+	top: 3%;
 	left: 0%;
 	background-color: #ff0;
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
 	z-index: 2;
-
 }
 
 #goal {
@@ -50,7 +49,6 @@ body {
 	height: 20px;
 	border-radius: 50%;
 	z-index: 1;
-
 }
 
 #timer {
@@ -69,7 +67,8 @@ body {
 	padding: 10px;
 }
 
-#score span, #timer span {
+#score span,
+#timer span {
 	font-weight: bold;
 }
 
@@ -80,7 +79,7 @@ body {
 .lose {
 	background-color: #f00;
 }
-.clone{
+.clone {
 	width: 20px;
 	height: 20px;
 	position: absolute;

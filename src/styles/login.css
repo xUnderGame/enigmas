@@ -1,64 +1,74 @@
 /* Regular css selectors/tags */
 body {
-    display: flex;
-    padding-top: 150px;
-    height: 100vh;
-    background: rgb(2,0,36);
-    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-    background-repeat: no-repeat;
-    overflow-y: hidden;
+	display: flex;
+	padding-top: 150px;
+	height: 100vh;
+	background: rgb(2, 0, 36);
+	background: radial-gradient(
+		circle,
+		rgba(2, 0, 36, 1) 0%,
+		rgba(9, 9, 121, 1) 35%,
+		rgba(0, 212, 255, 1) 100%
+	);
+	background-repeat: no-repeat;
+	overflow-y: hidden;
 }
 section {
 	background-image: url("https://i.pinimg.com/originals/3a/7b/da/3a7bda163b42122cec8497e44ce3f9dd.gif");
-    width: 25%;
-    height: 40%;
-    padding: 50px;
-    border: solid 1px black;
-    border-radius: 10px;
-    margin-left: auto;
-    margin-right: auto; 
+	width: 25%;
+	height: 40%;
+	padding: 50px;
+	border: solid 1px black;
+	border-radius: 10px;
+	margin-left: auto;
+	margin-right: auto;
 }
 input {
-    width: 100%;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-family: Arial, FontAwesome;
+	width: 100%;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	font-size: 20px;
+	font-family: Arial, FontAwesome;
 }
 p {
-    text-align: center;
+	text-align: center;
 }
 a.recuperarContrasenya {
-    text-align: right;
-    margin-left: 60px;
+	text-align: right;
+	margin-left: 60px;
 }
 .opciones {
-    justify-content: space-between;
+	justify-content: space-between;
 }
 .inputRemember {
-    width: auto;
+	width: auto;
 }
 .link {
-    color: white;
+	color: white;
 }
 
 /* By ID's */
 #loginButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 150px;
-    height: 50px;
-    border-radius: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 40px;
-    font-size: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 150px;
+	height: 50px;
+	border-radius: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	font-size: 20px;
 }
 #loginButton:hover {
-    background: rgb(2,0,36);
-    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-    background-repeat: no-repeat;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-    color: #fff;
+	background: rgb(2, 0, 36);
+	background: radial-gradient(
+		circle,
+		rgba(2, 0, 36, 1) 0%,
+		rgba(9, 9, 121, 1) 35%,
+		rgba(0, 212, 255, 1) 100%
+	);
+	background-repeat: no-repeat;
+	box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+	color: #fff;
 }

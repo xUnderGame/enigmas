@@ -8,7 +8,7 @@ body {
 	background-image: url("https://i.pinimg.com/originals/3a/7b/da/3a7bda163b42122cec8497e44ce3f9dd.gif");
 }
 #modonoche {
-    background-image: url("https://wallpaperaccess.com/full/775140.gif");
+	background-image: url("https://wallpaperaccess.com/full/775140.gif");
 }
 main {
 	background-color: var(--secondary); /* Fallback background. */
@@ -33,7 +33,8 @@ aside {
 	background-color: var(--secondary);
 	border-right: var(--tertiary) 4px double;
 }
-aside h3, h4 {
+aside h3,
+h4 {
 	padding-top: 10px;
 	text-align: center;
 }
@@ -44,7 +45,8 @@ footer {
 	height: 40px;
 	background-color: var(--primary);
 }
-ul, li {
+ul,
+li {
 	list-style: none;
 }
 ul {
@@ -123,21 +125,21 @@ li {
 	width: 180px;
 	height: 60px;
 }
-#ranking,#extras{
+#ranking,
+#extras {
 	margin-bottom: 10px;
 	border-radius: 20px;
 	padding: 10px;
 }
-#ranking.fullscreen{
+#ranking.fullscreen {
 	margin: 0%;
 	padding: 0%;
 	border-radius: 8px;
 }
 
-#myframe{
-		width: 100%;
-		height: 100%;
-		border: none;
-		overflow: auto;
-	  
+#myframe {
+	width: 100%;
+	height: 100%;
+	border: none;
+	overflow: auto;
 }
