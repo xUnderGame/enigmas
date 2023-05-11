@@ -33,3 +33,9 @@ fetch(url)
 
     })
 
+// Listener para jugar.
+document.getElementById("jugar").addEventListener("click", function () { jugar() })
+
+function jugar() {
+    window.top.location.reload();
+}
