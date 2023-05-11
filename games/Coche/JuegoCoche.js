@@ -9,6 +9,7 @@ class Carretera {
 		this.elemento.style.backgroundPosition = "0px 0px";
 		this.canvas = document.getElementById("carretera");
 		this.ctx = this.canvas.getContext("2d");
+
 		// Dibujamos el fondo
 		this.ctx.fillStyle = "#595959";
 		this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
@@ -33,14 +34,13 @@ class Carretera {
 class Coche {
 	constructor() {
 		this.elemento = document.getElementById("coche");
-		
 	}
 
 	mover(x) {
 		const cocheWidth = this.elemento.offsetWidth;
 		const carreteraLeft = carretera.elemento.offsetLeft;
 		const carreteraWidth = carretera.elemento.offsetWidth;
-		const left = Math.max(Math.min(x, carreteraLeft + carreteraWidth - cocheWidth+50), carreteraLeft);
+		const left = Math.max(Math.min(x, carreteraLeft + carreteraWidth - cocheWidth + 50), carreteraLeft);
 		this.elemento.style.left = left + "px";
 	}
 
@@ -48,13 +48,13 @@ class Coche {
 
 //Dibujamos el coche (No se por que si lo intento dibujar en el constructor de coche no funciona :c)
 const canvas = document.getElementById('coche');
-      const ctx = canvas.getContext('2d');
-      const img = new Image();
-      img.src="https://static.vecteezy.com/system/resources/previews/001/193/859/non_2x/sedan-car-png.png";
+const ctx = canvas.getContext('2d');
+const img = new Image();
+img.src = "https://static.vecteezy.com/system/resources/previews/001/193/859/non_2x/sedan-car-png.png";
 
-      img.onload = function() {
-        ctx.drawImage(img, 60, 0, 200, 150);
-      }
+img.onload = function () {
+	ctx.drawImage(img, 60, 0, 200, 150);
+}
 
 // Clase Camion no supe hacerla con canvas con la idea que tenia pensada de que sean distintos coches cada vez
 class Camion {
@@ -70,11 +70,11 @@ class Camion {
 		this.elemento.style.left = Math.floor(Math.random() * (maxLeft - minLeft)) + minLeft + "px";
 		this.elemento.style.top = "-100px";
 		document.body.appendChild(this.elemento);
+
 		// Elige una imagen aleatoria del array de imágenes de camiones
 		const imagenCamion = imagenesCamiones[Math.floor(Math.random() * imagenesCamiones.length)];
 		this.elemento.style.backgroundImage = `url(${imagenCamion})`;
 	}
-
 
 	dibujar() {
 		this.elemento.style.top = this.posicion + "px";
@@ -84,7 +84,6 @@ class Camion {
 		let y = parseInt(this.elemento.style.top) + 25;
 		this.elemento.style.top = y + "px";
 	}
-
 
 	destruir() {
 		this.elemento.parentNode.removeChild(this.elemento);
@@ -144,7 +143,7 @@ function pararJuego() {
 	clearInterval(intervaloMovimiento);
 	let fondo = document.getElementById("landscape");
 	fondo.style.backgroundImage = "url('https://emtstatic.com/2020/05/billy.jpg')";
-	setTimeout(() => alert("Juego Terminado. Puntuación: " + puntuacion + " Volver a jugar?" ,location.reload()	), 100);
+	setTimeout(() => alert("Juego Terminado. Puntuación: " + puntuacion + " Volver a jugar?", location.reload()), 100);
 
 }
 
@@ -152,6 +151,6 @@ function pararJuego() {
 function colision(coche, camion) {
 	let cocheRect = coche.getBoundingClientRect();
 	let camionRect = camion.getBoundingClientRect();
-	return !(cocheRect.bottom< camionRect.top || cocheRect.top > camionRect.bottom || cocheRect.right < camionRect.left+23|| cocheRect.left > camionRect.right-25);
+	return !(cocheRect.bottom < camionRect.top || cocheRect.top > camionRect.bottom || cocheRect.right < camionRect.left + 23 || cocheRect.left > camionRect.right - 25);
 }
 

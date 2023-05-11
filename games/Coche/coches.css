@@ -14,9 +14,6 @@ body {
 	width: 100%;
 }
 
-
-
-
 #carretera {
 	border: 1px solid black;
 	position: absolute;
@@ -24,7 +21,6 @@ body {
 	left: 30%;
 	width: 25%;
 	height: 100%;
-
 }
 
 #linea {
@@ -52,5 +48,5 @@ body {
 	width: 75px;
 	height: 130px;
 	position: absolute;
-	background-size: cover
+	background-size: cover;
 }
