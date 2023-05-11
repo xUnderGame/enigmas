@@ -1,4 +1,6 @@
 import * as handler from "/src/scripts/games.js";
+if (!handler.loginCheck()) window.open("/login.html", "_self");
+
 const boton = document.getElementById("boton");
 const contador = document.getElementById("contador");
 

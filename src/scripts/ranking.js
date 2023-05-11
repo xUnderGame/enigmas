@@ -1,3 +1,6 @@
+import * as handler from "/src/scripts/games.js";
+if (!handler.loginCheck()) window.open("/login.html", "_self");
+
 // TABLA
 let url = "https://localhost:7261/api/Jugar/";
 fetch(url)

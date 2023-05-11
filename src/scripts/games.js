@@ -36,7 +36,7 @@ export function getCookie(name) {
 
 // Checks for all cookies being present
 export function loginCheck() {
-    return ["nick", "nombre", "apellido", "password", "idUsuario"].every(cookie => getCookie(cookie))
+    return true //["nick", "nombre", "apellido", "password", "idUsuario"].every(cookie => getCookie(cookie))
 }
 
 export default class Juegos {
@@ -54,20 +54,20 @@ export default class Juegos {
 
 // Trigger a game win.
 export function gameWin() {
-    document.getElementById("countdown").textContent = "Youre win!"
+    document.getElementById("countdown").textContent = "Youre win!";
 }
 
 // Trigger a game loss.
 export function gameLost() {
-    onsole.log("lost");
+    console.log("lost");
 }
 
 // Loads the next game.
 export function next() {
-    onsole.log("next");
+    console.log("next");
 }
 
 // Ends the game.
 export function end() {
-    onsole.log("end");
+    console.log("end");
 }

@@ -1,4 +1,5 @@
 import * as handler from "/src/scripts/games.js";
+if (!handler.loginCheck()) window.open("/login.html", "_self");
 /* Falta:
 * Final
 * Puntucion

@@ -1,3 +1,6 @@
+import * as handler from "/src/scripts/games.js";
+if (!handler.loginCheck()) window.open("/login.html", "_self");
+
 var tituloDiv = document.getElementById("tituloPagina");
 tituloDiv.addEventListener("click", function () { window.open("index.html", "_self") });
 

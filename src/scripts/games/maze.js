@@ -1,4 +1,5 @@
 import * as handler from "/src/scripts/games.js";
+if (!handler.loginCheck()) window.open("/login.html", "_self");
 
 // Set up variables
 var player = document.getElementById("player");
@@ -6,6 +7,7 @@ var goal = document.getElementById("goal");
 var walls = document.querySelectorAll(".wall");
 var timer = document.getElementById("time");
 var points = document.getElementById("points");
+var border = document.getElementById("walls");
 
 var score = 0;
 var secondsLeft = 10;
@@ -34,14 +36,15 @@ document.addEventListener("keydown", function (event) {
 });
 
 // Checks if the player can move.
-function checkMovement(value, operation, property, x, y) {
+function checkMovement(value, operation, property) {
 	// Moves player to the desired direction.
 	if (operation == "add") player["style"][property] = (value + 5) + "%";
 	else player["style"][property] = (value - 5) + "%";
 
 	let p = player.getBoundingClientRect();
 	let isValid = true;
-	let w = []
+	let w = [];
+	let borderHitBox = border.getBoundingClientRect();
 	walls.forEach(wall => { w.push(wall.getBoundingClientRect()) });
 
 	// Checks collissions with every wall.
@@ -51,6 +54,11 @@ function checkMovement(value, operation, property, x, y) {
 			return;
 		}
 	});
+
+	// Checks collissions with the map.
+	if (p.top < borderHitBox.top || p.left < borderHitBox.left || p.right > borderHitBox.right || p.bottom > borderHitBox.bottom) {
+		isValid = false;
+	}
 
 	// Resets position if invalid.
 	if (!isValid) {
@@ -81,30 +89,29 @@ function resetGame() {
 	player.style.top = "0%";
 	player.style.left = "5%";
 
-
 	// Randomize wall positions
-	do{
+	do {
 		for (var i = 0; i < walls.length; i++) {
 			walls[i].style.top = (Math.floor(Math.random() * 9)) * 10 + "%";
 			walls[i].style.left = (Math.floor(Math.random() * 9)) * 10 + "%";
 		}
-	}while(checkSpawn(player));
+	} while (checkSpawn(player));
 
 	// Randomize goal position
-	do{
+	do {
 		goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 		goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
-	}while(checkSpawn(goal));
+	} while (checkSpawn(goal));
 }
 
 //Check the spawn of the goal
-function checkSpawn(goal){
+function checkSpawn(goal) {
 	let g = goal.getBoundingClientRect();
 	for (var i = 0; i < walls.length; i++) {
 		let w = walls[i].getBoundingClientRect();
-		if(w.left <= g.left && w.right >= g.right && w.top <= g.top && w.bottom >= g.bottom){
-			return true;	
-		}	
+		if (w.left <= g.left && w.right >= g.right && w.top <= g.top && w.bottom >= g.bottom) {
+			return true;
+		}
 	}
 	return false;
 }
@@ -126,3 +133,55 @@ function startTimer() {
 		}, 1000);
 	}
 }
+
+
+//
+function checkIsPossible() {
+	let flag = false;
+	let maze = document.getElementById('maze');
+	let clone = document.createElement('div');
+	clone.style.top = "0%";
+	clone.style.left = "5%";
+	clone.style.width = '20px';
+	clone.style.height = '20px';
+	clone.style.color = 'blue';
+	clone.style.zIndex = '3';
+	clone.classList.add('clone')
+	maze.appendChild(clone);
+}
+
+function cloneTheClone() {
+	// clone the clone to every direction.
+	let p = player.getBoundingClientRect();
+	let w = [];
+	let borderHitBox = border.getBoundingClientRect();
+	let clones = document.getElementsByClassName('clone')
+	walls.forEach(wall => { w.push(wall.getBoundingClientRect()) });
+
+	for(let i = 0; i < clones.length; i++){
+		let isValid = true;
+		// Checks collissions with every wall.
+		w.forEach(wall => {
+			if (p.top >= wall.top && p.left >= wall.left && p.right <= wall.right && p.bottom <= wall.bottom) {
+				isValid = false;
+				return;
+			}
+		});
+
+		// Checks collissions with the map.
+		if (p.top < borderHitBox.top || p.left < borderHitBox.left || p.right > borderHitBox.right || p.bottom > borderHitBox.bottom) {
+			isValid = false;
+		}
+			// Resets position if invalid.
+		if (!isValid) {
+			let maze = document.getElementById('maze');
+			let clone = document.createElement('div');
+			clone.classList.add('clone')
+			maze.appendChild(clone);
+		}
+	}
+
+
+
+}
+checkIsPossible();

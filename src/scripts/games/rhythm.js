@@ -1,5 +1,7 @@
 import * as handler from "/src/scripts/games.js";
-// Variavles globales
+if (!handler.loginCheck()) window.open("/login.html", "_self");
+
+// Variables globales
 var row = document.getElementById('row');
 var red = document.getElementById('red');
 var cd = document.getElementById("countdown");

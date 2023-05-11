@@ -1,5 +1,7 @@
+import * as handler from "/src/scripts/games.js";
+
 // Cookies
-// if (!handler.loginCheck()) window.open("/login.html", "_self");
+if (!handler.loginCheck()) window.open("/login.html", "_self");
 var nick = document.cookie.split("; ").find((row) => row.startsWith("nick="))?.split("=")[1];
 var idJugador = document.cookie.split("; ").find((row) => row.startsWith("idjugador="))?.split("=")[1]
 

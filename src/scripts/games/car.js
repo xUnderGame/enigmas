@@ -1,6 +1,4 @@
 import * as handler from "/src/scripts/games.js";
-
-
 var car = document.getElementById("car");
 var player = document.getElementById("player");
 var cd = document.getElementById("countdown");
@@ -10,16 +8,17 @@ car.style.left = "100%";
 document.body.addEventListener("keydown", function (e) { jump(e) });
 
 // Moves the car to the left.
-function moveCar(intervalTimer) {
+function moveCar() {
     let left = car.style.left.replace("%", "");
-    if (left > -100) {
-        car.style.left = (left - 8.25) + "%"
-    }
+    if (left > -100) car.style.left = (left - 8.25) + "%";
     else if (cd.textContent != "You lost!") { 
         handler.gameWin();
-        clearInterval(intervalTimer);
+        window.parent.postMessage(true, '*');
     } 
-    if (checkCollision()) cd.textContent = "You lost!";
+    else if (checkCollision()) {
+        cd.textContent = "You lost!";
+        window.parent.postMessage(false, '*');
+    };
 }
 
 // Checks for a collsion.
