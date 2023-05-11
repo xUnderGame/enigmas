@@ -80,3 +80,8 @@ body {
 .lose {
 	background-color: #f00;
 }
+.clone{
+	width: 20px;
+	height: 20px;
+	position: absolute;
+}

@@ -11,7 +11,6 @@ document.getElementById("ham").addEventListener("click", function () {
         if (nick.toUpperCase() == "ADMIN") {
             document.getElementById("gestionar").style.display = "inline";
         }
-        
     }
     else {
         document.getElementById("logoff").style.display = "none";

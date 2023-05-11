@@ -1,14 +1,11 @@
-import Jugador from "/src/scripts/clases/Jugador.js";
-import Juego from "/src/scripts/clases/Juego.js";
-import Ciudad from "/src/scripts/clases/Ciudad.js";
+var speed = 500;
 
 // Game loop.
 export async function runGame(funct, delay = 50) {
-    var time = 500;
     let cd = document.getElementById("countdown")
     for (const iterator of Array(3).keys()) {
         cd.textContent = 3 - iterator;
-        await sleep(time / 2);
+        await sleep(speed / 2);
     }
     cd.textContent = "GO!";
     setInterval(function () { funct(this) }, delay);
@@ -69,8 +66,9 @@ export function gameLost() {
 export function next(game) {
     let ifr = document.createElement("iframe");
     ifr.id = "playArea";
-    ifr.src = `/games/${game}.html`
+    ifr.src = game;
     document.getElementById("debug").parentNode.insertBefore(ifr, document.getElementById("debug").nextSibling);
+    ifr.focus();
 }
 
 // Ends the game.

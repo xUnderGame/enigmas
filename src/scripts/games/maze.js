@@ -85,7 +85,7 @@ function checkWin() {
 
 // Reset the game
 function resetGame() {
-	do{
+	//do{
 	// Reset player position
 	player.style.top = "0%";
 	player.style.left = "5%";
@@ -103,7 +103,7 @@ function resetGame() {
 		goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 		goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 	} while (checkSpawn(goal));
-}while(!checkIsPossible());
+//}while(!checkIsPossible());
 }
 
 //Check the spawn of the goal
@@ -140,27 +140,22 @@ function startTimer() {
 // whar
 function checkIsPossible() {
 	let flag = false;
-	let maze = document.getElementById('maze');
 	let clone = document.createElement('div');
-	clone.style.top = "0%";
-	clone.style.left = "5%";
-	clone.style.width = '20px';
-	clone.style.height = '20px';
-	clone.style.color = 'blue';
-	clone.style.zIndex = '3';
 	clone.classList.add('clone');
-	maze.appendChild(clone);
-	for(let i = 0; i < 25; i++){
+	clone.style.top = '0%';
+	clone.style.left = '0%';
+	border.appendChild(clone);
+	for(let i = 0; i < 2; i++){
 		flag = cloneTheClone();
 		if (flag) break;
 	}
 	let clones = document.getElementsByClassName('clone');
-	for (let i = 0; i < clones.length; i++) {
+	/*for (let i = 0; i < clones.length; i++) {
 		maze.removeChild(clones[i]);
-	}
-	return flag;
+	}*/
+	console.log(flag);
 }
-
+checkIsPossible();
 // No lo mires que duele
 function cloneTheClone() {
 	// clone the clone to every direction.
@@ -169,42 +164,53 @@ function cloneTheClone() {
 	let borderHitBox = border.getBoundingClientRect();
 	let clones = document.getElementsByClassName('clone');
 	walls.forEach(wall => { w.push(wall.getBoundingClientRect()) });
-	let maze = document.getElementById('maze');
-
 	for(let i = 0; i < clones.length; i++){
-		let cloneHitBox = clones[i].getBoundingClientRect
+		console.log(clones[i]);
 		let isValid = true;
 		let cloneYP = document.createElement('div');
 		let cloneYN = document.createElement('div');
 		let cloneXP = document.createElement('div');
 		let cloneXN = document.createElement('div');
-		cloneYP.style.top = cloneHitBox.top + 5;
-		cloneYN.style.top = cloneHitBox.top - 5;
-		cloneXP.style.left = cloneHitBox.left + 5;
-		cloneXN.style.left = cloneHitBox.top - 5;
+		cloneYP.style.top = (parseFloat(clones[i].style.top.replace('%', '')) + 5) + '%';;
+		cloneYN.style.top = (parseFloat(clones[i].style.top.replace('%', '')) - 5) + '%';
+		cloneXP.style.left = (parseFloat(clones[i].style.left.replace('%', '')) + 5) + '%';
+		cloneXN.style.left = (parseFloat(clones[i].style.left.replace('%', '')) - 5) + '%';
 		let newClon = [cloneYP,cloneYN,cloneXP,cloneXN];
 		for(let j = 0; j < newClon.length; j++){
-			let p = newClon[j].getBoundingClientRect();
+			let newClonHit = newClon[j].getBoundingClientRect();
+			console.log(newClon[j].style.top);
 			// Checks collissions with every wall.
 			w.forEach(wall => {
-				if (p.top >= wall.top && p.left >= wall.left && p.right <= wall.right && p.bottom <= wall.bottom) {
+				if (newClonHit.top >= wall.top && newClonHit.left >= wall.left && newClonHit.right <= wall.right && newClonHit.bottom <= wall.bottom) {
+					console.log('p')
 					isValid = false;
 					return;
 				}
 			});
 
 			// Checks collissions with the map.
-			if (p.top < borderHitBox.top || p.left < borderHitBox.left || p.right > borderHitBox.right || p.bottom > borderHitBox.bottom) {
+			if (newClonHit.top >= borderHitBox.top || newClonHit.left >= borderHitBox.left || newClonHit.right <= borderHitBox.right || newClonHit.bottom <= borderHitBox.bottom) {
+				console.log(borderHitBox);
 				isValid = false;
 			}
-				// Resets position if invalid.
+
+			//Checks clones
+			for(let t = 0; i < clones.length; i++){
+				let hitBox = clones[t].getBoundingClientRect();
+				console.log(hitBox);
+				if (newClonHit.top <= hitBox.top && newClonHit.left <= hitBox.left && newClonHit.right >= hitBox.right && newClonHit.bottom >= hitBox.bottom ){
+					isValid = true;
+				}
+			}
+			// Resets position if invalid.
 			if (!isValid) {
 				newClon[j].classList.add('clone')
-				maze.appendChild(newClon[j]);
-				if (p.left == g.left && p.top == g.top){
-					return true
+				border.appendChild(newClon[j]);
+				if (newClonHit.left == g.left && newClonHit.top == g.top){
+					return true;
 				}
 			}
 		}	
 	}
+	return false;
 }

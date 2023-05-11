@@ -1,7 +1,7 @@
 section {
     height: 650px !important;
 }
-.mapa{
+#mapa{
     width: 80%;
     height: 30%;
     align-items: center;

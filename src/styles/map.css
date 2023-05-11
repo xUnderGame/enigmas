@@ -1,15 +1,11 @@
-/* Global && css selectors. */
+/* Global && CSS selectors. */
 html,
 body {
     height: 100%;
     overflow: hidden;
 }
 
-#holder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 .title{
     font-size: 6rem;
     text-align: center;
@@ -19,15 +15,6 @@ body {
     -webkit-text-fill-color: transparent;
     margin: 2%;
 }
-#games {
-    /* border: 1px solid black; */
-    display: flex;
-    height: 500px;
-    width: 100%;
-    justify-content: space-around;
-    flex-direction: row;
-}
-
 .game {
     background-image: url("https://wallpaperaccess.com/full/775140.gif");
     background-size: cover;
@@ -44,7 +31,7 @@ body {
     width: 80%;
     height: 30%;
 }
-#jugar {
+.jugar {
 	margin-bottom: 10px;
 	border-radius: 20px;
 	padding: 10px;
@@ -53,10 +40,33 @@ body {
     background-color: #FFC1C1;
 	height: 60px;
 }
+.jugar:hover,
+img:hover {
+    transform: scale(1);
+}
 
 /* ID's */
 #playArea {
     width: 100%;
     height: 100%;
     /* display: none; */
+}
+#games {
+    /* border: 1px solid black; */
+    display: flex;
+    height: 500px;
+    width: 100%;
+    justify-content: space-around;
+    flex-direction: row;
+}
+#holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#selected {
+    background-color: #c3ffc1 !important;
+}
+#selected:hover {
+    transform: scale(1.1);
 }
