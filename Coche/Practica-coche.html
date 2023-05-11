@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="coche2.png">
+    <title>Juego Coche Angel Navarrete</title>
+    <style>
+        body{
+            background-image: url("https://preview.redd.it/w6dwg7s7mj611.png?auto=webp&s=20b483f8842774ddbef22db4175c2a95f3fcc820");
+
+        }
+        #coche{
+            height: 60px;
+            width: 100px;
+            background-image:url('./img/coche.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+        }
+        .camion{
+            height: 60px;
+            width: 100px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+        }
+        div#corazonesContainer{
+            margin-left: 50px;
+            width: 100px;
+            display: inline-block;
+        }
+        div.corazon{
+            height: 50px;
+            width: 50px;
+            background-image:url('./img/corazon.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        div.medio-corazon{
+            height: 50px;
+            width: 50px;
+            background-image:url('./img/medio-corazon.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        div.sin-corazon{
+            height: 50px;
+            width: 50px;
+            background-image:url('./img/sin-corazon.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        div#puntuacion{
+            position: relative;
+            top: -30px;
+            display: inline-block;
+            margin-left: 100px;
+            margin-right: auto;
+            width: 300px;
+        }
+    </style>
+</head>
+<body onload="main()">
+    <!--Divs de los corazones y la puntuacion-->
+    <div id="corazonesContainer" class="corazonesContainer">
+        <div id="corazon1" class="corazon"></div>
+        <div id="corazon2" class="corazon"></div>
+        <div id="corazon3" class="corazon"></div>
+    </div>
+    <div id="puntuacion" class="puntuacion"></div>
+    <!--Javascript-->
+    <script>
+        //Funcion para numeros aleatorios
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+        //Clase Coche
+        class Coche{
+            posX;
+            posY;
+            constructor(){
+                this.posX = 100 + "px";
+                this.posY = 400 + "px";
+                let divCoche = document.createElement("div");
+                divCoche.setAttribute("id","coche");
+                divCoche.style.top = this.posY;
+                divCoche.style.left = this.posX;
+                document.body.appendChild(divCoche);
+            }
+            moverCoche(positionY){
+                let divCoche = document.getElementById("coche");
+                divCoche.style.top = positionY + "px";
+            }
+        }
+        //Clase Camion
+        class Camion{
+            id;
+            posX;
+            posY;
+            img;
+            velocidad;
+            constructor(id){
+                this.id = id;
+                this.posX = window.screenX;
+                this.posY = getRndInteger(620,250);
+                this.img = "./img/camion"+ getRndInteger(1,5)+".png";
+                this.velocidad = getRndInteger(4,9);
+                this.divCamion = document.createElement("div");
+                this.divCamion.setAttribute("id","camion"+this.id);
+                this.divCamion.classList.add("camion");
+                this.divCamion.style.backgroundImage = "url("+this.img+")";
+                this.divCamion.style.top = this.posY + "px";
+                this.divCamion.style.right = 0 + "px";
+                document.body.appendChild(this.divCamion);
+            }
+            get posicionX(){
+                return this.posX;
+            }
+            set posicionX(nuevaPosicion){
+                this.posX +=  nuevaPosicion;
+            }
+            avanzar(){
+                this.divCamion.posicionX = 50 * (this.velocidad/10);
+                this.divCamion.style.right = (parseInt(this.divCamion.style.right) +this.divCamion.posicionX) + "px";
+                if (parseInt(this.divCamion.style.right) >= 2000) {
+                    this.posY = getRndInteger(620,250);
+                    this.divCamion.style.top = this.posY + "px";
+                    this.divCamion.style.right = -200 + "px";
+                }
+            }
+        }
+        //Funcion donde se ejecutara todo el Javascript
+        function main(){
+        
+            //CREACION DEL COCHE Y LOS CAMIONES
+            let coche = new Coche();
+            let camiones = [];
+            for (let i = 0; i < 10; i++) {
+                camiones[i]= new Camion(i+1);
+            }
+            //Variables para la puntuacion
+            let puntuacion = 0;
+            let puntuacionMaxima;
+            let puntuacionDIV = document.getElementById("puntuacion");
+            //Variables para cojer los corazones
+            let corazon1 = document.getElementById("corazon1");
+            let corazon2 = document.getElementById("corazon2");
+            let corazon3 = document.getElementById("corazon3");
+
+            //Funcion para comprovar si el coche se colisiona con algun camion
+            function colision(camion){
+                let coche = document.getElementById("coche");
+                let cocheRect = coche.getBoundingClientRect();
+                let camionRect = camion.divCamion.getBoundingClientRect();
+                return !(cocheRect.bottom < camionRect.top || cocheRect.top > camionRect.bottom || cocheRect.right < camionRect.left || cocheRect.left > camionRect.right);
+            }
+
+            //Funcion para eliminar medio corazon, Se ejecutara cuando colision sea true
+            function eliminarCorazon(){
+                if(corazon3.classList.contains("corazon")){
+                    corazon3.classList.replace("corazon", "medio-corazon");
+                    return true;
+                }
+                if(corazon3.classList.contains("medio-corazon")){
+                    corazon3.classList.replace("medio-corazon", "sin-corazon");
+                    return true;
+                }
+                if(corazon3.classList.contains("sin-corazon") && corazon2.classList.contains("corazon")){
+                    corazon2.classList.replace("corazon", "medio-corazon");
+                    return true;
+                }
+                if(corazon2.classList.contains("medio-corazon")){
+                    corazon2.classList.replace("medio-corazon", "sin-corazon");
+                    return true;
+                }
+                if(corazon3.classList.contains("sin-corazon") && corazon2.classList.contains("sin-corazon") && corazon1.classList.contains("corazon")){
+                    corazon1.classList.replace("corazon", "medio-corazon");
+                    return true;
+                }
+                if(corazon1.classList.contains("medio-corazon")){
+                    corazon1.classList.replace("medio-corazon", "sin-corazon");
+                    return true;
+                }
+            }
+            //Funcion Comprovar Corazones, si no hay ninguno se acabará el juego
+            function comprovarCorazones(){
+                console.log(corazon3.classList.contains("sin-corazon"));
+                if (corazon3.classList.contains("sin-corazon") && corazon2.classList.contains("sin-corazon") && corazon1.classList.contains("sin-corazon")){
+                    alert("Game Over\nTu Puntuacion ha sido de : "+puntuacion);
+                    const puntuacionMaxima = puntuacion;
+                    location.reload();
+                    return true;
+                }
+                else return false;
+            }
+
+            //Movemos el coche entre las coordenadas 250 y 620 que simulan la carretera
+            document.addEventListener("mousemove",  function(event){
+                let posY = event.clientY;
+                if (posY >= 250 && posY <= 620) {
+                    coche.moverCoche(posY);
+                }
+            });
+            //Movemos los camiones y comprovamos si colisionan con el coche
+            for (let i = 0; i < camiones.length; i++) {
+                setInterval(function (){
+                    camiones[i].avanzar()
+                    if (colision(camiones[i]) == true) {
+                        eliminarCorazon();
+                        let camion = document.getElementById("camion"+camiones[i].id)
+                        camion.remove();
+                        camiones[i]= new Camion(i+1);
+                        comprovarCorazones();
+                    }
+                    
+                }, 100);
+            }
+            //Por cada 3 milisegundos sumara un punto y lo imprimirá por pantalla
+            setInterval(()=>{
+                puntuacion++;
+                puntuacionMaxima = puntuacion;
+                if(puntuacion>=puntuacionMaxima)
+                {
+                    highest=puntuacion;
+                }
+                puntuacionDIV.innerHTML="<h2>Puntuacion: "+ puntuacion+"</h2><h2>Puntuacio Más Alta: "+puntuacionMaxima+"</h2>";
+            },300);
+        }
+    </script>
+
+</body>
+</html>

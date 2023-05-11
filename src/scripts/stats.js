@@ -1,3 +1,6 @@
+import * as handler from "/src/scripts/games.js";
+if (!handler.loginCheck()) window.open("/login.html", "_self");
+
 var tituloDiv = document.getElementById("tituloPagina");
 tituloDiv.addEventListener("click", function () { window.open("index.html", "_self") });
 
@@ -23,7 +26,9 @@ window.addEventListener("load", () => {
         ?.split("=")[1] + ", " + document.cookie.split("; ")
             .find((row) => row.startsWith("apellido="))
             ?.split("=")[1];
-    divCiudad.innerHTML = "Barcelona";
+    divCiudad.innerHTML = document.cookie.split("; ")
+    .find((row) => row.startsWith("ciudad="))
+    ?.split("=")[1];
 
     // TABLA
     let tabla = document.getElementsByTagName("tbody")[0];

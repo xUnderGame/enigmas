@@ -5,9 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/styles/global.css">
-    <link rel="stylesheet" href="./src/styles/login.css"> <!-- Utilizamos el css antiguo, simplemente haz cambios en signup.css -->
-    <link rel="stylesheet" href="./src/styles/signup.css"> <!-- (Este, y utiliza !important por si acaso) -->
+    <link rel="stylesheet" href="./src/styles/login.css">
+    <link rel="stylesheet" href="./src/styles/signup.css">
     <script defer type="module" src="./src/scripts/signup.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
     <title>Javant - Registrarse</title>
 </head>
 <body>
@@ -17,6 +20,8 @@
             <input autocomplete="" type="text" id="apellido" name="apellido" value="" placeholder="Apellidos" required><br>
             <input type="text" id="nick" name="nick" value="" placeholder="Username" required><br>
             <input autocomplete="current-password" type="password" id="password" name="password" value="" placeholder="Contrasenya" required><br>
+            <label>Introduce tu Ubicacion (Para Doxearte):</label><br>
+            <iframe class="mapa" frameborder="0" src="/src/leaflet/leaflet.html"></iframe>
             <button type="submit" id="loginButton">Registrarte</button><br><br>
             <p>Tienes una cuenta? <a class="link" href="./login.html"> Inicia sesion</a></p>
         </form>

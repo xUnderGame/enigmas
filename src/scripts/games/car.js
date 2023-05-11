@@ -8,10 +8,15 @@ car.style.left = "100%";
 document.body.addEventListener("keydown", function (e) { jump(e) });
 
 // Moves the car to the left.
-function moveCar(intervalTimer) {
+function moveCar() {
     let left = car.style.left.replace("%", "");
-    (left > -100) ? car.style.left = (left - 8.25) + "%" : clearInterval(intervalTimer);
-    if (checkCollision()) cd.textContent = "You lost!";
+    if (left > -100) car.style.left = (left - 8.25) + "%";
+    else if (cd.textContent != "You lost!") { 
+        handler.gameWin();
+    } 
+    else if (checkCollision()) {
+        handler.gameLost();
+    };
 }
 
 // Checks for a collsion.

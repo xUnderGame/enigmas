@@ -4,9 +4,14 @@ body {
 	height: 100%;
 	color: var(--tertiary);
 }
+#mododia{
+	background-image: url("https://i.pinimg.com/originals/3a/7b/da/3a7bda163b42122cec8497e44ce3f9dd.gif");
+}
+#modonoche{
+    background-image: url("https://wallpaperaccess.com/full/775140.gif");
+}
 main {
 	background-color: var(--secondary); /* Fallback background. */
-	background-image: url("https://i.pinimg.com/originals/3a/7b/da/3a7bda163b42122cec8497e44ce3f9dd.gif");
 	background-size: contain;
 	text-align: center;
 	width: 90%;
@@ -57,6 +62,15 @@ li {
 	border: none;
 	background: none;
 }
+.instructions {
+	margin-top: 2px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.instructions img {
+	padding-right: 10px;
+}
 
 /* By ID's */
 #websiteTitle {
@@ -64,6 +78,9 @@ li {
 }
 #menu {
 	display: flex;
+}
+#infoUsuario {
+	margin-right: 2.5%;
 }
 #infoUsuario:hover {
 	background-color: var(--tertiary);
@@ -90,6 +107,7 @@ li {
 	justify-content: center;
 	background-color: var(--tertiary);
 	border-radius: 8px;
+	padding: 0%;
 }
 #botones {
 	display: flex;
@@ -97,7 +115,7 @@ li {
 	justify-content: center;
 	flex-direction: column;
 }
-#ranking,
+
 #jugar {
 	margin-bottom: 10px;
 	border-radius: 20px;
@@ -105,9 +123,13 @@ li {
 	width: 180px;
 	height: 60px;
 }
-#instructions {
-	margin-top: 2px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+#ranking,#extras{
+	margin-bottom: 10px;
+	border-radius: 20px;
+	padding: 10px;
+}
+#ranking.fullscreen{
+	margin: 0%;
+	padding: 0%;
+	border-radius: 8px;
 }
