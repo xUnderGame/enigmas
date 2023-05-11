@@ -1,6 +1,4 @@
 import * as handler from "/src/scripts/games.js";
-
-// Cookies
 if (!handler.loginCheck()) window.open("/login.html", "_self");
 
 // Load cookies on load.
@@ -66,11 +64,11 @@ function changeWindow(ele) {
         case "extras":
             location.replace('extra.html');
             break;
-        
+
         case "javant":
             location.replace('index.html');
             break;
-        
+
         case "extra1":
             var game = document.getElementById('myframe')
             game.classList += "fullscreen";

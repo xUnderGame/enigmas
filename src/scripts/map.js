@@ -1,7 +1,6 @@
 import * as handler from "/src/scripts/games.js";
 import Session from "/src/scripts/games.js";
 import Jugador from "/src/scripts/clases/Jugador.js";
-import Juego from "/src/scripts/clases/Juego.js";
 import Ciudad from "/src/scripts/clases/Ciudad.js";
 
 // Fetch the games and make a session.

@@ -1,14 +1,13 @@
 import * as handler from "/src/scripts/games.js";
 if (!handler.loginCheck()) window.open("/login.html", "_self");
 
-// Set up variables
+// Setup variables
 var player = document.getElementById("player");
 var goal = document.getElementById("goal");
 var walls = document.querySelectorAll(".wall");
 var timer = document.getElementById("time");
 var points = document.getElementById("points");
 var border = document.getElementById("walls");
-
 var score = 0;
 var secondsLeft = 10;
 
@@ -75,7 +74,7 @@ function checkWin() {
 	var goalX = parseInt(goal.style.left);
 	var goalY = parseInt(goal.style.top);
 
-	// Player reached the goal
+	// Player reached the goal!
 	if (playerX == goalX && playerY == goalY) {
 		score++;
 		points.innerHTML = score;
@@ -83,30 +82,30 @@ function checkWin() {
 	}
 }
 
-// Reset the game
-function resetGame() {
-	// Reset player position
+// Sets the game.
+function setGame() {
+	// Resets player position.
 	player.style.top = "0%";
 	player.style.left = "5%";
 
-	// Randomize wall positions
-	do{
+	// Randomizes wall positions.
 	do {
-		for (var i = 0; i < walls.length; i++) {
-			walls[i].style.top = (Math.floor(Math.random() * 9)) * 10 + "%";
-			walls[i].style.left = (Math.floor(Math.random() * 9)) * 10 + "%";
-		}
-	} while (checkSpawn(player));
+		do {
+			for (var i = 0; i < walls.length; i++) {
+				walls[i].style.top = (Math.floor(Math.random() * 9)) * 10 + "%";
+				walls[i].style.left = (Math.floor(Math.random() * 9)) * 10 + "%";
+			}
+		} while (checkSpawn(player));
 
-	// Randomize goal position
-	do {
-		goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
-		goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
-	} while (checkSpawn(goal));
-}while(!checkIsPossible())
+		// Randomize goal position.
+		do {
+			goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
+			goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
+		} while (checkSpawn(goal));
+	} while (!checkIsPossible())
 }
 
-// Check the spawn of the goal
+// Check the spawn of the goal.
 function checkSpawn(goal) {
 	let g = goal.getBoundingClientRect();
 	for (var i = 0; i < walls.length; i++) {
@@ -118,12 +117,12 @@ function checkSpawn(goal) {
 	return false;
 }
 
-// Start the game
+// Start the game.
 handler.noMove();
-resetGame();
+setGame();
 handler.runGame(startTimer, 1000);
 
-// Timer and countdown
+// Timer and countdown.
 function startTimer() {
 	secondsLeft--;
 	timer.innerHTML = "<span id='time'>" + secondsLeft + "</span>";
@@ -136,19 +135,22 @@ function startTimer() {
 	}
 }
 
-
-// It just work, more or less, less than more
+// Mira si el laberinto es posible (mas o menos funciona).
 function checkIsPossible() {
 	let flag = false;
 	let clone = document.createElement('div');
+
 	clone.classList.add('clone');
 	clone.style.top = '0%';
 	clone.style.left = '0%';
 	border.appendChild(clone);
+
+	// Clonan "infintamente" una div y si es posible debuelve true si no false
 	for (let i = 0; i < 10; i++) {
 		flag = cloneTheClone(i);
 		if (flag) break;
 	}
+	// Borra todos los clones
 	let clones = document.getElementsByClassName('clone');
 	for (let i = 0; i < clones.length; i++) {
 		border.removeChild(clones[i]);
@@ -172,7 +174,6 @@ function cloneTheClone(int) {
 		let cloneXN = document.createElement('div');
 
 		// Cada div le asignas una direcion
-
 		cloneYP.style.top = (parseFloat(clones[i].style.top.replace('%', '')) + 5) + '%';
 		cloneYN.style.top = (parseFloat(clones[i].style.top.replace('%', '')) - 5) + '%';
 		cloneXP.style.left = (parseFloat(clones[i].style.left.replace('%', '')) + 5) + '%';
@@ -189,13 +190,15 @@ function cloneTheClone(int) {
 			border.appendChild(newClon[j]);
 			console.log(i);
 			console.log(newClon[j].style.left.replace('%', '') < 0, newClon[j].style.top.replace('%', '') < 0, checkSpawn(newClon[j]), newClon[j].style.left < (5 * int), newClon[j].style.top < (5 * int))
-			
+			console.log(emergencia);
 			// Matar a los que no queremos
 			if (newClon[j].style.left.replace('%', '') < 0 || newClon[j].style.top.replace('%', '') < 0 || checkSpawn(newClon[j])) {
 				border.removeChild(newClon[j]);
 				emergencia++;
-				if (emergencia >= length/2) return false;
+				// Evacua y evita los bucles infinitos
+				if (emergencia >= length / 2) return false;
 			}
+			//Mira si a gandado algun clon
 			else if (newClon[j].style.left == goal.style.left && newClon[j].style.top == goal.style.left) {
 				return true;
 			}
