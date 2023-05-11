@@ -67,6 +67,7 @@ export function next(game) {
     let ifr = document.createElement("iframe");
     ifr.id = "playArea";
     ifr.src = game;
+    speed += 250;
     document.getElementById("debug").parentNode.insertBefore(ifr, document.getElementById("debug").nextSibling);
     ifr.focus();
 }
