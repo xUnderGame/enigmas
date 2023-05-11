@@ -10,7 +10,7 @@ window.addEventListener("load", function () {
 });
 
 // On-click listeners for the buttons.
-var listeners = ["jugar", "stats", "ranking", "tema", "extras", "javant", "extra1", "extra2"];
+var listeners = ["jugar", "stats", "ranking", "tema", "extras", "javant", "ext1", "ext2"];
 listeners.forEach(listener => { if (document.getElementById(listener)) document.getElementById(listener).addEventListener("click", function () { changeWindow(this) }) });
 
 // Changes the DOM window with new content.
@@ -69,13 +69,19 @@ function changeWindow(ele) {
             location.replace('index.html');
             break;
 
-        case "extra1":
-            var game = document.getElementById('game');
-            game.src = "/games/Coche/coche.html";
-
-        case "extra2":
-            var game = document.getElementById('game');
+        case "ext1":
+            var game = document.getElementById('myframe');
+            game.classList += "fullscreen";
+            game.style.border = "none";
             game.src = "/games/flappy/flappy.html";
+            break;
+
+        case "ext2":
+            var game = document.getElementById('myframe');
+            game.classList += "fullscreen";
+            game.style.border = "none";
+            game.src = "/games/Coche/coche.html";
+            break;
 
         // I call.
         default:

@@ -126,7 +126,6 @@ intervaloMovimiento = setInterval(function () {
 			camion.destruir();
 			camiones.splice(i, 1);
 			puntuacion++;
-			actualizarPuntuacion();
 		}
 	}
 }, 30);
