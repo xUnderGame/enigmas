@@ -102,7 +102,7 @@ function setGame() {
 			goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 			goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 		} while (checkSpawn(goal));
-	} while (!checkIsPossible())
+	} while (!checkIsPossible);
 }
 
 // Check the spawn of the goal.
@@ -195,14 +195,16 @@ function cloneTheClone(int) {
 			if (newClon[j].style.left.replace('%', '') < 0 || newClon[j].style.top.replace('%', '') < 0 || checkSpawn(newClon[j])) {
 				border.removeChild(newClon[j]);
 				emergencia++;
+				console.log(emergencia >= (length / 2) + 50);
 				// Evacua y evita los bucles infinitos
-				if (emergencia >= length / 2) return false;
+				console.log('No')
+				if (emergencia > (length / 2) + 50) return false;
 			}
 			//Mira si a gandado algun clon
 			else if (newClon[j].style.left == goal.style.left && newClon[j].style.top == goal.style.left) {
+				console.log('Si')
 				return true;
 			}
 		}
 	}
-	return false;
 }
