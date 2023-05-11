@@ -35,8 +35,7 @@
 				"https://nominatim.openstreetmap.org/reverse?lat="+lat+"&lon="+long+"&format=json"
 			);
 			let data = await response.json();
-			console.log(data.address.city);
-			document.cookie = "ciudad=" + data.address.city+";SameSite:Lax";
+			window.parent.postMessage(data.address.city, '*');
 
 		};
 		var marker = L.marker([0, 0]).addTo(mymap);

@@ -15,14 +15,14 @@ fetch("https://localhost:7261/api/Juegos")
         var changeFunct = function () { changeGame() }
         editGames();
         changeSelected(false);
-        
+
         // Adds a listener for iframe events.
         window.addEventListener('message', function (e) {
             if (document.getElementById("playArea")) document.getElementById("playArea").remove();
             if (e.data) currGame++;
             changeSelected();
         });
-        
+
         // Loads the random minigames into the DOM.
         function editGames() {
             for (const i of Array(5).keys()) {
@@ -30,21 +30,21 @@ fetch("https://localhost:7261/api/Juegos")
                 gameDiv.children[1].textContent = gameInst.juegos[i].titulo;
             };
         }
-        
+
         // Updates DOM with stuff.
         function changeSelected(doBefore = true) {
             // Sets the new button.
             let current = document.getElementById(gameIds[currGame]).children[3];
             current.addEventListener("click", changeFunct);
             current.id = "selected";
-        
+
             // Desctivates the old button.
             if (!doBefore) return;
             let before = document.getElementById(gameIds[currGame - 1]).children[3];
             before.removeEventListener('click', changeFunct);
             before.id = "";
         }
-        
+
         // Changes game to the next one.
         function changeGame() {
             handler.next(gameInst.juegos[currGame].enlace);

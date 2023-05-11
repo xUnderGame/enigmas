@@ -13,7 +13,7 @@ window.addEventListener("load", function () {
 
 // On-click listeners for the buttons.
 var listeners = ["jugar", "stats", "ranking", "tema"];
-listeners.forEach(listener => { document.getElementById(listener).addEventListener("click", function () { changeWindow(this) }) });
+listeners.forEach(listener => { if (document.getElementById(listener)) document.getElementById(listener).addEventListener("click", function () { changeWindow(this) }) });
 
 // Changes the DOM window with new content.
 function changeWindow(ele) {
@@ -58,9 +58,9 @@ function changeWindow(ele) {
             break;
 
         case "tema":
-            const main = document.querySelector('main');
-            if (main.id == "mododia") main.id = "modonoche"
-            else main.id = "mododia"
+            let main = document.querySelector("main");
+            if (main.id == "mododia") main.id = "modonoche";
+            else main.id = "mododia";
             break;
 
         // I call.
