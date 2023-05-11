@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
 	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
-	<link rel="stylesheet" href="leaflet.css">
 	<style>
 		#map {
 			height: 1000px;
@@ -16,23 +15,34 @@
 
 <body>
 	<div id="map"></div>
-	<script src="leaflet.js"></script>
 	<script>
-		var mymap = L.map('map').setView([40.416775, -3.703790], 8);
+		var mymap = L.map('map').setView([2.186311483383179, 2.18666553497], 8);
 
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
 			maxZoom: 18
 		}).addTo(mymap);
 
+		const showLocation = async (lat, long) => {
+			console.log(lat);
+			console.log(long);
+			let response = await fetch(
+				"https://nominatim.openstreetmap.org/reverse?lat="+lat+"&lon="+long+"&format=json"
+			);
+			let data = await response.json();
+			console.log(data.address.city);
+			document.cookie = "Ciudad=" + data.address.city;
+
+		};
 		var marker = L.marker([0, 0]).addTo(mymap);
 		mymap.on('click', function (e) {
 			document.cookie = "Longitud=" + e.latlng.lat;
 			document.cookie = "Latitud=" + e.latlng.lng;
-
-			alert('Latitud: ' + e.latlng.lat + '\nLongitud: ' + e.latlng.lng);
+			
 			// Actualizar la ubicación del marcador
 			marker.setLatLng(e.latlng);
+			showLocation(e.latlng.lat,e.latlng.lng)
+			alert('Latitud: ' + e.latlng.lat + '\nLongitud: ' + e.latlng.lng);
 		});
 	</script>
 </body>

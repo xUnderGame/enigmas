@@ -43,9 +43,7 @@ function movePlayerDown(intervalTimer) {
     let top = player.style.top.replace("%", "");
     (top < 100 && !flag) ? player.style.top = (parseFloat(top) + 2.5) + "%" : clearInterval(intervalTimer);
     if (checkCollision()){
-        cd.textContent = "You win (the game)!";
-        clearInterval(intervalTimer);
-        // Aqui va la victoria
+        handler.gameWin();
     } 
 }
 
@@ -60,9 +58,7 @@ function checkCollision() {
         console.log(playerHitBox.bottom);
         console.log(dirtHitBox.top + 16);
         if(playerHitBox.bottom >= dirtHitBox.top - 16 && !(diamondHitBox.left - 15 <= playerHitBox.left && diamondHitBox.right + 15 >= playerHitBox.right)){
-            flag = true;
-            cd.textContent = "You lose (the game)!";
-            // Aqui iria el final del juego... Si tubiera uno
+            handler.gameLost();
         }
     }
     if (diamondHitBox.top <= playerHitBox.bottom && diamondHitBox.left - 15 <= playerHitBox.left && diamondHitBox.right + 15 >= playerHitBox.right && diamondHitBox.bottom >= playerHitBox.top){

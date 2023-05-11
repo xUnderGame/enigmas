@@ -10,6 +10,7 @@ export async function runGame(funct, delay = 50) {
         cd.textContent = 3 - iterator;
         await sleep(time / 2);
     }
+    cd.textContent = "GO!";
     setInterval(function () { funct(this) }, delay);
 }
 
@@ -54,17 +55,22 @@ export default class Juegos {
 
 // Trigger a game win.
 export function gameWin() {
-    document.getElementById("countdown").textContent = "Youre win!";
+    document.getElementById("countdown").textContent = "You win!";
+    window.parent.postMessage(true, '*');
 }
 
 // Trigger a game loss.
 export function gameLost() {
-    console.log("lost");
+    document.getElementById("countdown").textContent = "You lost!";
+    window.parent.postMessage(false, '*');
 }
 
 // Loads the next game.
-export function next() {
-    console.log("next");
+export function next(game) {
+    let ifr = document.createElement("iframe");
+    ifr.id = "playArea";
+    ifr.src = `/games/${game}.html`
+    document.getElementById("debug").parentNode.insertBefore(ifr, document.getElementById("debug").nextSibling);
 }
 
 // Ends the game.

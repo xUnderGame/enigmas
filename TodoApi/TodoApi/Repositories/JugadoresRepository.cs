@@ -57,10 +57,10 @@ namespace TodoApi.Data.Repositories
         public async Task<bool> InsertJugador(Jugadores jugadores)
         {
             var db = dbConnection();
-            var sql = @"INSERT INTO public.jugadores (nombre, apellido, nick, password)
-                        VALUES (@nombre, @apellido, @nick, @password)";
+            var sql = @"INSERT INTO public.jugadores (nombre, apellido, nick, password,juegoscompletados,racha)
+                        VALUES (@nombre, @apellido, @nick, @password, @juegoscompletados, @racha)";
 
-            var result = await db.ExecuteAsync(sql, new { jugadores.nombre,jugadores.apellido, jugadores.nick, jugadores.password});
+            var result = await db.ExecuteAsync(sql, new { jugadores.nombre,jugadores.apellido, jugadores.nick, jugadores.password,jugadores.juegoscompletados,jugadores.rach});
             return result > 0;
         }
 

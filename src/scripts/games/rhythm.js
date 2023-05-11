@@ -14,6 +14,7 @@ var distancia = 0;
 window.addEventListener("keydown", pulsePlayer);
 function pulsePlayer(e) {
     if (e.code == "KeyK") {
+        cd.textContent = `Miss: ${miss}, Good: ${good}, Perfect: ${perfect}`;
         killPulse();
     }
 }
@@ -25,17 +26,14 @@ function killPulse() {
     let redHitBox = red.getBoundingClientRect();
     let rank = pulseHitBox.left - redHitBox.left;
     if (rank <= 7 && rank >= -7) {
-        cd.textContent = "Perfect";
         row.removeChild(pulses[0]);
         perfect++;
     }
     else if ((rank <= 35 && rank >= -35) && !(rank < 7 && rank > -7)) {
-        cd.textContent = "Good";
         row.removeChild(pulses[0]);
         good++;
     }
     else {
-        cd.textContent = "Miss";
         row.removeChild(pulses[0]);
         miss++;
     }
@@ -44,11 +42,11 @@ function killPulse() {
 // Crear el 'Pulso'
 function createPulse(vez) {
     let pulse = document.createElement('div');
-    pulse.classList.add('pulseRed');    
+    pulse.classList.add('pulseRed');
     for (let index = 0; index < vez; index++) {
-        pulse.style.left = (100 + distancia) +'%';
+        pulse.style.left = (100 + distancia) + '%';
         row.appendChild(pulse);
-        distancia+=3;
+        distancia += 3;
     }
 
 }
@@ -70,30 +68,18 @@ function movePulse() {
 
 // Crear el patron
 function music() {
-    createPulse(1);
-    createPulse(2);
-    createPulse(1);
-    createPulse(2);
-    createPulse(2);
-    createPulse(2);
-    createPulse(2);
-    createPulse(2);
-    createPulse(2);
-    createPulse(1);
-    createPulse(1);
-    createPulse(1);
-    createPulse(2);
-    createPulse(2);
-    createPulse(1);
-    createPulse(2);
+    let beats = [1, 2, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 1, 2]
+    beats.forEach(beat => {
+        createPulse(beat);
+    });
 }
 
 // Mira si el juego ha acabado
-function checkEnd(){
+function checkEnd() {
     let pulses = document.getElementsByClassName('pulseRed');
-    if(pulses.length == 0){
-        cd.textContent = `Miss: ${miss}, Good: ${good}, Perfect: ${perfect}`;
-        // Acabar partida no se como ira la puntuacion pero podemos hacer que cada un de una cantidad diferente por ejemplo miss = 0; good = 50; perfect = 100;
+    if (pulses.length == 0) {
+        if (good + perfect > miss) handler.gameWin();
+        else handler.gameLost();
     }
 }
 

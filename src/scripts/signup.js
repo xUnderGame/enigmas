@@ -11,15 +11,15 @@ signupForm.addEventListener("submit", async function (e) {
 var longitud = document.cookie.split("; ").find((row) => row.startsWith("Longitud="))?.split("=")[1];
 var latitud = document.cookie.split("; ").find((row) => row.startsWith("Latitud="))?.split("=")[1];
 var ciudad = document.cookie.split("; ").find((row) => row.startsWith("Ciudad="))?.split("=")[1];
+
 // Actions that are run when the form is submitted.
 async function submitForm() {
     var nombre = document.getElementById("nombre").value;
     var apellido = document.getElementById("apellido").value;
     var nick = document.getElementById("nick").value;
     var password = document.getElementById("password").value;
-    //var localizacion = getCity();
 
-    var player = new Jugador(33, nombre, apellido, nick, password, "TEST", 0, 0, "test"); //, localizacion
+    var player = new Jugador(33, nombre, apellido, nick, password, 0, 0, ciudad);
     // Método POST para enviar informacion
     let url = "https://localhost:7261/api/Jugadores";
     let post = {
@@ -34,4 +34,5 @@ async function submitForm() {
     await fetch(url, post)
         .then((response) => response.json(),/* window.open("/login.html", "_self")*/)
         .catch((error) => console.log(error)); //alert("Este nombre de usuario ya esta en uso")
+    
 }

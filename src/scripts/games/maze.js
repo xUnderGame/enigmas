@@ -79,7 +79,7 @@ function checkWin() {
 	if (playerX == goalX && playerY == goalY) {
 		score++;
 		points.innerHTML = score;
-		console.log("win");
+		handler.gameWin();
 	}
 }
 
@@ -129,13 +129,13 @@ function startTimer() {
 	// Time's up!
 	if (secondsLeft <= 0) {
 		setTimeout(function () {
-			document.getElementById("countdown").innerText = "You lost!"
+			handler.gameLost();
 		}, 1000);
 	}
 }
 
 
-//
+// whar
 function checkIsPossible() {
 	let flag = false;
 	let maze = document.getElementById('maze');
@@ -146,42 +146,67 @@ function checkIsPossible() {
 	clone.style.height = '20px';
 	clone.style.color = 'blue';
 	clone.style.zIndex = '3';
-	clone.classList.add('clone')
+	clone.classList.add('clone');
+	console.log(clone);
 	maze.appendChild(clone);
+	for(let i = 0; i < 19*18; i++){
+		flag = cloneTheClone();
+		if (flag) break;
+	}
+	let clones = document.getElementsByClassName('clone')
 }
 
+// No lo mires que duele
 function cloneTheClone() {
 	// clone the clone to every direction.
-	let p = player.getBoundingClientRect();
+	let g = goal.getBoundingClientRect()
 	let w = [];
 	let borderHitBox = border.getBoundingClientRect();
-	let clones = document.getElementsByClassName('clone')
+	let clones = document.getElementsByClassName('clone');
+	console.log(clones);
 	walls.forEach(wall => { w.push(wall.getBoundingClientRect()) });
+	let maze = document.getElementById('maze');
 
 	for(let i = 0; i < clones.length; i++){
+		let cloneHitBox = clones[i].getBoundingClientRect
 		let isValid = true;
-		// Checks collissions with every wall.
-		w.forEach(wall => {
-			if (p.top >= wall.top && p.left >= wall.left && p.right <= wall.right && p.bottom <= wall.bottom) {
+		let cloneYP = document.createElement('div');
+		let cloneYN = document.createElement('div');
+		let cloneXP = document.createElement('div');
+		let cloneXN = document.createElement('div');
+		cloneYP.style.top = cloneHitBox.top + 5;
+		cloneYN.style.top = cloneHitBox.top - 5;
+		cloneXP.style.left = cloneHitBox.left + 5;
+		cloneXN.style.left = cloneHitBox.top - 5;
+		let newClon = [cloneYP,cloneYN,cloneXP,cloneXN];
+		console.log('a')
+		for(let j = 0; j < newClon.length; j++){
+			let p = newClon[j].getBoundingClientRect();
+			console.log('p');
+			// Checks collissions with every wall.
+			w.forEach(wall => {
+				if (p.top >= wall.top && p.left >= wall.left && p.right <= wall.right && p.bottom <= wall.bottom) {
+					isValid = false;
+					console.log('w');
+					return;
+				}
+			});
+
+			// Checks collissions with the map.
+			if (p.top < borderHitBox.top || p.left < borderHitBox.left || p.right > borderHitBox.right || p.bottom > borderHitBox.bottom) {
 				isValid = false;
-				return;
+				console.log('p');
 			}
-		});
-
-		// Checks collissions with the map.
-		if (p.top < borderHitBox.top || p.left < borderHitBox.left || p.right > borderHitBox.right || p.bottom > borderHitBox.bottom) {
-			isValid = false;
-		}
-			// Resets position if invalid.
-		if (!isValid) {
-			let maze = document.getElementById('maze');
-			let clone = document.createElement('div');
-			clone.classList.add('clone')
-			maze.appendChild(clone);
-		}
+				// Resets position if invalid.
+			if (!isValid) {
+				newClon[j].classList.add('clone')
+				maze.appendChild(newClon[j]);
+				console.log('si');
+				if (p.left == g.left && p.top == g.top){
+					return true
+				}
+			}
+		}	
 	}
-
-
-
 }
 checkIsPossible();
