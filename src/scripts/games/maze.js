@@ -102,7 +102,7 @@ function setGame() {
 			goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 			goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 		} while (checkSpawn(goal));
-	} while (!checkIsPossible);
+	} while (!checkIsPossible());
 }
 
 // Check the spawn of the goal.
@@ -145,7 +145,7 @@ function checkIsPossible() {
 	clone.style.left = '0%';
 	border.appendChild(clone);
 
-	// Clonan "infintamente" una div y si es posible debuelve true si no false
+	// Clonan "infintamente" una div y si es posible debuelve true si no false.
 	for (let i = 0; i < 10; i++) {
 		flag = cloneTheClone(i);
 		if (flag) break;
@@ -155,6 +155,7 @@ function checkIsPossible() {
 	for (let i = 0; i < clones.length; i++) {
 		border.removeChild(clones[i]);
 	}
+	// No tanto pero ayuda
 	console.log(flag);
 }
 
@@ -173,7 +174,7 @@ function cloneTheClone(int) {
 		let cloneXP = document.createElement('div');
 		let cloneXN = document.createElement('div');
 
-		// Cada div le asignas una direcion
+		// Cada div le asignas una direcion.
 		cloneYP.style.top = (parseFloat(clones[i].style.top.replace('%', '')) + 5) + '%';
 		cloneYN.style.top = (parseFloat(clones[i].style.top.replace('%', '')) - 5) + '%';
 		cloneXP.style.left = (parseFloat(clones[i].style.left.replace('%', '')) + 5) + '%';
@@ -185,23 +186,35 @@ function cloneTheClone(int) {
 		let newClon = [cloneYP, cloneYN, cloneXP, cloneXN];
 
 		for (let j = 0; j < newClon.length; j++) {
-			// Los insertas
+			// Los insertas.
 			newClon[j].classList.add('clone')
 			border.appendChild(newClon[j]);
-			console.log(i);
-			console.log(newClon[j].style.left.replace('%', '') < 0, newClon[j].style.top.replace('%', '') < 0, checkSpawn(newClon[j]), newClon[j].style.left < (5 * int), newClon[j].style.top < (5 * int))
-			console.log(emergencia);
-			// Matar a los que no queremos
+			// console.log(i);
+			// console.log(newClon[j].style.left.replace('%', '') < 0, newClon[j].style.top.replace('%', '') < 0, checkSpawn(newClon[j]), newClon[j].style.left < (5 * int), newClon[j].style.top < (5 * int))
+			// console.log(emergencia);
+			// console.log(((newClon[j].style.left >= goal.style.left)));
+			// console.log(((newClon[j].style.left , goal.style.left )));
+			// console.log( newClon[j].style.left <= goal.style.left);
+			// console.log( (newClon[j].style.top >= goal.style.top));
+			// console.log( newClon[j].style.top , goal.style.top);
+			// console.log( newClon[j].style.top <= goal.style.top);
+			// Matar a los que no queremos.
 			if (newClon[j].style.left.replace('%', '') < 0 || newClon[j].style.top.replace('%', '') < 0 || checkSpawn(newClon[j])) {
 				border.removeChild(newClon[j]);
 				emergencia++;
 				console.log(emergencia >= (length / 2) + 50);
-				// Evacua y evita los bucles infinitos
-				console.log('No')
-				if (emergencia > (length / 2) + 50) return false;
+
+				// Evacua y evita los bucles infinitos.
+				if (emergencia > (length / 2) + 50){
+					//Este es inportante
+					console.log('No');
+					return false;
+				} 
 			}
-			//Mira si a gandado algun clon
-			else if (newClon[j].style.left == goal.style.left && newClon[j].style.top == goal.style.left) {
+			
+			// Mira si a ganado algun clon
+			else if(newClon[j].style.left == goal.style.left && newClon[j].style.top == goal.style.top || ((newClon[j].style.left >= goal.style.left &&  newClon[j].style.top <= goal.style.top) && (newClon[j].style.top >= goal.style.top ||  newClon[j].style.left <= goal.style.left))) {
+				//Este tambien
 				console.log('Si')
 				return true;
 			}

@@ -229,11 +229,6 @@ li:hover {
 	}
 }
 
-* {
-	/*display: none;*/
-	/* border: 1px solid black;} */
-}
-
 #boton {
 	position: absolute;
 	left: 43%;

@@ -25,7 +25,7 @@ function actualizarContador() {
 		contador.textContent = `Has hecho ${clics} clics en 10 segundos. GG`;
 	}
 
-	// Reduce timer
+	// Reduce timer.
 	tiempo--;
 }
 

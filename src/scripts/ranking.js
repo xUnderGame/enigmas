@@ -23,10 +23,10 @@ fetch(url)
             linea.appendChild(tagRanking);
             document.getElementById("userRanking").appendChild(linea);
 
+            if (document.getElementById("userRanking").children.length >= 5) return;
             fetch("https://localhost:7261/api/Jugadores/ById/" + usuario.idjugador)
             .then((response) => response.json())
             .then((jugador) => {
-                let tagJuego = document.getElementsByClassName("user" + usuario.idjugador)[0];
                 tagUsuario.innerHTML = jugador.nick;
             })
         }
