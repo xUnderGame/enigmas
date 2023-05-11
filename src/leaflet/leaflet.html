@@ -7,8 +7,13 @@
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
 	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 	<style>
+		body {
+			height: 100%;
+			width: 100%;
+			overflow: hidden;
+		}
 		#map {
-			height: 1000px;
+			height: 140px;
 		}
 	</style>
 </head>
@@ -16,7 +21,7 @@
 <body>
 	<div id="map"></div>
 	<script>
-		var mymap = L.map('map').setView([2.186311483383179, 2.18666553497], 8);
+		var mymap = L.map('map').setView([41.45359896116054,2.186311483383179], 20);
 
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',

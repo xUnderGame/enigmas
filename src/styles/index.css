@@ -4,9 +4,14 @@ body {
 	height: 100%;
 	color: var(--tertiary);
 }
+#mododia{
+	background-image: url("https://i.pinimg.com/originals/3a/7b/da/3a7bda163b42122cec8497e44ce3f9dd.gif");
+}
+#modonoche{
+    background-image: url("https://wallpaperaccess.com/full/775140.gif");
+}
 main {
 	background-color: var(--secondary); /* Fallback background. */
-	background-image: url("https://i.pinimg.com/originals/3a/7b/da/3a7bda163b42122cec8497e44ce3f9dd.gif");
 	background-size: contain;
 	text-align: center;
 	width: 90%;

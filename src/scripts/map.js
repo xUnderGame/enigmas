@@ -6,8 +6,10 @@ import Ciudad from "/src/scripts/clases/Ciudad.js";
 
 // Fetch the games and make a session.
 var gameInst = new Session(new Jugador(1, "test", "test", "test", "test", "test", 0, 0, new Ciudad("bcn", -15.420, 122.88)), [new Juego(1, "test", "jumpTheCar", 50), new Juego(2, "test2", "jitterclick", 50)]);
+var gameIds = ["gameOne", "gameTwo", "gameThree", "gameFour", "gameFive"];
 var currGame = 1;
 console.log(gameInst);
+
 
 window.addEventListener('message', function (e) {
     if (document.getElementById("playArea")) document.getElementById("playArea").remove();
@@ -15,5 +17,11 @@ window.addEventListener('message', function (e) {
     console.log(currGame);
 
     // Changes the game.
-    // handler.next("jitterclick");
+    handler.next("jitterclick");
 });
+
+function editGames() {
+    gameIds.forEach(game => {
+        
+    });
+}

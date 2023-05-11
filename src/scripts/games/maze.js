@@ -85,6 +85,7 @@ function checkWin() {
 
 // Reset the game
 function resetGame() {
+	do{
 	// Reset player position
 	player.style.top = "0%";
 	player.style.left = "5%";
@@ -102,6 +103,7 @@ function resetGame() {
 		goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 		goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 	} while (checkSpawn(goal));
+}while(!checkIsPossible());
 }
 
 //Check the spawn of the goal
@@ -147,13 +149,16 @@ function checkIsPossible() {
 	clone.style.color = 'blue';
 	clone.style.zIndex = '3';
 	clone.classList.add('clone');
-	console.log(clone);
 	maze.appendChild(clone);
-	for(let i = 0; i < 19*18; i++){
+	for(let i = 0; i < 25; i++){
 		flag = cloneTheClone();
 		if (flag) break;
 	}
-	let clones = document.getElementsByClassName('clone')
+	let clones = document.getElementsByClassName('clone');
+	for (let i = 0; i < clones.length; i++) {
+		maze.removeChild(clones[i]);
+	}
+	return flag;
 }
 
 // No lo mires que duele
@@ -163,7 +168,6 @@ function cloneTheClone() {
 	let w = [];
 	let borderHitBox = border.getBoundingClientRect();
 	let clones = document.getElementsByClassName('clone');
-	console.log(clones);
 	walls.forEach(wall => { w.push(wall.getBoundingClientRect()) });
 	let maze = document.getElementById('maze');
 
@@ -179,15 +183,12 @@ function cloneTheClone() {
 		cloneXP.style.left = cloneHitBox.left + 5;
 		cloneXN.style.left = cloneHitBox.top - 5;
 		let newClon = [cloneYP,cloneYN,cloneXP,cloneXN];
-		console.log('a')
 		for(let j = 0; j < newClon.length; j++){
 			let p = newClon[j].getBoundingClientRect();
-			console.log('p');
 			// Checks collissions with every wall.
 			w.forEach(wall => {
 				if (p.top >= wall.top && p.left >= wall.left && p.right <= wall.right && p.bottom <= wall.bottom) {
 					isValid = false;
-					console.log('w');
 					return;
 				}
 			});
@@ -195,13 +196,11 @@ function cloneTheClone() {
 			// Checks collissions with the map.
 			if (p.top < borderHitBox.top || p.left < borderHitBox.left || p.right > borderHitBox.right || p.bottom > borderHitBox.bottom) {
 				isValid = false;
-				console.log('p');
 			}
 				// Resets position if invalid.
 			if (!isValid) {
 				newClon[j].classList.add('clone')
 				maze.appendChild(newClon[j]);
-				console.log('si');
 				if (p.left == g.left && p.top == g.top){
 					return true
 				}
@@ -209,4 +208,3 @@ function cloneTheClone() {
 		}	
 	}
 }
-checkIsPossible();

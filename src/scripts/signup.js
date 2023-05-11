@@ -32,7 +32,12 @@ async function submitForm() {
         }
     }
     await fetch(url, post)
-        .then((response) => response.json(),/* window.open("/login.html", "_self")*/)
+        .then((response) => response.json(), window.open("/login.html", "_self"))
         .catch((error) => console.log(error)); //alert("Este nombre de usuario ya esta en uso")
-    
+
+    /*let url2= "https://localhost:7261/api/Jugar"
+
+    await fetch(url2, post)
+        .then((response) => response.json(),window.open("/login.html", "_self"))
+        .catch((error) => console.log(error)); //alert("Este nombre de usuario ya esta en uso")*/
 }

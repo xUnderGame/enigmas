@@ -15,6 +15,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
                 document.cookie = `apellido=${jugador.apellido}`;
                 document.cookie = `nick=${jugador.nick}`;
                 document.cookie = `password=${jugador.password}`;
+                document.cookie = `ciudad=${jugador.ciudad}`;
                 window.open("/index.html","_self");
             }
             else alert("Nombre de Usuario o contraseña incorrectos")

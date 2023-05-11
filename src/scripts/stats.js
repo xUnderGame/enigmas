@@ -26,7 +26,9 @@ window.addEventListener("load", () => {
         ?.split("=")[1] + ", " + document.cookie.split("; ")
             .find((row) => row.startsWith("apellido="))
             ?.split("=")[1];
-    divCiudad.innerHTML = "Barcelona";
+    divCiudad.innerHTML = document.cookie.split("; ")
+    .find((row) => row.startsWith("ciudad="))
+    ?.split("=")[1];
 
     // TABLA
     let tabla = document.getElementsByTagName("tbody")[0];

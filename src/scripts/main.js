@@ -2,8 +2,6 @@ import * as handler from "/src/scripts/games.js";
 
 // Cookies
 if (!handler.loginCheck()) window.open("/login.html", "_self");
-var nick = document.cookie.split("; ").find((row) => row.startsWith("nick="))?.split("=")[1];
-var idJugador = document.cookie.split("; ").find((row) => row.startsWith("idjugador="))?.split("=")[1]
 
 // Load cookies on load.
 window.addEventListener("load", function () {
@@ -14,7 +12,7 @@ window.addEventListener("load", function () {
 });
 
 // On-click listeners for the buttons.
-var listeners = ["jugar", "stats", "ranking"];
+var listeners = ["jugar", "stats", "ranking", "tema"];
 listeners.forEach(listener => { document.getElementById(listener).addEventListener("click", function () { changeWindow(this) }) });
 
 // Changes the DOM window with new content.
@@ -59,24 +57,14 @@ function changeWindow(ele) {
             subMenu[0].style.display = 'inherit';
             break;
 
+        case "tema":
+            const main = document.querySelector('main');
+            if (main.id == "mododia") main.id = "modonoche"
+            else main.id = "mododia"
+            break;
+
         // I call.
         default:
             break;
     }
-}
-
-// Updates the iframe with a new game src.
-function updateGame(src) {
-    let game = document.getElementById("game");
-    game.src = `/games/${src}.html`;
-    game.focus();
-}
-
-// Function to end game.
-function endGame() {
-    let game = document.getElementById("game");
-    var nextButton = document.createElement("button");
-    nextButton.innerText = "Siguiente juego";
-    nextButton.onclick = updateGame("diamondDig");
-    gameArea.appendChild(nextButton);
 }
