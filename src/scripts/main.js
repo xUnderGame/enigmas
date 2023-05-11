@@ -12,7 +12,7 @@ window.addEventListener("load", function () {
 });
 
 // On-click listeners for the buttons.
-var listeners = ["jugar", "stats", "ranking", "tema", "extras"];
+var listeners = ["jugar", "stats", "ranking", "tema", "extras", "javant", "extra1", "extra2"];
 listeners.forEach(listener => { if (document.getElementById(listener)) document.getElementById(listener).addEventListener("click", function () { changeWindow(this) }) });
 
 // Changes the DOM window with new content.
@@ -62,10 +62,29 @@ function changeWindow(ele) {
             if (main.id == "mododia") main.id = "modonoche";
             else main.id = "mododia";
             break;
+
         case "extras":
-                location.replace('extra.html');
-            
+            location.replace('extra.html');
             break;
+        
+        case "javant":
+            location.replace('index.html');
+            break;
+        
+        case "extra1":
+            var game = document.getElementById('myframe')
+            game.classList += "fullscreen";
+            game.style.border = "none";
+            game.id = "game";
+            game.src = "/games/Coche/coche.html";
+
+        case "extra2":
+            var game = document.getElementById('myframe')
+            game.classList += "fullscreen";
+            game.style.border = "none";
+            game.id = "game";
+            game.src = "/games/flappy/flappy.html";
+
         // I call.
         default:
             break;

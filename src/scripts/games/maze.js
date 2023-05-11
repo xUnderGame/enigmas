@@ -143,7 +143,7 @@ function checkIsPossible() {
 	clone.style.top = '0%';
 	clone.style.left = '0%';
 	border.appendChild(clone);
-	for (let i = 0; i < 20; i++) {
+	for (let i = 0; i < 10; i++) {
 		flag = cloneTheClone(i);
 		if (flag) break;
 	}
@@ -157,47 +157,47 @@ function checkIsPossible() {
 checkIsPossible();
 // No lo mires que duele
 function cloneTheClone(int) {
+
 	// clone the clone to every direction.
 	let clones = document.getElementsByClassName('clone');
 	const length = clones.length;
+	let emergencia = 0;
 	for (let i = 0; i < length; i++) {
-		console.log(clones);
-		console.log(clones[i].style.top.replace('%', '') <= (5*int))
-		if(clones[i].style.top.replace('%', '') <= (5*int)){
-			// Creas 4 div
-			let cloneYP = document.createElement('div');
-			let cloneYN = document.createElement('div');
-			let cloneXP = document.createElement('div');
-			let cloneXN = document.createElement('div');
-			console.log(clones[i].style.top);
-			console.log(clones[i].style.left);
+		// Creas 4 div
+		let cloneYP = document.createElement('div');
+		let cloneYN = document.createElement('div');
+		let cloneXP = document.createElement('div');
+		let cloneXN = document.createElement('div');
 
-			// Cada div le asignas una direcion
+		// Cada div le asignas una direcion
 
-			console.log((parseFloat(clones[i].style.top.replace('%', '')) + 5) + '%');
-			cloneYP.style.top = (parseFloat(clones[i].style.top.replace('%', '')) + 5) + '%';
-			cloneYN.style.top = (parseFloat(clones[i].style.top.replace('%', '')) - 5) + '%';
-			cloneXP.style.left = (parseFloat(clones[i].style.left.replace('%', '')) + 5) + '%';
-			cloneXN.style.left = (parseFloat(clones[i].style.left.replace('%', '')) - 5) + '%';
-			let newClon = [cloneYP, cloneYN, cloneXP, cloneXN];
+		cloneYP.style.top = (parseFloat(clones[i].style.top.replace('%', '')) + 5) + '%';
+		cloneYN.style.top = (parseFloat(clones[i].style.top.replace('%', '')) - 5) + '%';
+		cloneXP.style.left = (parseFloat(clones[i].style.left.replace('%', '')) + 5) + '%';
+		cloneXN.style.left = (parseFloat(clones[i].style.left.replace('%', '')) - 5) + '%';
+		cloneYP.style.left = clones[i].style.left;
+		cloneYN.style.left = clones[i].style.left;
+		cloneXP.style.top = clones[i].style.left;
+		cloneXN.style.top = clones[i].style.left;
+		let newClon = [cloneYP, cloneYN, cloneXP, cloneXN];
 
-			for (let j = 0; j < newClon.length; j++) {
-				// los insertas
-				newClon[j].classList.add('clone')
-				border.appendChild(newClon[j]);
-				console.log(newClon[j].style.top);
-				console.log(newClon[j].style.left);
-				// Matar a los repetidos
-				console.log(i);
-				console.log(j);
-				console.log(  newClon[j].style.top.replace('%', '') < 0);
-				console.log(  newClon[j].style.left.replace('%', '') < 0);
-				if (newClon[j].style.left.replace('%', '') < 0 || newClon[j].style.top.replace('%', '') < 0){
-					border.removeChild(newClon[j]);
-				}
+		for (let j = 0; j < newClon.length; j++) {
+			// Los insertas
+			newClon[j].classList.add('clone')
+			border.appendChild(newClon[j]);
+			console.log(i);
+			console.log(newClon[j].style.left.replace('%', '') < 0, newClon[j].style.top.replace('%', '') < 0, checkSpawn(newClon[j]), newClon[j].style.left < (5 * int), newClon[j].style.top < (5 * int))
+			
+			// Matar a los que no queremos
+			if (newClon[j].style.left.replace('%', '') < 0 || newClon[j].style.top.replace('%', '') < 0 || checkSpawn(newClon[j])) {
+				border.removeChild(newClon[j]);
+				emergencia++;
+				if (emergencia >= length/2) return false;
+			}
+			else if (newClon[j].style.left == goal.style.left && newClon[j].style.top == goal.style.left) {
+				return true;
 			}
 		}
-		else break;
 	}
 	return false;
 }

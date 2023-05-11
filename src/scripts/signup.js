@@ -13,23 +13,29 @@ signupForm.addEventListener("submit", async function (e) {
 
 // Adds a listener for iframe events.
 window.addEventListener('message', function (e) {
-    document.cookie = "latitud=" + e.data + ";SameSite:Lax";
-    document.cookie = "longitud=" + e.data + ";SameSite:Lax";
-    document.cookie = "ciudad=" + e.data + ";SameSite:Lax";
+    let data = e.data.split(";");
+    let stuff = ["ciudad", "longitud", "latitud"];
+
+    for (const i in Array(5).keys()) {
+        console.log(stuff[i], data[i]);
+        document.cookie = `${stuff[i]}=` + data[i] + ";SameSite:Lax";
+    }
 });
-var longitud = document.cookie.split("; ").find((row) => row.startsWith("Longitud="))?.split("=")[1];
-var latitud = document.cookie.split("; ").find((row) => row.startsWith("Latitud="))?.split("=")[1];
-console.log(longitud,latitud)
+
 // Actions that are run when the form is submitted.
 async function submitForm() {
     var nombre = document.getElementById("nombre").value;
     var apellido = document.getElementById("apellido").value;
     var nick = document.getElementById("nick").value;
     var password = document.getElementById("password").value;
+    
     var ciudad = document.cookie.split("; ").find((row) => row.startsWith("ciudad="))?.split("=")[1];
-
-
+    var longitud = document.cookie.split("; ").find((row) => row.startsWith("longitud="))?.split("=")[1];
+    var latitud = document.cookie.split("; ").find((row) => row.startsWith("latitud="))?.split("=")[1];
+    
     var player = new Jugador(nombre, apellido, nick, password, 0, 0, ciudad);
+    console.log(longitud, latitud, ciudad)
+
     // Método POST para enviar informacion
     let url = "https://localhost:7261/api/Jugadores";
     let post = {
@@ -46,8 +52,7 @@ async function submitForm() {
         .catch((error) => console.log(error));
 
 
-    // Inserimos en la tabla Jugar las lineas correspondientes al Jugador
-    //NO PREGUNTES UNAI,FUNCIONA (QUE ES ESTO?? -unai)
+    // Inserimos en la tabla Jugar las lineas correspondientes al Jugador.
     fetch("https://localhost:7261/api/Jugadores/" + nick)
         .then(response => response.json())
         .then(jugador => {
@@ -72,9 +77,7 @@ async function submitForm() {
 
 
     // Inserimos la Ciudad
-    console.log(typeof longitud, typeof latitud,)
     var ciudadObj = new Ciudad(ciudad, longitud, latitud);
-    console.log(ciudadObj)
     let url3 = "https://localhost:7261/api/Ciudad";
     let post3 = {
         method: 'POST',

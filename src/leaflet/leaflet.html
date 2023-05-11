@@ -32,23 +32,18 @@
 		}).addTo(mymap);
 
 		const showLocation = async (lat, long) => {
-			let response = await fetch(
-				"https://nominatim.openstreetmap.org/reverse?lat=" + lat + "&lon=" + long + "&format=json"
-			);
+			let response = await fetch("https://nominatim.openstreetmap.org/reverse?lat=" + lat + "&lon=" + long + "&format=json");
 			let data = await response.json();
-			window.parent.postMessage(data.address.city, '*');
-
+			window.parent.postMessage(`${data.address.city};${lat};${long}`, '*');
 		};
+
 		var marker = L.marker([0, 0]).addTo(mymap);
 		mymap.on('click', function (e) {
-			//document.cookie = "longitud=" + e.latlng.lat;
-			//document.cookie = "latitud=" + e.latlng.lng;
-			window.parent.postMessage(e.latlng.lat, '*');
-			window.parent.postMessage(e.latlng.lng, '*');
-
 			// Actualizar la ubicación del marcador
 			marker.setLatLng(e.latlng);
-			showLocation(e.latlng.lat, e.latlng.lng)
+
+			// Enviar la informacion al padre.
+			showLocation(e.latlng.lat, e.latlng.lng);
 		});
 	</script>
 </body>

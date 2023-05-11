@@ -4,10 +4,10 @@ body {
 	height: 100%;
 	color: var(--tertiary);
 }
-#mododia{
+#mododia {
 	background-image: url("https://i.pinimg.com/originals/3a/7b/da/3a7bda163b42122cec8497e44ce3f9dd.gif");
 }
-#modonoche{
+#modonoche {
     background-image: url("https://wallpaperaccess.com/full/775140.gif");
 }
 main {
@@ -33,7 +33,7 @@ aside {
 	background-color: var(--secondary);
 	border-right: var(--tertiary) 4px double;
 }
-aside h3,h4 {
+aside h3, h4 {
 	padding-top: 10px;
 	text-align: center;
 }
