@@ -90,6 +90,7 @@ function resetGame() {
 	player.style.left = "5%";
 
 	// Randomize wall positions
+	do{
 	do {
 		for (var i = 0; i < walls.length; i++) {
 			walls[i].style.top = (Math.floor(Math.random() * 9)) * 10 + "%";
@@ -102,6 +103,7 @@ function resetGame() {
 		goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 		goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 	} while (checkSpawn(goal));
+}while(!checkIsPossible())
 }
 
 // Check the spawn of the goal
@@ -135,7 +137,7 @@ function startTimer() {
 }
 
 
-// whar
+// It just work, more or less, less than more
 function checkIsPossible() {
 	let flag = false;
 	let clone = document.createElement('div');
@@ -148,9 +150,9 @@ function checkIsPossible() {
 		if (flag) break;
 	}
 	let clones = document.getElementsByClassName('clone');
-	/*for (let i = 0; i < clones.length; i++) {
-		maze.removeChild(clones[i]);
-	}*/
+	for (let i = 0; i < clones.length; i++) {
+		border.removeChild(clones[i]);
+	}
 	console.log(flag);
 }
 
