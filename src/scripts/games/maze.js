@@ -85,11 +85,11 @@ function setGame() {
 	player.style.left = "5%";
 
 	// Randomizes wall positions.
-	do {
+	//do {
 		do {
 			for (var i = 0; i < walls.length; i++) {
 				walls[i].style.top = (Math.floor(Math.random() * 9)) * 10 + "%";
-				walls[i].style.left = (Math.floor(Math.random() * 9)) * 10 + "%";
+				walls[i].style.left = (Math.floor(Math.random() * 9)) * 10 + 5 + "%";
 			}
 		} while (checkSpawn(player));
 
@@ -98,7 +98,7 @@ function setGame() {
 			goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 			goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
 		} while (checkSpawn(goal));
-	} while (!checkIsPossible());
+	//} while (!checkIsPossible());
 }
 
 // Check the spawn of the goal.
@@ -153,6 +153,7 @@ function checkIsPossible() {
 	}
 	// No tanto pero ayuda
 	console.log(flag);
+	return flag;
 }
 
 // No lo mires que duele
@@ -193,6 +194,7 @@ function cloneTheClone(int) {
 			// console.log( (newClon[j].style.top >= goal.style.top));
 			// console.log( newClon[j].style.top , goal.style.top);
 			// console.log( newClon[j].style.top <= goal.style.top);
+
 			// Matar a los que no queremos.
 			if (newClon[j].style.left.replace('%', '') < 0 || newClon[j].style.top.replace('%', '') < 0 || checkSpawn(newClon[j])) {
 				border.removeChild(newClon[j]);
@@ -209,7 +211,7 @@ function cloneTheClone(int) {
 			
 			// Mira si a ganado algun clon
 			else if(newClon[j].style.left == goal.style.left && newClon[j].style.top == goal.style.top || ((newClon[j].style.left >= goal.style.left &&  newClon[j].style.top <= goal.style.top) && (newClon[j].style.top >= goal.style.top ||  newClon[j].style.left <= goal.style.left))) {
-				//Este tambien
+				// Este tambien
 				console.log('Si')
 				return true;
 			}

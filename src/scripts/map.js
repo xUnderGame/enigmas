@@ -1,12 +1,13 @@
 import * as handler from "/src/scripts/games.js";
 import Session from "/src/scripts/games.js";
+import Jugar from "/src/scripts/clases/Jugar.js";
 
 // Fetch the games and make a session.
 fetch("https://localhost:7261/api/Juegos")
     .then((response) => response.json())
     .then((juegos) => {
         juegos = juegos.sort(() => Math.random() - 0.5);
-        fetch("https://localhost:7261/api/Juegos")
+        fetch("https://localhost:7261/api/Jugadores/" + document.cookie.split("; ").find((row) => row.startsWith("nick="))?.split("=")[1])
             .then((response) => response.json())
             .then((player) => {
                 // Initial stuff.
@@ -20,7 +21,22 @@ fetch("https://localhost:7261/api/Juegos")
                 // Adds a listener for iframe events.
                 window.addEventListener('message', function (e) {
                     if (document.getElementById("playArea")) document.getElementById("playArea").remove();
-                    if (e.data) currGame++;
+
+                    // Update player.
+                    if (e.data) {
+                        currGame++;
+                        let put = {
+                            method: 'PUT',
+                            body: JSON.stringify(new Jugar(player.idjugador, juegos[currGame].idJuego, 1, 1000)),
+                            headers: {
+                                'Content-Type': 'application/json',
+                            }
+                        }
+                        fetch("https:localhost:7261/api/Jugar", put)
+                            .then((response) => response.json())
+                            .catch((error) => console.log(error));
+                    };
+
                     changeSelected();
                 });
 
