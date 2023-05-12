@@ -1,6 +1,4 @@
 import * as handler from "/src/scripts/games.js";
-
-// Cookies
 if (!handler.loginCheck()) window.open("/login.html", "_self");
 
 // Load cookies on load.
@@ -12,8 +10,8 @@ window.addEventListener("load", function () {
 });
 
 // On-click listeners for the buttons.
-var listeners = ["jugar", "stats", "ranking", "tema"];
-listeners.forEach(listener => { document.getElementById(listener).addEventListener("click", function () { changeWindow(this) }) });
+var listeners = ["jugar", "stats", "ranking", "tema", "extras", "javant", "ext1", "ext2"];
+listeners.forEach(listener => { if (document.getElementById(listener)) document.getElementById(listener).addEventListener("click", function () { changeWindow(this) }) });
 
 // Changes the DOM window with new content.
 function changeWindow(ele) {
@@ -58,9 +56,31 @@ function changeWindow(ele) {
             break;
 
         case "tema":
-            const main = document.querySelector('main');
-            if (main.id == "mododia") main.id = "modonoche"
-            else main.id = "mododia"
+            let main = document.querySelector("main");
+            if (main.id == "mododia") main.id = "modonoche";
+            else main.id = "mododia";
+            break;
+
+        case "extras":
+            location.replace('extra.html');
+            break;
+
+        case "javant":
+            location.replace('index.html');
+            break;
+
+        case "ext1":
+            var game = document.getElementById('myframe');
+            game.classList += "fullscreen";
+            game.style.border = "none";
+            game.src = "/games/flappy/flappy.html";
+            break;
+
+        case "ext2":
+            var game = document.getElementById('myframe');
+            game.classList += "fullscreen";
+            game.style.border = "none";
+            game.src = "/games/Coche/coche.html";
             break;
 
         // I call.

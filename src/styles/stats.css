@@ -1,28 +1,31 @@
 /* Regular css selectors/tags */
 main {
 	background-size: cover;
-    height: 84%;
+	height: 84%;
 	width: 100%;
-    flex-direction: column;
+	flex-direction: column;
 }
 section {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-    width: 70%;
-    height: 200px;
+	width: 70%;
+	height: 200px;
 }
 section > h1 {
-    color: var(--secondary);
+	color: var(--secondary);
 }
 table {
-    border: solid 1px black;
-    margin: 20px;
-    border-collapse: collapse;
+	border: solid 1px black;
+	margin: 20px;
+	border-collapse: collapse;
 	background-color: var(--quaternary);
 }
-tbody, thead, th, td {
-    border: solid 1px black;
+tbody,
+thead,
+th,
+td {
+	border: solid 1px black;
 }
 .colAPI {
 	background-color: var(--quaternary);
@@ -33,10 +36,11 @@ tbody, thead, th, td {
 .colVeces {
 	width: 25%;
 }
-.colPuntuacion{
+.colPuntuacion {
 	width: 25%;
 }
-ul, li {
+ul,
+li {
 	list-style: none;
 }
 ul {
@@ -49,19 +53,20 @@ li {
 
 /* By ID's */
 .infoUsuario {
-    display: inline-block;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    height: 250px;
-    justify-content: center;
+	display: inline-block;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	height: 250px;
+	justify-content: center;
 }
-.infoUsuario > h3, p {
-    height: 20px;
+.infoUsuario > h3,
+p {
+	height: 20px;
 }
 .foto > img {
-    display: inline-block;
-    width: 150px;
-    height: 150px;
-    border-radius: 25px;
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	border-radius: 25px;
 }

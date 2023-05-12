@@ -10,14 +10,14 @@ namespace TodoApi.Data.Repositories
     /// </summary>
     public class JugarRepository
     {
-        private PostgreSQLConfig connexionString;
+        private readonly PostgreSQLConfig connexionString;
         public JugarRepository(PostgreSQLConfig connectionString)
         {
             this.connexionString = connectionString;
         }
 
         // Returns the SQL connection.
-        protected NpgsqlConnection dbConnection()
+        protected NpgsqlConnection DbConnection()
         {
             return new NpgsqlConnection(connexionString.ConnectionString);
         }
@@ -25,9 +25,10 @@ namespace TodoApi.Data.Repositories
         // Selects everything from the table.
         public async Task<IEnumerable<Jugar>> GetAllJugar()
         {
-            var db = dbConnection();
+            var db = DbConnection();
             var sql = @"SELECT *
                         FROM public.jugar
+                        GROUP BY idjuego, idjugador
                         ORDER BY ranking DESC";
 
             return await db.QueryAsync<Jugar>(sql, new { });
@@ -36,18 +37,18 @@ namespace TodoApi.Data.Repositories
         // Returns a specific entry from the table.
         public async Task<Jugar> GetJugarDetails(int idjugador)
         {
-            var db = dbConnection();
+            var db = DbConnection();
             var sql = @"SELECT idjugador, idjuego, vecescompletado, ranking
                         FROM public.jugar
                         WHERE idjugador = @idjugador";
 
-            return await db.QueryFirstOrDefaultAsync<Jugar>(sql, new { idjugador = idjugador});
+            return await db.QueryFirstOrDefaultAsync<Jugar>(sql, new { idjugador });
         }
 
         // Inserts a new record into the table.
         public async Task<bool> InsertJugar(Jugar jugar)
         {
-            var db = dbConnection();
+            var db = DbConnection();
             var sql = @"INSERT INTO public.jugar (idjugador, idjuego, vecescompletado, ranking)
                         VALUES (@idjugador,  @idjuego, @vecescompletado, @ranking)";
 
@@ -58,23 +59,23 @@ namespace TodoApi.Data.Repositories
         // Updates a record.
         public async Task<bool> UpdateJugar(Jugar jugar)
         {
-            var db = dbConnection();
+            var db = DbConnection();
             var sql = @"UPDATE public.jugar
                         SET vecescompletado += 1, ranking += @ranking
                         WHERE idjugador = @idjugador AND idjuego = @idjuego;";
 
-            var result = await db.ExecuteAsync(sql, new { jugar.idjugador, jugar.idjuego,jugar.ranking });
+            var result = await db.ExecuteAsync(sql, new { jugar.idjugador, jugar.idjuego, jugar.ranking });
             return result > 0;
         }
 
         // Deletes a record.
         public async Task<bool> DeleteJugar(Jugar jugar)
         {
-            var db = dbConnection();
+            var db = DbConnection();
             var sql = @"DELETE FROM public.juego
                         WHERE idjugador = @idjugador AND idjuego = @idjuego";
 
-            var result = await db.ExecuteAsync(sql, new { idjugador = jugar.idjugador, idjuego = jugar.idjuego });
+            var result = await db.ExecuteAsync(sql, new { jugar.idjugador, jugar.idjuego });
             return result > 0;
         }
     }

@@ -8,25 +8,25 @@
     <link rel="stylesheet" href="/src/styles/global.css">
     <link rel="stylesheet" href="/src/styles/index.css">
     <script src="https://kit.fontawesome.com/f1a916ae0a.js" crossorigin="anonymous"></script>
-    <script defer src="src/scripts/hamburger.js"></script>
-    <script defer type="module" src="/src/scripts/main.js"></script>
     <title>Javant - Main</title>
 </head>
 
 <body>
     <header class="drop-strong-blurry-black">
         <div id="websiteTitle">
-            <!-- <img src="./src/img/icons/javant.png">
-            <h1 class="drop-solid-black">Javant</h1> -->
-            <img style="width: 200px; height: 50px;"src="https://static1.textcraft.net/data1/b/d/bd46f325930312603fbf982025f0014762a645adda39a3ee5e6b4b0d3255bfef95601890afd80709da39a3ee5e6b4b0d3255bfef95601890afd80709c83e41de583675b3985dba7bb48bc93f.png" alt="LogoJavant">
+            <img style="width: 200px; height: 50px;"
+                src="https://static1.textcraft.net/data1/b/d/bd46f325930312603fbf982025f0014762a645adda39a3ee5e6b4b0d3255bfef95601890afd80709da39a3ee5e6b4b0d3255bfef95601890afd80709c83e41de583675b3985dba7bb48bc93f.png"
+                alt="LogoJavant">
         </div>
-        <img  id="tema"src="https://cdn.icon-icons.com/icons2/2787/PNG/512/sun_and_moon_icon_177460.png"/>
+
+        <img id="tema" src="https://cdn-icons-png.flaticon.com/512/71/71277.png" alt="Icono para cambiar el tema.">
         <div id="infoUsuario">
             <div id="menu">
                 <i id="imagenUsuario" class="fa-solid fa-user fa-xl drop-blurry-black"></i>
                 <p id="nombreUsuario">[Username]</p>
                 <img id="ham" class="drop-blurry-black" src="/src/img/icons/bars.png" alt="Menu hamburgesa">
             </div>
+
             <ul id="submenu">
                 <li><button class="submenu" style="display: none;" id="gestionar">Gestionar</button></li>
                 <li><button class="submenu" style="display: none;" id="stats">Stats Personales</button></li>
@@ -40,12 +40,23 @@
             <br><br>
             <h3>Extra</h3><br>
             <h4> Aqui tienes dos extras por si quieres jugar libremente, no suma puntos!!</h4>
+            <div class="instructions">
+                <button id="javant">Javant</button>
+            </div>
 
+            <div class="instructions">
+                <button id="ext1">Juego 1: </button>
+            </div>
+
+            <div class="instructions">
+                <button id="ext2">Juego 2:</button>
+            </div>
         </aside>
+
         <main id="mododia">
             <article id="juego" class="glow-black">
-                <iframe id="myframe" src="Coche/Practica-coche.html" style="width: 100%; height: 100%; border:none; overflow: auto;"></iframe>
-
+                <iframe id="myframe"
+                    style="width: 100%; height: 100%; border:none; overflow: auto;"></iframe>
             </article>
         </main>
     </div>
@@ -53,6 +64,8 @@
     <footer>
         <p>@ Javant. Todos los derechos reservados.</p>
     </footer>
+    <script src="src/scripts/hamburger.js"></script>
+    <script type="module" src="/src/scripts/main.js"></script>
 </body>
 
 </html>

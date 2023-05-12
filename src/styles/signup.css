@@ -1,11 +1,10 @@
 section {
-    height: 650px !important;
+	height: 650px !important;
 }
-#mapa{
-    width: 80%;
-    height: 30%;
-    align-items: center;
+.mapa {
+	width: 100%;
+	height: 40%;
 }
-label{
-    color: white;
+label {
+	color: white;
 }

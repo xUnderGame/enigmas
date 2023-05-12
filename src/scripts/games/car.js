@@ -14,9 +14,7 @@ function moveCar() {
     else if (cd.textContent != "You lost!") { 
         handler.gameWin();
     } 
-    else if (checkCollision()) {
-        handler.gameLost();
-    };
+    if (checkCollision()) handler.gameLost();
 }
 
 // Checks for a collsion.

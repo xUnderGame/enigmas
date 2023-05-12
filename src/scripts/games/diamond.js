@@ -1,15 +1,9 @@
 import * as handler from "/src/scripts/games.js";
 if (!handler.loginCheck()) window.open("/login.html", "_self");
-/* Falta:
-* Final
-* Puntucion
-* Dificultad?
-*/
+
 var ground = document.getElementById("ground");
 var player = document.getElementById("player");
-var cd = document.getElementById("countdown");
 var maxLeft = window.innerWidth;
-var maxTop = window.innerHeight;
 player.style.top = "10%";
 player.style.left = "50%";
 var flag = false;
@@ -39,29 +33,26 @@ handler.runGame(movePlayerDown);
 
 // Moves the player to the left.
 function movePlayerDown(intervalTimer) {
-    console.log(flag);
     let top = player.style.top.replace("%", "");
     (top < 100 && !flag) ? player.style.top = (parseFloat(top) + 2.5) + "%" : clearInterval(intervalTimer);
-    if (checkCollision()){
+    if (checkCollision()) {
         handler.gameWin();
-    } 
+    }
 }
 
 // Checks for the player colliding with the diamond. 
-function checkCollision() { 
-    let dirts = document.getElementsByClassName("dirt");  
+function checkCollision() {
+    let dirts = document.getElementsByClassName("dirt");
     let diamond = document.getElementById("diamond");
-    let diamondHitBox =  diamond.getBoundingClientRect();
+    let diamondHitBox = diamond.getBoundingClientRect();
     let playerHitBox = player.getBoundingClientRect();
     for (let i = 0; i < dirts.length; i++) {
         const dirtHitBox = dirts[i].getBoundingClientRect();
-        console.log(playerHitBox.bottom);
-        console.log(dirtHitBox.top + 16);
-        if(playerHitBox.bottom >= dirtHitBox.top - 16 && !(diamondHitBox.left - 15 <= playerHitBox.left && diamondHitBox.right + 15 >= playerHitBox.right)){
+        if (playerHitBox.bottom >= dirtHitBox.top - 16 && !(diamondHitBox.left - 15 <= playerHitBox.left && diamondHitBox.right + 15 >= playerHitBox.right)) {
             handler.gameLost();
         }
     }
-    if (diamondHitBox.top <= playerHitBox.bottom && diamondHitBox.left - 15 <= playerHitBox.left && diamondHitBox.right + 15 >= playerHitBox.right && diamondHitBox.bottom >= playerHitBox.top){
+    if (diamondHitBox.top <= playerHitBox.bottom && diamondHitBox.left - 15 <= playerHitBox.left && diamondHitBox.right + 15 >= playerHitBox.right && diamondHitBox.bottom >= playerHitBox.top) {
         return true;
     }
 }
@@ -71,7 +62,7 @@ function setGround() {
     let max = (maxLeft - 40) / 40;
     let diamond = Math.floor((Math.random()) * (max - 10) + 5);
     ground.style.top = "80%";
-    
+
     // Ground tiles.
     for (let i = 0; i < max; i++) {
         let img = document.createElement("img");

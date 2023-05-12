@@ -1,14 +1,13 @@
 import * as handler from "/src/scripts/games.js";
 if (!handler.loginCheck()) window.open("/login.html", "_self");
 
-// Set up variables
+// Setup variables
 var player = document.getElementById("player");
 var goal = document.getElementById("goal");
 var walls = document.querySelectorAll(".wall");
 var timer = document.getElementById("time");
 var points = document.getElementById("points");
 var border = document.getElementById("walls");
-
 var score = 0;
 var secondsLeft = 10;
 
@@ -75,7 +74,7 @@ function checkWin() {
 	var goalX = parseInt(goal.style.left);
 	var goalY = parseInt(goal.style.top);
 
-	// Player reached the goal
+	// Player reached the goal!
 	if (playerX == goalX && playerY == goalY) {
 		score++;
 		points.innerHTML = score;
@@ -83,30 +82,30 @@ function checkWin() {
 	}
 }
 
-// Reset the game
-function resetGame() {
-	//do{
-	// Reset player position
+// Sets the game.
+function setGame() {
+	// Resets player position.
 	player.style.top = "0%";
 	player.style.left = "5%";
 
-	// Randomize wall positions
+	// Randomizes wall positions.
 	do {
-		for (var i = 0; i < walls.length; i++) {
-			walls[i].style.top = (Math.floor(Math.random() * 9)) * 10 + "%";
-			walls[i].style.left = (Math.floor(Math.random() * 9)) * 10 + "%";
-		}
-	} while (checkSpawn(player));
+		do {
+			for (var i = 0; i < walls.length; i++) {
+				walls[i].style.top = (Math.floor(Math.random() * 9)) * 10 + "%";
+				walls[i].style.left = (Math.floor(Math.random() * 9)) * 10 + "%";
+			}
+		} while (checkSpawn(player));
 
-	// Randomize goal position
-	do {
-		goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
-		goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
-	} while (checkSpawn(goal));
-//}while(!checkIsPossible());
+		// Randomize goal position.
+		do {
+			goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
+			goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
+		} while (checkSpawn(goal));
+	} while (!checkIsPossible());
 }
 
-//Check the spawn of the goal
+// Check the spawn of the goal.
 function checkSpawn(goal) {
 	let g = goal.getBoundingClientRect();
 	for (var i = 0; i < walls.length; i++) {
@@ -118,12 +117,12 @@ function checkSpawn(goal) {
 	return false;
 }
 
-// Start the game
+// Start the game.
 handler.noMove();
-resetGame();
+setGame();
 handler.runGame(startTimer, 1000);
 
-// Timer and countdown
+// Timer and countdown.
 function startTimer() {
 	secondsLeft--;
 	timer.innerHTML = "<span id='time'>" + secondsLeft + "</span>";
@@ -136,81 +135,89 @@ function startTimer() {
 	}
 }
 
-
-// whar
+// Mira si el laberinto es posible (mas o menos funciona).
 function checkIsPossible() {
 	let flag = false;
 	let clone = document.createElement('div');
+
 	clone.classList.add('clone');
 	clone.style.top = '0%';
 	clone.style.left = '0%';
 	border.appendChild(clone);
-	for(let i = 0; i < 2; i++){
-		flag = cloneTheClone();
+
+	// Clonan "infintamente" una div y si es posible debuelve true si no false.
+	for (let i = 0; i < 10; i++) {
+		flag = cloneTheClone(i);
 		if (flag) break;
 	}
+	// Borra todos los clones
 	let clones = document.getElementsByClassName('clone');
-	/*for (let i = 0; i < clones.length; i++) {
-		maze.removeChild(clones[i]);
-	}*/
+	for (let i = 0; i < clones.length; i++) {
+		border.removeChild(clones[i]);
+	}
+	// No tanto pero ayuda
 	console.log(flag);
 }
+
 checkIsPossible();
 // No lo mires que duele
-function cloneTheClone() {
+function cloneTheClone(int) {
+
 	// clone the clone to every direction.
-	let g = goal.getBoundingClientRect()
-	let w = [];
-	let borderHitBox = border.getBoundingClientRect();
 	let clones = document.getElementsByClassName('clone');
-	walls.forEach(wall => { w.push(wall.getBoundingClientRect()) });
-	for(let i = 0; i < clones.length; i++){
-		console.log(clones[i]);
-		let isValid = true;
+	const length = clones.length;
+	let emergencia = 0;
+	for (let i = 0; i < length; i++) {
+		// Creas 4 div
 		let cloneYP = document.createElement('div');
 		let cloneYN = document.createElement('div');
 		let cloneXP = document.createElement('div');
 		let cloneXN = document.createElement('div');
-		cloneYP.style.top = (parseFloat(clones[i].style.top.replace('%', '')) + 5) + '%';;
+
+		// Cada div le asignas una direcion.
+		cloneYP.style.top = (parseFloat(clones[i].style.top.replace('%', '')) + 5) + '%';
 		cloneYN.style.top = (parseFloat(clones[i].style.top.replace('%', '')) - 5) + '%';
 		cloneXP.style.left = (parseFloat(clones[i].style.left.replace('%', '')) + 5) + '%';
 		cloneXN.style.left = (parseFloat(clones[i].style.left.replace('%', '')) - 5) + '%';
-		let newClon = [cloneYP,cloneYN,cloneXP,cloneXN];
-		for(let j = 0; j < newClon.length; j++){
-			let newClonHit = newClon[j].getBoundingClientRect();
-			console.log(newClon[j].style.top);
-			// Checks collissions with every wall.
-			w.forEach(wall => {
-				if (newClonHit.top >= wall.top && newClonHit.left >= wall.left && newClonHit.right <= wall.right && newClonHit.bottom <= wall.bottom) {
-					console.log('p')
-					isValid = false;
-					return;
-				}
-			});
+		cloneYP.style.left = clones[i].style.left;
+		cloneYN.style.left = clones[i].style.left;
+		cloneXP.style.top = clones[i].style.left;
+		cloneXN.style.top = clones[i].style.left;
+		let newClon = [cloneYP, cloneYN, cloneXP, cloneXN];
 
-			// Checks collissions with the map.
-			if (newClonHit.top >= borderHitBox.top || newClonHit.left >= borderHitBox.left || newClonHit.right <= borderHitBox.right || newClonHit.bottom <= borderHitBox.bottom) {
-				console.log(borderHitBox);
-				isValid = false;
-			}
+		for (let j = 0; j < newClon.length; j++) {
+			// Los insertas.
+			newClon[j].classList.add('clone')
+			border.appendChild(newClon[j]);
+			// console.log(i);
+			// console.log(newClon[j].style.left.replace('%', '') < 0, newClon[j].style.top.replace('%', '') < 0, checkSpawn(newClon[j]), newClon[j].style.left < (5 * int), newClon[j].style.top < (5 * int))
+			// console.log(emergencia);
+			// console.log(((newClon[j].style.left >= goal.style.left)));
+			// console.log(((newClon[j].style.left , goal.style.left )));
+			// console.log( newClon[j].style.left <= goal.style.left);
+			// console.log( (newClon[j].style.top >= goal.style.top));
+			// console.log( newClon[j].style.top , goal.style.top);
+			// console.log( newClon[j].style.top <= goal.style.top);
+			// Matar a los que no queremos.
+			if (newClon[j].style.left.replace('%', '') < 0 || newClon[j].style.top.replace('%', '') < 0 || checkSpawn(newClon[j])) {
+				border.removeChild(newClon[j]);
+				emergencia++;
+				console.log(emergencia >= (length / 2) + 50);
 
-			//Checks clones
-			for(let t = 0; i < clones.length; i++){
-				let hitBox = clones[t].getBoundingClientRect();
-				console.log(hitBox);
-				if (newClonHit.top <= hitBox.top && newClonHit.left <= hitBox.left && newClonHit.right >= hitBox.right && newClonHit.bottom >= hitBox.bottom ){
-					isValid = true;
-				}
+				// Evacua y evita los bucles infinitos.
+				if (emergencia > (length / 2) + 50){
+					//Este es inportante
+					console.log('No');
+					return false;
+				} 
 			}
-			// Resets position if invalid.
-			if (!isValid) {
-				newClon[j].classList.add('clone')
-				border.appendChild(newClon[j]);
-				if (newClonHit.left == g.left && newClonHit.top == g.top){
-					return true;
-				}
+			
+			// Mira si a ganado algun clon
+			else if(newClon[j].style.left == goal.style.left && newClon[j].style.top == goal.style.top || ((newClon[j].style.left >= goal.style.left &&  newClon[j].style.top <= goal.style.top) && (newClon[j].style.top >= goal.style.top ||  newClon[j].style.left <= goal.style.left))) {
+				//Este tambien
+				console.log('Si')
+				return true;
 			}
-		}	
+		}
 	}
-	return false;
 }
