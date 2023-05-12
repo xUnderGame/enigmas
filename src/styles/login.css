@@ -33,16 +33,6 @@ input {
 p {
 	text-align: center;
 }
-a.recuperarContrasenya {
-	text-align: right;
-	margin-left: 60px;
-}
-.opciones {
-	justify-content: space-between;
-}
-.inputRemember {
-	width: auto;
-}
 .link {
 	color: white;
 }

@@ -39,7 +39,7 @@ function movePlayerDown(intervalTimer) {
         handler.gameWin();
     }
 }
-        console.log("hello world");
+
 // Checks for the player colliding with the diamond. 
 function checkCollision() {
     let dirts = document.getElementsByClassName("dirt");
