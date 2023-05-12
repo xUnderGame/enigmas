@@ -27,7 +27,8 @@ fetch(url)
             fetch("https://localhost:7261/api/Jugadores/ById/" + usuario.idjugador)
             .then((response) => response.json())
             .then((jugador) => {
-                tagUsuario.innerHTML = jugador.nick;
+                var tagUsuario2 = document.getElementsByClassName("user"+jugador.idjugador)[0];
+                tagUsuario2.innerHTML = jugador.nick;
             })
         }
 

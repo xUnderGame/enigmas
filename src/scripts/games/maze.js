@@ -85,20 +85,18 @@ function setGame() {
 	player.style.left = "5%";
 
 	// Randomizes wall positions.
-	//do {
-		do {
-			for (var i = 0; i < walls.length; i++) {
-				walls[i].style.top = (Math.floor(Math.random() * 9)) * 10 + "%";
-				walls[i].style.left = (Math.floor(Math.random() * 9)) * 10 + 5 + "%";
-			}
-		} while (checkSpawn(player));
+	do {
+		for (var i = 0; i < walls.length; i++) {
+			walls[i].style.top = (Math.floor(Math.random() * 9)) * 10 + 5 + "%";
+			walls[i].style.left = (Math.floor(Math.random() * 9)) * 10 + 5 + "%";
+		}
+	} while (checkSpawn(player));
 
-		// Randomize goal position.
-		do {
-			goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
-			goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
-		} while (checkSpawn(goal));
-	//} while (!checkIsPossible());
+	// Randomize goal position.
+	do {
+		goal.style.top = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
+		goal.style.left = (Math.floor(Math.random() * 8) + 1) * 10 + "%";
+	} while (checkSpawn(goal));
 }
 
 // Check the spawn of the goal.
@@ -128,93 +126,5 @@ function startTimer() {
 		setTimeout(function () {
 			handler.gameLost();
 		}, 1000);
-	}
-}
-
-// Mira si el laberinto es posible (mas o menos funciona) No no funcina.
-function checkIsPossible() {
-	let flag = false;
-	let clone = document.createElement('div');
-
-	clone.classList.add('clone');
-	clone.style.top = '0%';
-	clone.style.left = '0%';
-	border.appendChild(clone);
-
-	// Clonan "infintamente" una div y si es posible debuelve true si no false.
-	for (let i = 0; i < 10; i++) {
-		flag = cloneTheClone(i);
-		if (flag) break;
-	}
-	// Borra todos los clones
-	let clones = document.getElementsByClassName('clone');
-	for (let i = 0; i < clones.length; i++) {
-		border.removeChild(clones[i]);
-	}
-	// No tanto pero ayuda
-	console.log(flag);
-	return flag;
-}
-
-// No lo mires que duele
-function cloneTheClone(int) {
-
-	// clone the clone to every direction.
-	let clones = document.getElementsByClassName('clone');
-	const length = clones.length;
-	let emergencia = 0;
-	for (let i = 0; i < length; i++) {
-		// Creas 4 div
-		let cloneYP = document.createElement('div');
-		let cloneYN = document.createElement('div');
-		let cloneXP = document.createElement('div');
-		let cloneXN = document.createElement('div');
-
-		// Cada div le asignas una direcion.
-		cloneYP.style.top = (parseFloat(clones[i].style.top.replace('%', '')) + 5) + '%';
-		cloneYN.style.top = (parseFloat(clones[i].style.top.replace('%', '')) - 5) + '%';
-		cloneXP.style.left = (parseFloat(clones[i].style.left.replace('%', '')) + 5) + '%';
-		cloneXN.style.left = (parseFloat(clones[i].style.left.replace('%', '')) - 5) + '%';
-		cloneYP.style.left = clones[i].style.left;
-		cloneYN.style.left = clones[i].style.left;
-		cloneXP.style.top = clones[i].style.left;
-		cloneXN.style.top = clones[i].style.left;
-		let newClon = [cloneYP, cloneYN, cloneXP, cloneXN];
-
-		for (let j = 0; j < newClon.length; j++) {
-			// Los insertas.
-			newClon[j].classList.add('clone')
-			border.appendChild(newClon[j]);
-			// console.log(i);
-			// console.log(newClon[j].style.left.replace('%', '') < 0, newClon[j].style.top.replace('%', '') < 0, checkSpawn(newClon[j]), newClon[j].style.left < (5 * int), newClon[j].style.top < (5 * int))
-			// console.log(emergencia);
-			// console.log(((newClon[j].style.left >= goal.style.left)));
-			// console.log(((newClon[j].style.left , goal.style.left )));
-			// console.log( newClon[j].style.left <= goal.style.left);
-			// console.log( (newClon[j].style.top >= goal.style.top));
-			// console.log( newClon[j].style.top , goal.style.top);
-			// console.log( newClon[j].style.top <= goal.style.top);
-
-			// Matar a los que no queremos.
-			if (newClon[j].style.left.replace('%', '') < 0 || newClon[j].style.top.replace('%', '') < 0 || checkSpawn(newClon[j])) {
-				border.removeChild(newClon[j]);
-				emergencia++;
-				console.log(emergencia >= (length / 2) + 50);
-
-				// Evacua y evita los bucles infinitos.
-				if (emergencia > (length / 2) + 50){
-					//Este es inportante
-					console.log('No');
-					return false;
-				} 
-			}
-			
-			// Mira si a ganado algun clon
-			else if(newClon[j].style.left == goal.style.left && newClon[j].style.top == goal.style.top || ((newClon[j].style.left >= goal.style.left &&  newClon[j].style.top <= goal.style.top) && (newClon[j].style.top >= goal.style.top ||  newClon[j].style.left <= goal.style.left))) {
-				// Este tambien
-				console.log('Si')
-				return true;
-			}
-		}
 	}
 }
