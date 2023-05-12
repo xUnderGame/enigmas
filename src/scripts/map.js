@@ -5,6 +5,7 @@ import Session from "/src/scripts/games.js";
 fetch("https://localhost:7261/api/Juegos")
     .then((response) => response.json())
     .then((juegos) => {
+        juegos = juegos.sort(() => Math.random() - 0.5);
         fetch("https://localhost:7261/api/Juegos")
             .then((response) => response.json())
             .then((player) => {

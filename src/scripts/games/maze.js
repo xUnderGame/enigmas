@@ -6,9 +6,7 @@ var player = document.getElementById("player");
 var goal = document.getElementById("goal");
 var walls = document.querySelectorAll(".wall");
 var timer = document.getElementById("time");
-var points = document.getElementById("points");
 var border = document.getElementById("walls");
-var score = 0;
 var secondsLeft = 10;
 
 // Move the player when arrow keys are pressed
@@ -76,8 +74,6 @@ function checkWin() {
 
 	// Player reached the goal!
 	if (playerX == goalX && playerY == goalY) {
-		score++;
-		points.innerHTML = score;
 		handler.gameWin();
 	}
 }
@@ -135,7 +131,7 @@ function startTimer() {
 	}
 }
 
-// Mira si el laberinto es posible (mas o menos funciona).
+// Mira si el laberinto es posible (mas o menos funciona) No no funcina.
 function checkIsPossible() {
 	let flag = false;
 	let clone = document.createElement('div');
@@ -159,7 +155,6 @@ function checkIsPossible() {
 	console.log(flag);
 }
 
-checkIsPossible();
 // No lo mires que duele
 function cloneTheClone(int) {
 
