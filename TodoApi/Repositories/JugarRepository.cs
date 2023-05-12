@@ -58,9 +58,10 @@ namespace TodoApi.Data.Repositories
         // Updates a record.
         public async Task<bool> UpdateJugar(Jugar jugar)
         {
+
             var db = dbConnection();
             var sql = @"UPDATE public.jugar
-                        SET vecescompletado += 1, ranking += @ranking
+                        SET vecescompletado  = @vecescompletado+1 , ranking = ranking+@ranking
                         WHERE idjugador = @idjugador AND idjuego = @idjuego;";
 
             var result = await db.ExecuteAsync(sql, new { jugar.idjugador, jugar.idjuego,jugar.ranking });
