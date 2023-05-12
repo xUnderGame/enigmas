@@ -73,7 +73,7 @@ async function submitForm() {
                         }
                     }
                     fetch(url2, post2)
-                        .then((response) => response.json())
+                        .then((response) => response.json(), window.open("login.html","_self"))
                         .catch((error) => console.log(error));
             })
         })

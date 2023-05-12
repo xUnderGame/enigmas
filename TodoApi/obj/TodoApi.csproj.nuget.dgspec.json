@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\unaig\\Desktop\\javant-api\\TodoApi\\TodoApi.csproj": {}
+    "C:\\Users\\argo\\Desktop\\javant-api\\TodoApi\\TodoApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\unaig\\Desktop\\javant-api\\TodoApi\\TodoApi.csproj": {
+    "C:\\Users\\argo\\Desktop\\javant-api\\TodoApi\\TodoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\unaig\\Desktop\\javant-api\\TodoApi\\TodoApi.csproj",
+        "projectUniqueName": "C:\\Users\\argo\\Desktop\\javant-api\\TodoApi\\TodoApi.csproj",
         "projectName": "TodoApi",
-        "projectPath": "C:\\Users\\unaig\\Desktop\\javant-api\\TodoApi\\TodoApi.csproj",
-        "packagesPath": "C:\\Users\\unaig\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\unaig\\Desktop\\javant-api\\TodoApi\\obj\\",
+        "projectPath": "C:\\Users\\argo\\Desktop\\javant-api\\TodoApi\\TodoApi.csproj",
+        "packagesPath": "C:\\Users\\argo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\argo\\Desktop\\javant-api\\TodoApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\unaig\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\argo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,62 +39,17 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "Dapper": {
-              "target": "Package",
-              "version": "[1.50.0, )"
-            },
-            "Microsoft.EntityFrameworkCore.InMemory": {
-              "target": "Package",
-              "version": "[7.0.5, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[6.0.15, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.15, )"
-            },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[6.0.13, )"
-            },
-            "Npgsql": {
-              "target": "Package",
-              "version": "[7.0.4, )"
-            },
-            "Npgsql.EntityFrameworkCore.PostgreSQL": {
-              "target": "Package",
-              "version": "[7.0.4, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.2.3, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.415\\RuntimeIdentifierGraph.json"
         }
       }
     }

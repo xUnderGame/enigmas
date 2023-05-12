@@ -59,15 +59,6 @@ body {
 	padding: 10px;
 }
 
-#score {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	font-size: 24px;
-	padding: 10px;
-}
-
-#score span,
 #timer span {
 	font-weight: bold;
 }

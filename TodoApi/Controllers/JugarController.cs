@@ -32,7 +32,7 @@ namespace TodoApi.Controllers
         [HttpGet("{idjugador}")]
         public async Task<IActionResult> GetJugarDetails(int idJugador)
         {
-            return Ok(await jugarRepository.GetJugarDetails(idJugador));
+            return Ok(await jugarRepository.GetJugarDetails( idJugador));
         }
 
         [HttpPost]

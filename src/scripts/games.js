@@ -34,7 +34,7 @@ export function getCookie(name) {
 
 // Checks for all cookies being present
 export function loginCheck() {
-    return true //["nick", "nombre", "apellido", "password", "idUsuario"].every(cookie => getCookie(cookie))
+    return ["nick", "nombre", "apellido", "password", "idUsuario"].every(cookie => getCookie(cookie))
 }
 
 export default class Juegos {
